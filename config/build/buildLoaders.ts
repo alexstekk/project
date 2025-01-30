@@ -4,6 +4,17 @@ import {BuildOptions} from "./types/config";
 
 export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
 
+    const imagesLoader = {
+        test: /\.(png|jpg|jpeg|gif|webp)$/i,
+        type: 'asset/resource',
+    }
+
+    const svgLoader = {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+    }
+
     const cssLoader = {
         test: /\.s[ac]ss$/i,
         use: [
@@ -14,7 +25,6 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
                 loader: "css-loader",
                 options: {
                     modules: {
-                        // auto: /\.module\.\w+$/,
                         auto: true,
                         namedExport: false,
                         exportLocalsConvention: 'as-is',
@@ -22,21 +32,21 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
                     },
                 }
             },
-
             // Compiles Sass to CSS
             "sass-loader",
         ],
     }
 
-    const
-        typescriptLoader = {
-            test: /\.tsx?$/,
-            use: 'ts-loader',
-            exclude: /node_modules/,
-        }
+    const typescriptLoader = {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+    }
 
     return [
         typescriptLoader,
         cssLoader,
+        imagesLoader,
+        svgLoader,
     ]
 }
