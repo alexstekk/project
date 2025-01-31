@@ -8,6 +8,7 @@ const MainPage = () => {
     return (
         <div>
             {t("Главная страница")}
+            <p>hello12555sdd</p>
         </div>
     );
 };

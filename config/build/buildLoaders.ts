@@ -1,8 +1,31 @@
 import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {BuildOptions} from "./types/config";
+import ReactRefreshTypeScript from 'react-refresh-typescript';
 
 export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
+
+    const babelLoader = {
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    [
+                        'i18next-extract',
+                        {
+                            locales: ['en', 'ru'],
+                            keyAsDefaultValue: true,
+                            saveMissing: true,
+                            outputPath: 'public/locales/{{locale}}/{{ns}}.json',
+                        },
+                    ],
+                ],
+            },
+        },
+    };
 
     const imagesLoader = {
         test: /\.(png|jpg|jpeg|gif|webp)$/i,
@@ -43,7 +66,25 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
         exclude: /node_modules/,
     }
 
+    const reactHotLoader = {
+        test: /\.[jt]sx?$/,
+        exclude: /node_modules/,
+        use: [
+            {
+                loader: 'ts-loader',
+                options: {
+                    getCustomTransformers: () => ({
+                        before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+                    }),
+                    transpileOnly: isDev,
+                },
+            },
+        ],
+    }
+
     return [
+        reactHotLoader,
+        babelLoader,
         typescriptLoader,
         cssLoader,
         imagesLoader,

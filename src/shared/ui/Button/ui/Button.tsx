@@ -1,12 +1,12 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './Button.module.scss'
-import {ButtonHTMLAttributes, PropsWithChildren} from "react";
+import {ButtonHTMLAttributes} from "react";
 
 export enum ButtonVariants {
     CLEAR = 'clear',
 }
 
-interface ButtonProps extends PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     variant?: ButtonVariants;
 }
