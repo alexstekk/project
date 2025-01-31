@@ -11,12 +11,11 @@ export const App = () => {
     const {theme} = useTheme();
 
     return <div className={classNames('app', {}, [theme])}>
-        <Navbar className={'test-class-from-props'}/>
+        <Navbar/>
         <div className="content-page">
             <Sidebar/>
             <AppRouter/>
         </div>
-
     </div>
 }
 
