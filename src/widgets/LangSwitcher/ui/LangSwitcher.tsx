@@ -11,19 +11,20 @@ interface LangSwitcherProps {
 export const LangSwitcher = (props: LangSwitcherProps) => {
     const {className} = props;
 
-    const {t, i18n} = useTranslation();
+  const {t, i18n} = useTranslation();
+
 
     const toggleLang = async  () => {
         await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
     }
 
     return (
-            <Button
+        <Button
                 className={classNames(cls.langSwitcher, {}, [className])}
                 onClick={toggleLang}
                 variant={ButtonVariants.CLEAR}
             >
-                {t("Язык")}
-            </Button>
+            {t("Язык")}
+        </Button>
         );
 };

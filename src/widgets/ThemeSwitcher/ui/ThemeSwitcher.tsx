@@ -20,9 +20,9 @@ export const ThemeSwitcher = (props: ThemeSwitcherProps) => {
             onClick={toggleTheme}
             className={classNames(cls.themeSwitcher, {}, [className])}
         >
-            {
+        {
                 theme === Theme.LIGHT ? <SunIcon/> : <MoonIcon/>
             }
-        </Button>
+    </Button>
     );
 };

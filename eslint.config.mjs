@@ -35,7 +35,8 @@ export default [
                     "varsIgnorePattern": "^_",
                     "caughtErrorsIgnorePattern": "^_"
                 }
-            ]
+            ],
+            "react/jsx-indent" : ["error", 4],
         }
     },
     i18next.configs['flat/recommended'],
