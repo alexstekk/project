@@ -12,7 +12,7 @@ export const App = () => {
 
     return <div className={classNames('app', {}, [theme])}>
         <Navbar/>
-        <div className="content-page">
+        <div className="contentPage">
             <Sidebar/>
             <AppRouter/>
         </div>

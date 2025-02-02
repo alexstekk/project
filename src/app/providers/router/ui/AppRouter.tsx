@@ -4,7 +4,7 @@ import {routeConfig} from "shared/config/routeConfig/routeConfig";
 
 const AppRouter = () => {
     return (
-        <div className="page-wrapper">
+        <div className="pageWrapper">
             <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
                     {

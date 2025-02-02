@@ -6,7 +6,11 @@
   "scripts": {
     "start": "webpack serve --env port=5000",
     "build:prod": "webpack --env mode=production",
-    "build:dev": "webpack --env mode=development"
+    "build:dev": "webpack --env mode=development",
+    "lint:ts": " eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": " eslint \"**/*.{ts,tsx}\" --fix",
+    "lint:scss": "npx stylelint \"**/*.scss\"",
+    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +18,7 @@
   "devDependencies": {
     "@babel/core": "^7.26.7",
     "@babel/preset-env": "^7.26.7",
+    "@eslint/js": "^9.19.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^22.10.7",
@@ -23,6 +28,10 @@
     "babel-loader": "^9.2.1",
     "babel-plugin-i18next-extract": "^1.0.0",
     "css-loader": "^7.1.2",
+    "eslint": "^9.19.0",
+    "eslint-plugin-i18next": "^6.1.1",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^15.14.0",
     "html-webpack-plugin": "^5.6.3",
     "mini-css-extract-plugin": "^2.9.2",
     "react-refresh": "^0.16.0",
@@ -30,10 +39,14 @@
     "sass": "^1.83.4",
     "sass-loader": "^16.0.4",
     "style-loader": "^4.0.0",
+    "stylelint": "^16.14.1",
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-config-standard-scss": "^14.0.0",
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
     "type-fest": "^4.33.0",
     "typescript": "^5.7.3",
+    "typescript-eslint": "^8.22.0",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
