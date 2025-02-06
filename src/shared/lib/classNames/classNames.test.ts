@@ -19,4 +19,9 @@ describe('classNames', () => {
         const expected = 'test1 add-class hovered'
         expect(classNames('test1', {'hovered': true, 'scrollable': false}, ['add-class'])).toBe(expected);
     })
+
+    test('with additional and mods, one - undefined', () => {
+        const expected = 'test1 add-class hovered'
+        expect(classNames('test1', {'hovered': true, 'scrollable': undefined}, ['add-class'])).toBe(expected);
+    })
 })
