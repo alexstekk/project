@@ -8,7 +8,7 @@ import i18next from 'eslint-plugin-i18next'
 /** @type {import('eslint').Linter.Config[]} */
 export default [
     {
-        files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"]
+        files: ["**/*.{js|mjs|cjs|ts|jsx|tsx}"]
     },
     {
         languageOptions: {
@@ -18,12 +18,16 @@ export default [
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
     pluginReact.configs.flat.recommended,
+    i18next.configs['flat/recommended'],
     {
         settings: {
             react: {
                 version: "detect",
             },
-        },
+        }
+
+    },
+    {
         rules: {
             "react/react-in-jsx-scope": "off",
             "@typescript-eslint/ban-ts-comment": "off",
@@ -36,8 +40,7 @@ export default [
                     "caughtErrorsIgnorePattern": "^_"
                 }
             ],
-            "react/jsx-indent" : ["error", 4],
+            "react/jsx-indent": ["error", 4],
         }
-    },
-    i18next.configs['flat/recommended'],
+    }
 ];

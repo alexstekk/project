@@ -3,8 +3,9 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import {BuildOptions} from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin'
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 
-export function buildPlugins({paths,isDev}: BuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPluginInstance[] {
 
     return [
         new webpack.ProgressPlugin({}),
@@ -20,6 +21,9 @@ export function buildPlugins({paths,isDev}: BuildOptions): webpack.WebpackPlugin
         }),
         isDev && new ReactRefreshPlugin({
             overlay: false
+        }),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
         })
     ]
 }

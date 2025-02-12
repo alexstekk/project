@@ -8,23 +8,7 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
     const babelLoader = {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env'],
-                plugins: [
-                    [
-                        'i18next-extract',
-                        {
-                            locales: ['en', 'ru'],
-                            keyAsDefaultValue: true,
-                            saveMissing: true,
-                            outputPath: 'public/locales/{{locale}}/{{ns}}.json',
-                        },
-                    ],
-                ],
-            },
-        },
+        loader: "babel-loader",
     };
 
     const imagesLoader = {
@@ -61,7 +45,7 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
     }
 
     const typescriptLoader = {
-        test: /\.tsx?$/,
+           test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
     }
@@ -83,7 +67,7 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
     }
 
     return [
-        reactHotLoader,
+        isDev && reactHotLoader,
         babelLoader,
         typescriptLoader,
         cssLoader,
