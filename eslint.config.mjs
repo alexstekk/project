@@ -42,5 +42,8 @@ export default [
             ],
             "react/jsx-indent": ["error", 4],
         }
+    },
+    {
+        ignores: ["scripts/*"]
     }
 ];

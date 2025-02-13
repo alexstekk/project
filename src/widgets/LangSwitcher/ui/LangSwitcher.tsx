@@ -5,10 +5,11 @@ import {ButtonVariants} from "shared/ui/Button/ui/Button";
 
 interface LangSwitcherProps {
     className?: string;
+    short?: boolean;
 }
 
 export const LangSwitcher = (props: LangSwitcherProps) => {
-    const {className} = props;
+    const {className, short} = props;
 
   const {t, i18n} = useTranslation();
 
@@ -23,7 +24,7 @@ export const LangSwitcher = (props: LangSwitcherProps) => {
                 onClick={toggleLang}
                 variant={ButtonVariants.CLEAR}
             >
-            {t("Язык")}
+            {t(short ? "Короткий язык" : "Язык")}
         </Button>
         );
 };
