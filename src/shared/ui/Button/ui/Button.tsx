@@ -4,6 +4,7 @@ import {ButtonHTMLAttributes} from "react";
 
 export enum ButtonVariants {
     CLEAR = 'clear',
+    OUTLINE = 'outline',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

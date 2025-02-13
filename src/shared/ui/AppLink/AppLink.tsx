@@ -2,11 +2,11 @@ import {classNames} from "shared/lib/classNames/classNames";
 import cls from './AppLink.module.scss'
 import {Link, LinkProps} from "react-router-dom";
 
-type Theme = 'primary' | 'inverted';
+export type AppLinkVariant = 'primary' | 'inverted';
 
 interface AppLinkProps extends LinkProps {
     className?: string;
-    theme?: Theme;
+    variant?: AppLinkVariant;
 }
 
 
@@ -15,7 +15,7 @@ export const AppLink = (props: AppLinkProps) => {
     const {
         to,
         className,
-        theme = 'primary',
+        variant = 'primary',
         children,
         ...otherProps
     } = props;
@@ -23,7 +23,7 @@ export const AppLink = (props: AppLinkProps) => {
     return (
         <Link
             to={to}
-            className={classNames(cls.appLink, {}, [className, cls[theme]])}
+            className={classNames(cls.appLink, {}, [className, cls[variant]])}
             {...otherProps}
         >
             {children}
