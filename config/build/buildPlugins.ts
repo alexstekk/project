@@ -22,7 +22,7 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         isDev && new ReactRefreshPlugin({
             overlay: false
         }),
-        new BundleAnalyzerPlugin({
+        isDev && new BundleAnalyzerPlugin({
             openAnalyzer: false,
         })
     ]
