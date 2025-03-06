@@ -1,5 +1,5 @@
 import {classNames} from "shared/lib/classNames/classNames";
-import cls from './AppLink.module.scss'
+import cls from './AppLink.module.scss';
 import {Link, LinkProps} from "react-router-dom";
 
 export type AppLinkVariant = 'primary' | 'inverted';

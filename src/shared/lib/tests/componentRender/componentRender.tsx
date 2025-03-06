@@ -14,15 +14,17 @@ export function componentRender(component: ReactNode, options: ComponentRenderOp
 
     const {
         route = '/',
-    } = options
+    } = options;
 
     return render(
-        <MemoryRouter initialEntries={[route]}>
+        <MemoryRouter
+            initialEntries={[route]}
+        >
             <ThemeProvider>
                 <I18nextProvider i18n={i18nForTest}>
                     {component}
                 </I18nextProvider>
             </ThemeProvider>
         </MemoryRouter>
-    )
+    );
 }

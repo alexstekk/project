@@ -13,7 +13,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.ABOUT]: '/about',
     [AppRoutes.NOT_FOUND]: '*',
-}
+};
 
 export const routeConfig: RouteProps[] = [
     {
@@ -29,4 +29,4 @@ export const routeConfig: RouteProps[] = [
         element: <NotFoundPage />
     }
 
-]
+];

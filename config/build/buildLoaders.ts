@@ -14,21 +14,21 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
     const imagesLoader = {
         test: /\.(png|jpg|jpeg|gif|webp)$/i,
         type: 'asset/resource',
-    }
+    };
 
     const svgLoader = {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
         use: ['@svgr/webpack'],
-    }
+    };
 
-    const cssLoader = buildCssLoader(isDev)
+    const cssLoader = buildCssLoader(isDev);
 
     const typescriptLoader = {
            test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
-    }
+    };
 
     const reactHotLoader = {
         test: /\.[jt]sx?$/,
@@ -44,7 +44,7 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
                 },
             },
         ],
-    }
+    };
 
     return [
         isDev && reactHotLoader,
@@ -53,5 +53,5 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
         cssLoader,
         imagesLoader,
         svgLoader,
-    ]
+    ];
 }

@@ -1,5 +1,5 @@
 import {classNames} from "shared/lib/classNames/classNames";
-import cls from './Sidebar.module.scss'
+import cls from './Sidebar.module.scss';
 import {useState} from "react";
 import {ThemeSwitcher} from "widgets/ThemeSwitcher";
 import {LangSwitcher} from "widgets/LangSwitcher";
@@ -8,8 +8,8 @@ import {ButtonSize, ButtonVariants} from "shared/ui/Button/ui/Button";
 import {AppLink} from "shared/ui/AppLink/AppLink";
 import {useTranslation} from "react-i18next";
 import {RoutePath} from "shared/config/routeConfig/routeConfig";
-import MainIcon from 'shared/assets/icons/solar--shop-2-linear.svg'
-import AboutIcon from 'shared/assets/icons/solar--file-text-linear.svg'
+import MainIcon from 'shared/assets/icons/solar--shop-2-linear.svg';
+import AboutIcon from 'shared/assets/icons/solar--file-text-linear.svg';
 
 interface SidebarProps {
     className?: string;
@@ -24,7 +24,7 @@ export const Sidebar = (props: SidebarProps) => {
 
     const toggleSidebar = () => {
         setCollapsed(prev => !prev);
-    }
+    };
 
     return (
         <div

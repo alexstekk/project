@@ -24,6 +24,14 @@ export const Clear: Story = {
         variant: ButtonVariants.CLEAR
     },
 };
+
+export const ClearInverted: Story = {
+    args: {
+        children: 'Text',
+        variant: ButtonVariants.CLEAR_INVERTED,
+    },
+};
+
 export const Outline: Story = {
     args: {
         children: 'Text',

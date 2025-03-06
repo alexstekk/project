@@ -5,4 +5,4 @@ export const RouterDecorator: Decorator = (Story) => (
     <BrowserRouter>
         <Story/>
     </BrowserRouter>
-)
+);

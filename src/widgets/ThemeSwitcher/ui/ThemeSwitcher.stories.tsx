@@ -17,11 +17,11 @@ export const Light: Story = {
 
     }
 };
-Light.decorators = [ThemeDecorator(Theme.LIGHT)]
+Light.decorators = [ThemeDecorator(Theme.LIGHT)];
 
 export const Dark: Story = {
     args: {
     }
 };
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+Dark.decorators = [ThemeDecorator(Theme.DARK)];
 

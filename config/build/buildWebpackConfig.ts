@@ -29,5 +29,5 @@ export function buildWebpackConfig(options: BuildOptions): Configuration {
             ? buildDevServer(options)
             : undefined,
 
-    }
+    };
 }

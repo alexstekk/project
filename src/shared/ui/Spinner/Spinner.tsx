@@ -1,4 +1,4 @@
-import './Spinner.scss'
+import './Spinner.scss';
 import {classNames} from "shared/lib/classNames/classNames";
 
 interface SpinnerProps {
@@ -10,7 +10,7 @@ export const Spinner = (props: SpinnerProps) => {
     const {className} = props;
 
     return (
-        <div className={classNames("lds-ellipsis", {}, [className])}>
+        <div className={classNames("ldsEllipsis", {}, [className])}>
             <div></div>
             <div></div>
             <div></div>

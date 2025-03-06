@@ -8,5 +8,5 @@ export function renderWithRouter(component: ReactNode) {
         <MemoryRouter initialEntries={[]}>
             {component}
         </MemoryRouter>
-    )
+    );
 }

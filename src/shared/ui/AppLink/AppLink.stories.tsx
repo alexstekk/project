@@ -33,14 +33,14 @@ export const PrimaryDark: Story = {
         variant: 'primary'
     }
 };
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)]
+PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const InvertedDark: Story = {
     args: {
         variant: 'inverted'
     }
 };
-InvertedDark.decorators = [ThemeDecorator(Theme.DARK)]
+InvertedDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 
 
