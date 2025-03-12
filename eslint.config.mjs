@@ -9,7 +9,7 @@ import pluginImport from 'eslint-plugin-import';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-    {ignores: ['build', 'config']}, // Этот должно быть здесь в отдельном объекте, чтобы применяться глобально
+    { ignores: ['build', 'config'] }, // Этот должно быть здесь в отдельном объекте, чтобы применяться глобально
     {
         files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
         settings: {
@@ -37,19 +37,21 @@ export default [
             'react-hooks': pluginHooks,
         },
         rules: {
-            'react/react-in-jsx-scope': 'off',
             ...pluginHooks.configs.recommended.rules,
-            "@typescript-eslint/no-unused-vars": [
-                "warn", // or "error"
+            'react/react-in-jsx-scope': 'off',
+            '@typescript-eslint/no-unused-vars': [
+                'warn', // or "error"
                 {
-                    "argsIgnorePattern": "^_",
-                    "varsIgnorePattern": "^_",
-                    "caughtErrorsIgnorePattern": "^_"
+                    'argsIgnorePattern': '^_',
+                    'varsIgnorePattern': '^_',
+                    'caughtErrorsIgnorePattern': '^_'
                 }
             ],
-            "import/no-named-as-default": 'off',
-            "import/no-named-as-default-member": 'off',
-            "semi": 1,
+            'import/no-named-as-default': 'off',
+            'import/no-named-as-default-member': 'off',
+            'semi': 1,
+            'object-curly-spacing': ['error', 'always'],
+            'quotes': [2, 'single', { 'avoidEscape': true }]
         },
     },
 ];
