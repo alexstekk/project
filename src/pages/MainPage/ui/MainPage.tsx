@@ -6,7 +6,6 @@ import { Counter } from 'entities/Counter';
 const MainPage = () => {
 
     const { t } = useTranslation('main');
-
     return (
         <div>
             <BugButton/>
