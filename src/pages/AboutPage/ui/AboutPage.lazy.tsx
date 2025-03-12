@@ -1,4 +1,4 @@
-import {lazy, LazyExoticComponent, ReactNode} from "react";
+import { lazy, LazyExoticComponent, ReactNode } from 'react';
 
 
 export const AboutPageLazy: LazyExoticComponent<() => ReactNode> = lazy(() => {

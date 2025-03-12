@@ -1,6 +1,6 @@
-import type {Meta, StoryObj} from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {Button, ButtonSize, ButtonVariants} from './Button';
+import { Button, ButtonSize, ButtonVariants } from './Button';
 
 
 const meta = {

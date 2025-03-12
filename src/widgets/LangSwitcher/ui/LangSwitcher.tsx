@@ -1,7 +1,7 @@
-import {classNames} from "shared/lib/classNames/classNames";
-import {useTranslation} from "react-i18next";
-import {Button} from "shared/ui/Button";
-import {ButtonVariants} from "shared/ui/Button/ui/Button";
+import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
+import { Button } from 'shared/ui/Button';
+import { ButtonVariants } from 'shared/ui/Button/ui/Button';
 
 interface LangSwitcherProps {
     className?: string;
@@ -9,9 +9,9 @@ interface LangSwitcherProps {
 }
 
 export const LangSwitcher = (props: LangSwitcherProps) => {
-    const {className, short} = props;
+    const { className, short } = props;
 
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
 
 
     const toggleLang = async () => {
@@ -24,7 +24,7 @@ export const LangSwitcher = (props: LangSwitcherProps) => {
             onClick={toggleLang}
             variant={ButtonVariants.CLEAR}
         >
-            {t(short ? "Короткий язык" : "Язык")}
+            {t(short ? 'Короткий язык' : 'Язык')}
         </Button>
     );
 };

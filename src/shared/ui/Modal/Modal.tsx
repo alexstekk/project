@@ -1,7 +1,7 @@
-import {classNames} from "shared/lib/classNames/classNames";
+import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Modal.module.scss';
-import React, {ReactNode, useCallback, useEffect} from "react";
-import {Portal} from "shared/ui/Portal/Portal";
+import React, { ReactNode, useCallback, useEffect } from 'react';
+import { Portal } from 'shared/ui/Portal/Portal';
 
 interface ModalProps {
     className?: string;
@@ -47,7 +47,7 @@ export const Modal = (props: ModalProps) => {
     return (
         <Portal>
             <div
-                className={classNames(cls.modal, {[cls.opened]: isOpen}, [className])}
+                className={classNames(cls.modal, { [cls.opened]: isOpen }, [className])}
             >
                 <div
                     className={cls.overlay}

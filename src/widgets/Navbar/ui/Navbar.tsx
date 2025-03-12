@@ -1,18 +1,18 @@
-import {classNames} from "shared/lib/classNames/classNames";
+import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Navbar.module.scss';
-import {useTranslation} from "react-i18next";
-import {Button} from "shared/ui/Button";
-import {ButtonVariants} from "shared/ui/Button/ui/Button";
-import {useCallback, useState} from "react";
-import {Modal} from "shared/ui/Modal/Modal";
+import { useTranslation } from 'react-i18next';
+import { Button } from 'shared/ui/Button';
+import { ButtonVariants } from 'shared/ui/Button/ui/Button';
+import { useCallback, useState } from 'react';
+import { Modal } from 'shared/ui/Modal/Modal';
 
 interface NavbarProps {
     className?: string;
 }
 
-export const Navbar = ({className}: NavbarProps) => {
+export const Navbar = ({ className }: NavbarProps) => {
 
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     const [isAuthModal, setIsAuthModal] = useState(false);
 
@@ -27,7 +27,7 @@ export const Navbar = ({className}: NavbarProps) => {
                     variant={ButtonVariants.CLEAR_INVERTED}
                     onClick={onToggleModal}
                 >
-                    {t("Войти")}
+                    {t('Войти')}
 
                 </Button>
             </div>
