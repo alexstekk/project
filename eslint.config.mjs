@@ -51,7 +51,8 @@ export default [
             'import/no-named-as-default-member': 'off',
             'semi': 1,
             'object-curly-spacing': ['error', 'always'],
-            'quotes': [2, 'single', { 'avoidEscape': true }]
+            'quotes': [2, 'single', { 'avoidEscape': true }],
+            'react/display-name': 'off'
         },
     },
 ];
