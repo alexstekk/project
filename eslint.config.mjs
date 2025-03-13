@@ -9,7 +9,7 @@ import pluginImport from 'eslint-plugin-import';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-    { ignores: ['build', 'config'] }, // Этот должно быть здесь в отдельном объекте, чтобы применяться глобально
+    { ignores: ['build', 'config', 'json-server'] }, // Этот должно быть здесь в отдельном объекте, чтобы применяться глобально
     {
         files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
         settings: {
