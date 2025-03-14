@@ -2,7 +2,7 @@ import type {StorybookConfig} from "@storybook/react-webpack5";
 import {BuildPaths} from "../build/types/config";
 import path from 'path';
 import {buildCssLoader} from "../build/loaders/buildCssLoader";
-import webpack, { ProvidePlugin } from "webpack";
+import webpack, {ProvidePlugin} from "webpack";
 
 const config: StorybookConfig = {
     stories: ["../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -49,6 +49,10 @@ const config: StorybookConfig = {
             issuer: /\.[jt]sx?$/,
             use: ['@svgr/webpack'],
         });
+
+        config.plugins.push(new webpack.DefinePlugin({
+            __IS_DEV__: true,
+        }))
 
         return config;
     },

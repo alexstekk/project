@@ -93,9 +93,17 @@ export const SizeL: Story = {
 };
 export const SizeXL: Story = {
     args: {
-        children: 'Test',
+        children: 'Test1',
         variant: ButtonVariants.BACKGROUND_INVERTED,
         size: ButtonSize.XL,
+    },
+};
+
+export const Disabled: Story = {
+    args: {
+        children: 'Test',
+        variant: ButtonVariants.OUTLINE,
+        disabled: true,
     },
 };
 
