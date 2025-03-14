@@ -28,10 +28,10 @@ export const Input = memo((props: InputProps) => {
 
     return (
         <div className={classNames(cls.inputWrapper, {}, [className])}>
-            {placeholder && <div className={cls.placeholder}>
-                {placeholder}
-            </div>}
             <Trans i18nKey='placeholder'>
+                {placeholder && <div className={cls.placeholder}>
+                    {placeholder}
+                </div>}
                 <input
                     autoFocus={autoFocus}
                     type={type}
