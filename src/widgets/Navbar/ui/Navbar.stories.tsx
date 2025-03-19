@@ -8,17 +8,7 @@ import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorato
 const meta = {
     title: 'widget/Navbar',
     component: Navbar,
-    decorators: [StoreDecorator({
-            user: {
-                authData: {
-                    id: '1', username: 'admin'
-                }
-            },
-            loginForm: {},
-            counter: {}
-        }
-    )
-    ]
+    decorators: [StoreDecorator({})]
 } satisfies Meta<typeof Navbar>;
 
 export default meta;
@@ -39,6 +29,13 @@ export const withAuth: Story = {
     args: {},
     decorators: [
         ThemeDecorator(Theme.LIGHT),
+        StoreDecorator({
+            user: {
+                authData: {
+                    id: '1', username: 'admin'
+                }
+            },
+        })
     ]
 };
 
