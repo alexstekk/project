@@ -3,16 +3,16 @@ import cls from './Navbar.module.scss';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button';
 import { ButtonVariants } from 'shared/ui/Button/ui/Button';
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { LoginModal } from 'features/AuthByUsername';
-import { useAppDispatch, useAppSelector } from 'app/hooks/redux/reduxTypedHooks';
+import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
 import { getUserAuthData, userActions } from 'entities/User';
 
 interface NavbarProps {
     className?: string;
 }
 
-export const Navbar = ({ className }: NavbarProps) => {
+export const Navbar = memo(({ className }: NavbarProps) => {
 
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
@@ -66,5 +66,6 @@ export const Navbar = ({ className }: NavbarProps) => {
             />}
         </div>
     );
-};
+
+});
 

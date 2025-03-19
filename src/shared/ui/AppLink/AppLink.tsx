@@ -1,6 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
 import { Link, LinkProps } from 'react-router-dom';
+import { memo } from 'react';
 
 export type AppLinkVariant = 'primary' | 'inverted';
 
@@ -10,7 +11,7 @@ interface AppLinkProps extends LinkProps {
 }
 
 
-export const AppLink = (props: AppLinkProps) => {
+export const AppLink = memo((props: AppLinkProps) => {
 
     const {
         to,
@@ -29,4 +30,4 @@ export const AppLink = (props: AppLinkProps) => {
             {children}
         </Link>
     );
-};
+});

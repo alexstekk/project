@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar/ui/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
-import { useAppDispatch } from 'app/hooks/redux/reduxTypedHooks';
+import { useAppDispatch } from 'shared/lib/hooks/redux/reduxTypedHooks';
 import { useEffect } from 'react';
 import { userActions } from 'entities/User';
 

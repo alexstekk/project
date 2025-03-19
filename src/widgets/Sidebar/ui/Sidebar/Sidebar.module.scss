@@ -2,7 +2,7 @@
   height: calc(100vh - var(--navbar-height));
   width: var(--sidebar-width);
   background: var(--inverted-bg-color);
-  position:relative;
+  position: relative;
   transition: width 0.3s;
 }
 
@@ -17,7 +17,7 @@
 
 .collapseBtn {
   position: absolute;
-  right: calc(var(--font-line-l) * -1 );
+  right: calc(var(--font-line-l) * -1);
   bottom: var(--font-line-l);
 }
 
@@ -30,14 +30,6 @@
   padding: 20px;
 }
 
-.item {
-  display: flex;
-  gap: 5px;
-}
-
-.icon {
-  fill: var(--inverted-primary-color);
-}
 
 .collapsed {
   width: var(--sidebar-width-collapsed);
@@ -47,9 +39,7 @@
     flex-direction: column;
   }
 
-  .link {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    width: 0;
+  .items {
+    align-items: center;
   }
 }

@@ -7,7 +7,7 @@ import { ButtonVariants } from 'shared/ui/Button/ui/Button';
 import { memo, useCallback } from 'react';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
-import { useAppDispatch, useAppSelector } from 'app/hooks/redux/reduxTypedHooks';
+import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
 import { Text, TextVariants } from 'shared/ui/Text/Text';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
@@ -18,6 +18,7 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 
 export interface LoginFormProps {
     className?: string;
+    onSuccess?: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -27,6 +28,7 @@ const initialReducers: ReducersList = {
 const LoginForm = memo((props: LoginFormProps) => {
     const {
         className,
+        onSuccess,
     } = props;
 
     const username = useAppSelector(getLoginUsername);
@@ -46,11 +48,14 @@ const LoginForm = memo((props: LoginFormProps) => {
     }, [dispatch]);
 
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUsername({ password, username }));
-    }, [dispatch, password, username]);
+    const onLoginClick = useCallback(async () => {
+        const result = await dispatch(loginByUsername({ password, username }));
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess();
+        }
+    }, [dispatch, onSuccess, password, username]);
 
-    return (<DynamicModuleLoader name={'loginForm'} reducers={initialReducers}>
+    return (<DynamicModuleLoader reducers={initialReducers}>
             <div className={classNames(cls.loginForm, {}, [className])}>
                 <Text title={t('Форма авторизации')}/>
                 {

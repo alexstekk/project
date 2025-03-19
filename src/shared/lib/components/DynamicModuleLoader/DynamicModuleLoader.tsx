@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from 'react';
 import { useStore } from 'react-redux';
 import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
-import { useAppDispatch } from 'app/hooks/redux/reduxTypedHooks';
+import { useAppDispatch } from 'shared/lib/hooks/redux/reduxTypedHooks';
 import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
 import { Reducer } from '@reduxjs/toolkit';
 
@@ -14,7 +14,6 @@ type ReducersListEntry = [StateSchemaKey, Reducer]
 
 interface DynamicModuleLoaderProps {
     children: ReactNode;
-    name: StateSchemaKey;
     reducers: ReducersList;
     removeAfterUnmount?: boolean;
 }
