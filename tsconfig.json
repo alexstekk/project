@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-//    "noImplicitAny": true,
+    "strict": true,
+    "noImplicitAny": true,
     "module": "ESNext",
     "target": "ES2015",
     "jsx": "react-jsx",
@@ -20,13 +21,15 @@
     "compilerOptions": {
       "module": "CommonJS",
       "paths": {
-        "react": [ "./node_modules/@types/react" ]
+        "react": [
+          "./node_modules/@types/react"
+        ]
       }
     }
   },
   "include": [
     "./config/jest/setupTests.ts",
     "./src/**/*.ts",
-    "./src/**/*.tsx",
+    "./src/**/*.tsx"
   ]
 }

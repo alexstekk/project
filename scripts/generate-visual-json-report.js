@@ -1,7 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports,no-undef
-const {promisify} = require('util');
-const {readdir, writeFile} = require('fs');
-const {join: joinPath, relative} = require('path');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { promisify } = require('util');
+const { readdir, writeFile } = require('fs');
+const { join: joinPath, relative } = require('path');
 
 const asyncReaddir = promisify(readdir);
 const writeFileAsync = promisify(writeFile);

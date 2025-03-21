@@ -1,4 +1,5 @@
-type Mods = Record<string, boolean | string>
+type Mods = Record<string, boolean | string | undefined>
+
 
 export function classNames(cls: string, mods: Mods = {}, additional: string[] = []): string {
     return [
@@ -10,4 +11,3 @@ export function classNames(cls: string, mods: Mods = {}, additional: string[] = 
     ].join(' ');
 }
 
-// console.log(classNames('remove-btn', {hi: false, yoyoyo: true}, ['hello']));

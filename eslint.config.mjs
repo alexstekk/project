@@ -1,58 +1,42 @@
-// eslint.config.js
+import {defineConfig, globalIgnores} from 'eslint/config';
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import pluginHooks from 'eslint-plugin-react-hooks';
-// import pluginRefresh from 'eslint-plugin-react-refresh';
-import pluginImport from 'eslint-plugin-import';
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [
-    { ignores: ['build', 'config', 'json-server'] }, // Этот должно быть здесь в отдельном объекте, чтобы применяться глобально
+
+export default defineConfig([
+    globalIgnores(['build', 'config', 'json-server', 'storybook-static', 'scripts']),
+    tseslint.configs.recommended,
+    pluginReact.configs.flat.recommended,
     {
-        files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-        settings: {
-            react: {
-                version: 'detect',
-            },
-            // https://github.com/import-js/eslint-import-resolver-typescript#configuration
-            'import/resolver': {
-                typescript: true,
-                node: true,
-            },
-        },
+        files: ['src/**/*.{js,mjs,cjs,ts,jsx,tsx}'],
         languageOptions: {
             globals: globals.browser,
         },
-    },
-    pluginJs.configs.recommended,
-    // pluginRefresh.configs.recommended,
-    pluginReact.configs.flat.recommended,
-    pluginImport.flatConfigs.recommended,
-    pluginImport.flatConfigs.typescript,
-    ...tseslint.configs.recommended,
-    {
         plugins: {
+            js,
             'react-hooks': pluginHooks,
         },
+        extends: [
+            'js/recommended',
+
+        ],
+
         rules: {
-            ...pluginHooks.configs.recommended.rules,
+            'react-hooks/rules-of-hooks': 'error',
+            'react-hooks/exhaustive-deps': 'warn',
             'react/react-in-jsx-scope': 'off',
-            '@typescript-eslint/no-unused-vars': [
-                'warn', // or "error"
-                {
-                    'argsIgnorePattern': '^_',
-                    'varsIgnorePattern': '^_',
-                    'caughtErrorsIgnorePattern': '^_'
-                }
-            ],
             'import/no-named-as-default': 'off',
             'import/no-named-as-default-member': 'off',
             'semi': 1,
             'object-curly-spacing': ['error', 'always'],
-            'quotes': [2, 'single', { 'avoidEscape': true }],
-            'react/display-name': 'off'
+            'quotes': [2, 'single', {'avoidEscape': true}],
+            'react/display-name': 'off',
+            "no-unused-vars": "off",
+            "@typescript-eslint/no-unused-vars": ["error", {args: "none"}],
+            'no-undef': 'off',
         },
     },
-];
+]);

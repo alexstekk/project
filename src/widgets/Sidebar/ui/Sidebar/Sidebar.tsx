@@ -17,7 +17,6 @@ export const Sidebar = memo((props: SidebarProps) => {
 
     const [collapsed, setCollapsed] = useState(false);
 
-
     const toggleSidebar = () => {
         setCollapsed(prev => !prev);
     };

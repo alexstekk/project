@@ -1,28 +1,28 @@
-import type {StorybookConfig} from "@storybook/react-webpack5";
-import {BuildPaths} from "../build/types/config";
+import type { StorybookConfig } from '@storybook/react-webpack5';
+import { BuildPaths } from '../build/types/config';
 import path from 'path';
-import {buildCssLoader} from "../build/loaders/buildCssLoader";
-import webpack, {ProvidePlugin} from "webpack";
+import { buildCssLoader } from '../build/loaders/buildCssLoader';
+import webpack, { ProvidePlugin } from 'webpack';
 
 const config: StorybookConfig = {
-    stories: ["../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+    stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
     addons: [
-        "@storybook/addon-webpack5-compiler-swc",
-        "@storybook/addon-onboarding",
-        "@storybook/addon-essentials",
-        "@chromatic-com/storybook",
-        "@storybook/addon-interactions",
+        '@storybook/addon-webpack5-compiler-swc',
+        '@storybook/addon-onboarding',
+        '@storybook/addon-essentials',
+        '@chromatic-com/storybook',
+        '@storybook/addon-interactions',
     ],
     framework: {
-        name: "@storybook/react-webpack5",
+        name: '@storybook/react-webpack5',
         options: {},
     },
     webpackFinal: async (config) => {
 
         const paths: BuildPaths = {
-            build: "",
-            entry: "",
-            html: "",
+            build: '',
+            entry: '',
+            html: '',
             src: path.resolve(__dirname, '..', '..', 'src')
         };
 
@@ -37,7 +37,7 @@ const config: StorybookConfig = {
 
         config.module.rules = config.module.rules.map((rule: webpack.RuleSetRule) => {
             if (/svg/.test(rule.test as string)) {
-                return {...rule, exclude: /\.svg$/i};
+                return { ...rule, exclude: /\.svg$/i };
             }
 
             return rule;
@@ -52,7 +52,7 @@ const config: StorybookConfig = {
 
         config.plugins.push(new webpack.DefinePlugin({
             __IS_DEV__: true,
-        }))
+        }));
 
         return config;
     },
