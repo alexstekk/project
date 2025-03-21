@@ -1,7 +1,7 @@
-import { Decorator } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
+import { FunctionComponent } from 'react';
 
-export const RouterDecorator: Decorator = (Story) => (
+export const RouterDecorator = (Story: FunctionComponent) => (
     <BrowserRouter>
         <Story/>
     </BrowserRouter>

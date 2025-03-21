@@ -1,6 +1,6 @@
 import 'app/styles/index.scss';
-import { Decorator } from '@storybook/react';
+import { FunctionComponent } from 'react';
 
-export const StyleDecorator: Decorator = (Story) => (
+export const StyleDecorator = (Story: FunctionComponent) => (
     <Story/>
 );

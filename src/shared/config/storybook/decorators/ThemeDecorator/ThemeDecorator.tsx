@@ -1,8 +1,8 @@
 import { Theme, ThemeProvider } from 'app/providers/ThemeProvider';
-import { Decorator } from '@storybook/react';
+import { FunctionComponent } from 'react';
 
 
-export const ThemeDecorator = (theme: Theme): Decorator => (Story) => {
+export const ThemeDecorator = (theme: Theme) => (Story: FunctionComponent) => {
 
     return <ThemeProvider>
         <div className={`app ${theme}`}>
@@ -10,3 +10,4 @@ export const ThemeDecorator = (theme: Theme): Decorator => (Story) => {
         </div>
     </ThemeProvider>;
 };
+
