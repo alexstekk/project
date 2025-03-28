@@ -38,5 +38,7 @@ export default defineConfig([
             "@typescript-eslint/no-unused-vars": ["error", {args: "none"}],
             'no-undef': 'off',
         },
+
+
     },
 ]);

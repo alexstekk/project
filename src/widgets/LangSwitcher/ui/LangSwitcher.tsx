@@ -9,7 +9,7 @@ interface LangSwitcherProps {
     short?: boolean;
 }
 
-export const LangSwitcher = memo((props: LangSwitcherProps) => {
+export const LangSwitcher = memo<LangSwitcherProps>((props: LangSwitcherProps) => {
     const { className, short } = props;
 
     const { t, i18n } = useTranslation();

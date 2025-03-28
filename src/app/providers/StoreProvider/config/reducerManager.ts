@@ -1,4 +1,4 @@
-import { combineReducers, Reducer, ReducersMapObject, UnknownAction } from '@reduxjs/toolkit';
+import { Action, combineReducers, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { ReducerManager, StateSchema, StateSchemaKey } from './StateSchema';
 
 export function createReducerManager(initialReducers: ReducersMapObject<StateSchema>): ReducerManager {
@@ -16,7 +16,7 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
 
         // The root reducer function exposed by this object
         // This will be passed to the store
-        reduce: (state: StateSchema, action: UnknownAction) => {
+        reduce: (state: StateSchema, action: Action) => {
             // If any reducers have been removed, clean up their state first
             if (keysToRemove.length > 0) {
                 state = { ...state };
@@ -27,6 +27,7 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
             }
 
             // Delegate to the combined reducer
+            // @ts-expect-error types
             return combinedReducer(state, action);
         },
 

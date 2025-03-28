@@ -1,8 +1,8 @@
 import webpack from 'webpack';
-import { BuildOptions } from './types/config';
-import { buildCssLoader } from './loaders/buildCssLoader';
+import {BuildOptions} from './types/config';
+import {buildCssLoader} from './loaders/buildCssLoader';
 
-export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
 
     const babelLoader = {
         test: /\.(js|jsx|ts|tsx)$/,
@@ -36,7 +36,7 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     };
 
     const loaders = [
-        babelLoader,
+        // babelLoader,
         typescriptLoader,
         cssLoader,
         imagesLoader,
@@ -44,7 +44,7 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     ];
 
     if (isDev) {
-        loaders.push(reactHotLoader);
+        //  loaders.push(reactHotLoader);
     }
 
     return loaders;

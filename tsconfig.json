@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "sourceMap": true,
     "outDir": "./dist/",
     "strict": true,
     "noImplicitAny": true,
@@ -14,20 +15,12 @@
     "paths": {
       "*": [
         "./src/*"
-      ],
-      "react": [
-        "./node_modules/@types/react"
       ]
     }
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS",
-      "paths": {
-        "react": [
-          "./node_modules/@types/react"
-        ]
-      }
+      "module": "CommonJS"
     }
   },
   "include": [
