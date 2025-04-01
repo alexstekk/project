@@ -1,26 +1,28 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ProfileCard.module.scss';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
-import { getProfileData } from 'entities/Profile/model/selectors/getProfileData/getProfileData';
 import { Text } from 'shared/ui/Text/Text';
 import { Button } from 'shared/ui/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { ButtonVariants } from 'shared/ui/Button/ui/Button';
+import { Profile } from '../../model/types/Profile';
 
 
 interface ProfileCardProps {
     className?: string;
+    data?: Profile;
+    isLoading?: boolean;
+    error?: string;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
     const {
         className,
+        data,
+        //isLoading,
+        // error
     } = props;
 
-    const data = useAppSelector(getProfileData);
-    // const error = useAppSelector(getProfileError);
-    // const isLoading = useAppSelector(getProfileIsLoading);
 
     const { t } = useTranslation('profile');
 
