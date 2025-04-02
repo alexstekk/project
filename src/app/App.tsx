@@ -3,9 +3,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar/ui/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
-import { useAppDispatch } from 'shared/lib/hooks/redux/reduxTypedHooks';
+import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
 import { useEffect } from 'react';
-import { userActions } from 'entities/User';
+import { getUserInited, userActions } from 'entities/User';
 
 
 export const App = () => {
@@ -13,6 +13,9 @@ export const App = () => {
     const { theme } = useTheme();
 
     const dispatch = useAppDispatch();
+
+    const inited = useAppSelector(getUserInited);
+
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
@@ -22,7 +25,7 @@ export const App = () => {
         <Navbar/>
         <div className="contentPage">
             <Sidebar/>
-            <AppRouter/>
+            {inited && <AppRouter/>}
         </div>
     </div>;
 };
