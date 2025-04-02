@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { SidebarItemType } from 'widgets/Sidebar/model/items';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
+import { getUserAuthData } from 'entities/User';
 
 
 interface SidebarItemProps {
@@ -14,7 +16,10 @@ export const SidebarItem = (props: SidebarItemProps) => {
     const { item, collapsed } = props;
 
     const { t } = useTranslation();
+    const isAuth = useAppSelector(getUserAuthData);
 
+    if (item.authOnly && !isAuth) return null;
+    
     return (
         <AppLink
             variant={'inverted'}

@@ -7,7 +7,8 @@ import ProfileIcon from 'shared/assets/icons/solar--user-circle-linear.svg';
 export interface SidebarItemType {
     path: string;
     text: string;
-    Icon: FunctionComponent<SVGProps<SVGSVGElement>>
+    Icon: FunctionComponent<SVGProps<SVGSVGElement>>;
+    authOnly?: boolean;
 }
 
 export const SidebarItemsList: SidebarItemType[] = [
@@ -24,6 +25,7 @@ export const SidebarItemsList: SidebarItemType[] = [
     {
         path: RoutePath[AppRoutes.PROFILE],
         Icon: ProfileIcon,
-        text: 'Профиль'
+        text: 'Профиль',
+        authOnly: true,
     }
 ];

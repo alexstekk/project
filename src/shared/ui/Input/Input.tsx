@@ -3,12 +3,13 @@ import cls from './Input.module.scss';
 import React, { InputHTMLAttributes, memo } from 'react';
 import { Trans } from 'react-i18next';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
 interface InputProps extends HTMLInputProps {
     className?: string;
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void;
+    readonly?: boolean;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -19,6 +20,7 @@ export const Input = memo((props: InputProps) => {
         type = 'text',
         placeholder,
         autoFocus,
+        readonly,
         ...otherProps
     } = props;
 
@@ -27,7 +29,7 @@ export const Input = memo((props: InputProps) => {
     };
 
     return (
-        <div className={classNames(cls.inputWrapper, {}, [className])}>
+        <div className={classNames(cls.inputWrapper, { [cls.readonly]: readonly }, [className])}>
             <Trans i18nKey='placeholder'>
                 {placeholder && <div className={cls.placeholder}>
                     {placeholder}
@@ -38,6 +40,7 @@ export const Input = memo((props: InputProps) => {
                     value={value}
                     onChange={onChangeHandler}
                     className={cls.input}
+                    readOnly={readonly}
                     {...otherProps}
                 />
             </Trans>
