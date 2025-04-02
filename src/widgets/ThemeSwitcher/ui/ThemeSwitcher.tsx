@@ -5,6 +5,7 @@ import MoonIcon from 'shared/assets/icons/solar--moon-bold.svg';
 import { Button } from 'shared/ui/Button';
 import { ButtonVariants } from 'shared/ui/Button/ui/Button';
 import { memo } from 'react';
+import cls from './ThemeSwitcher.module.scss';
 
 interface ThemeSwitcherProps {
     className?: string;
@@ -18,7 +19,7 @@ export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
     return (<Button
             variant={ButtonVariants.CLEAR}
             onClick={toggleTheme}
-            className={classNames('', {}, [className])}
+            className={classNames(cls.themeSwitcher, {}, [className])}
         >
             {theme === Theme.LIGHT ? <SunIcon/> : <MoonIcon/>}
         </Button>

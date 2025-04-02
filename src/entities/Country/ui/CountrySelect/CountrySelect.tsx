@@ -15,8 +15,6 @@ interface CountrySelectProps {
 const countryOptions = Object.entries(Country).map(([value, content]) => (
     { value: content, content }));
 
-console.log(countryOptions);
-
 export const CountrySelect = memo((props: CountrySelectProps) => {
     const {
         className,
