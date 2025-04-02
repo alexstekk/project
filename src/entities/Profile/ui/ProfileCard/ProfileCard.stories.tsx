@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import avatar from 'shared/assets/tests/storybook.jpeg';
 
 
 const meta = {
@@ -15,7 +14,7 @@ const meta = {
             age: 34,
             city: 'Krasnodar',
             username: 'admin',
-            avatar,
+            avatar: 'https://img.hhcdn.ru/photo/781488069.jpeg?t=1743661063&h=YQvddqwuFpqFEXTmorYcVw',
         }
     }
 } satisfies Meta<typeof ProfileCard>;

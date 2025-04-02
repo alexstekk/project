@@ -89,7 +89,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
     return (
         <div className={classNames(cls.profileCard, { [cls.editing]: !readonly }, [className])}>
-            <div className={cls.data}>
+            <div className={cls.data}>1111223
                 {
                     data?.avatar && (
                         <div className={cls.avatarWrapper}>

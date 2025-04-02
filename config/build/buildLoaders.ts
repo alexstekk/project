@@ -1,14 +1,12 @@
 import webpack from 'webpack';
 import {BuildOptions} from './types/config';
 import {buildCssLoader} from './loaders/buildCssLoader';
+import ReactRefreshTypeScript from 'react-refresh-typescript';
+import {buildBabelLoader} from "./loaders/buildBabelLoader";
 
-export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
-    const babelLoader = {
-        test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-    };
+    const {isDev} = options;
 
     const imagesLoader = {
         test: /\.(png|jpg|jpeg|gif|webp)$/i,
@@ -23,10 +21,17 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
 
     const cssLoader = buildCssLoader(isDev);
 
-    const typescriptLoader = {
+    const babelLoader = buildBabelLoader(options)
+
+    const tsLoader = {
         test: /\.tsx?$/,
-        use: 'ts-loader',
         exclude: /node_modules/,
+        loader: 'ts-loader',
+        options: {
+            getCustomTransformers: () => ({
+                before: [isDev && ReactRefreshTypeScript()].filter(Boolean)
+            }),
+        }
     };
 
     const reactHotLoader = {
@@ -37,15 +42,12 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
 
     const loaders = [
         // babelLoader,
-        typescriptLoader,
+        tsLoader,
         cssLoader,
         imagesLoader,
         svgLoader,
     ];
 
-    if (isDev) {
-        //  loaders.push(reactHotLoader);
-    }
 
     return loaders;
 }

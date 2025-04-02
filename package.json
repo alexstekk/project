@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --env port=5000",
+    "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
     "start:dev:server": "node ./json-server/index.js",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
@@ -54,6 +55,7 @@
     "@types/webpack-bundle-analyzer": "^4.7.0",
     "babel-loader": "^9.2.1",
     "babel-plugin-i18next-extract": "^1.0.0",
+    "concurrently": "^9.1.2",
     "css-loader": "^7.1.2",
     "eslint": "^9.22.0",
     "eslint-import-resolver-typescript": "^3.7.0",

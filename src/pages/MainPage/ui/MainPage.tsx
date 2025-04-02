@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { BugButton } from 'widgets/PageError';
 
 const MainPage = () => {
 
@@ -8,7 +7,6 @@ const MainPage = () => {
 
     return (
         <div>
-            <BugButton/>
             {t('Главная страница')}
 
         </div>

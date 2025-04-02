@@ -26,7 +26,7 @@ export function buildPlugins({paths, isDev, apiUrl, project}: BuildOptions): web
     if (isDev) {
         plugins.push(
             new ReactRefreshPlugin({
-                    overlay: false
+                    // overlay: false
                 },
             ),
             new BundleAnalyzerPlugin({
