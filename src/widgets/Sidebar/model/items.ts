@@ -3,6 +3,7 @@ import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import MainIcon from 'shared/assets/icons/solar--shop-2-linear.svg';
 import AboutIcon from 'shared/assets/icons/solar--file-text-linear.svg';
 import ProfileIcon from 'shared/assets/icons/solar--user-circle-linear.svg';
+import ArticlesIcon from 'shared/assets/icons/solar--document-outline.svg';
 
 export interface SidebarItemType {
     path: string;
@@ -27,5 +28,12 @@ export const SidebarItemsList: SidebarItemType[] = [
         Icon: ProfileIcon,
         text: 'Профиль',
         authOnly: true,
-    }
+    },
+    {
+        path: RoutePath[AppRoutes.PROFILE],
+        Icon: ArticlesIcon,
+        text: 'Статьи',
+        authOnly: true,
+    },
+
 ];
