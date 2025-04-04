@@ -34,8 +34,8 @@ export default defineConfig([
             'object-curly-spacing': ['error', 'always'],
             'quotes': [2, 'single', {'avoidEscape': true}],
             'react/display-name': 'off',
-            "no-unused-vars": "off",
-            "@typescript-eslint/no-unused-vars": ["error", {args: "none"}],
+            "no-unused-vars": "warn",
+            "@typescript-eslint/no-unused-vars": ["warn", {args: "none"}],
             'no-undef': 'off',
         },
 

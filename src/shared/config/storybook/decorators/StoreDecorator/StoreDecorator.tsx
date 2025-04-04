@@ -3,10 +3,12 @@ import { ReducersMapObject } from '@reduxjs/toolkit';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { profileReducer } from 'entities/Profile';
 import React, { FunctionComponent } from 'react';
+import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     loginForm: loginReducer,
     profile: profileReducer,
+    articleDetails: articleDetailsReducer,
 };
 
 export const StoreDecorator = (
