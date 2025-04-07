@@ -2,7 +2,7 @@ import { StateSchema } from 'app/providers/StoreProvider';
 import { Action, AsyncThunkAction, Dispatch } from '@reduxjs/toolkit';
 import axios, { AxiosStatic } from 'axios';
 
-type ActionCreatorType<Return, Arg, RejectedValue>
+export type ActionCreatorType<Return, Arg, RejectedValue>
     = (arg: Arg) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>;
 
 jest.mock('axios');

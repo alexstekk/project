@@ -17,6 +17,8 @@ import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextVariants } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 
 
 const reducers: ReducersList = {
@@ -38,6 +40,9 @@ const ProfilePage = (props: ProfilePageProps) => {
     const isLoading = useAppSelector(getProfileIsLoading);
     const readonly = useAppSelector(getProfileReadonly);
     const validateErrors = useAppSelector(getProfileValidateErrors);
+
+    const { t } = useTranslation();
+    const { id } = useParams<{ id: string }>();
 
     const dispatch = useAppDispatch();
 
@@ -73,13 +78,12 @@ const ProfilePage = (props: ProfilePageProps) => {
         dispatch(profileActions.updateProfile({ country }));
     }, [dispatch]);
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
 
-    const { t } = useTranslation();
 
     const validateErrorTranslations = {
         [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка'),

@@ -5,8 +5,9 @@ import { Text } from 'shared/ui/Text/Text';
 import { Button } from 'shared/ui/Button';
 import { ButtonVariants } from 'shared/ui/Button/ui/Button';
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
-import { getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile';
+import { getProfileData, getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile';
 import { useCallback } from 'react';
+import { getUserAuthData } from 'entities/User';
 
 
 interface ProfilePageHeaderProps {
@@ -19,6 +20,9 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     } = props;
 
     const { t } = useTranslation();
+    const authData = useAppSelector(getUserAuthData);
+    const profileData = useAppSelector(getProfileData);
+    const canEdit = authData?.id === profileData?.id;
 
     const readonly = useAppSelector(getProfileReadonly);
 
@@ -41,33 +45,37 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
             <Text title={t('Профиль')}/>
             <div className={cls.buttons}>
                 {
-                    readonly ? (
-                        <Button
-                            className={cls.editBtn}
-                            variant={ButtonVariants.OUTLINE}
-                            onClick={onEdit}
-                        >
-                            {t('Редактировать')}
-                        </Button>
-                    ) : (
-                        <>
+                    canEdit && (
+                        readonly ? (
                             <Button
-                                className={cls.cancelBtn}
-                                variant={ButtonVariants.OUTLINE_RED}
-                                onClick={onCancelEdit}
-                            >
-                                {t('Отменить')}
-                            </Button>
-                            <Button
-                                className={cls.saveBtn}
+                                className={cls.editBtn}
                                 variant={ButtonVariants.OUTLINE}
-                                onClick={onSave}
+                                onClick={onEdit}
                             >
-                                {t('Сохранить ')}
+                                {t('Редактировать')}
                             </Button>
-                        </>
+                        ) : (
+                            <>
+                                <Button
+                                    className={cls.cancelBtn}
+                                    variant={ButtonVariants.OUTLINE_RED}
+                                    onClick={onCancelEdit}
+                                >
+                                    {t('Отменить')}
+                                </Button>
+                                <Button
+                                    className={cls.saveBtn}
+                                    variant={ButtonVariants.OUTLINE}
+                                    onClick={onSave}
+                                >
+                                    {t('Сохранить ')}
+                                </Button>
+                            </>
+                        )
+
                     )
                 }
+
             </div>
 
         </div>

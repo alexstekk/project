@@ -16,7 +16,6 @@ export const App = () => {
 
     const inited = useAppSelector(getUserInited);
 
-
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch]);

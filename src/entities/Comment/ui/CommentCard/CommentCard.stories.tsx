@@ -14,7 +14,7 @@ const comment: Comment =
     };
 
 const meta = {
-    title: 'FIX/CommentCard',
+    title: 'entities/CommentCard',
     component: CommentCard,
     decorators: []
 } satisfies Meta<typeof CommentCard>;
@@ -25,6 +25,25 @@ type Story = StoryObj<typeof meta>;
 export const Normal: Story = {
     args: {
         comment,
+    }
+};
+
+export const Loading: Story = {
+    args: {
+        comment,
+        isLoading: true,
+    }
+};
+export const WithAvatar: Story = {
+    args: {
+        comment: {
+            ...comment,
+            user: {
+                ...comment.user,
+                avatar: 'https://s.digitalocean.ru/627/upload/1704804178_ZDWsxDYgwxo.jpg'
+            }
+
+        },
     }
 };
 

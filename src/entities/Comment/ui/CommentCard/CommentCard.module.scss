@@ -1,6 +1,6 @@
 .commentCard {
   padding: 10px;
-  border: solid 1px var(--primary-color)
+  border: solid 1px var(--primary-color);
 }
 
 .header {
@@ -11,4 +11,8 @@
 
 .text {
   margin-top: 15px;
+}
+
+.loading {
+  border: none;
 }

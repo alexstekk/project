@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleDetailsPage.module.scss';
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
@@ -16,7 +16,9 @@ import {
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import {
     fetchCommentsByArticleId
-} from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+} from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import AddCommentForm from 'features/addCommentForm/ui/AddCommentForm/AddCommentForm';
+import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
 
 
 interface articleDetailsPageProps {
@@ -42,6 +44,10 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
     const commentIsLoading = useAppSelector(getArticleCommentsIsLoading);
     const error = useAppSelector(getArticleCommentsError);
 
+    const onSendComment = useCallback((value: string) => {
+        dispatch(addCommentForArticle(value));
+    }, [dispatch]);
+
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
     });
@@ -60,6 +66,9 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
                     className={cls.commentsTitle}
                     title={t('Комментарии')}
                     align={TextAlign.CENTER}
+                />
+                <AddCommentForm
+                    onSendComment={onSendComment}
                 />
                 <CommentList
                     comments={comments}
