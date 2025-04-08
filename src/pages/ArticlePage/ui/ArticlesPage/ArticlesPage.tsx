@@ -15,6 +15,8 @@ import {
 } from '../../model/selectors/articlesPageSelectors';
 import { Text, TextVariants } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { Page } from 'shared/ui/Page/Page';
+import { fetchNextArticlesPage } from 'pages/ArticlePage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 
 
 interface articlePageProps {
@@ -116,9 +118,15 @@ const ArticlesPage = (props: articlePageProps) => {
     const error = useAppSelector(getArticlesPageError);
     const view = useAppSelector(getArticlesPageView);
 
+    const onLoadNextPart = useCallback(() => {
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
+
     useInitialEffect(() => {
-        dispatch(fetchArticleList());
         dispatch(articlePageActions.initState());
+        dispatch(fetchArticleList({
+            page: 1
+        }));
     });
 
     const onChangeView = useCallback((view: ArticleView) => {
@@ -128,23 +136,23 @@ const ArticlesPage = (props: articlePageProps) => {
     if (error) {
         return (
             <DynamicModuleLoader reducers={reducers}>
-                <div className={classNames(cls.articlePage, {}, [className])}>
+                <Page className={classNames(cls.articlePage, {}, [className])}>
                     <Text variant={TextVariants.ERROR} title={t('Произошла ошибка при загрузке списка статей')}/>
-                </div>
+                </Page>
             </DynamicModuleLoader>
         );
     }
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={classNames(cls.articlePage, {}, [className])}>
+            <Page onScrollEnd={onLoadNextPart} className={classNames(cls.articlePage, {}, [className])}>
                 <ArticleViewSelector view={view} onViewClick={onChangeView}/>
                 <ArticleList
                     isLoading={isLoading}
                     view={view}
                     articles={articles}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };
