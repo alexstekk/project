@@ -1,9 +1,20 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticlesPage.module.scss';
-import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
-import { Article, ArticleView } from 'entities/Article';
+import { Article, ArticleView, ArticleViewSelector } from 'entities/Article';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { articlePageActions, articlePageReducer, getArticleList } from '../../model/slice/articlePageSlice';
+import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { fetchArticleList } from '../../model/services/fetchArticleList/fetchArticleList';
+import {
+    getArticlesPageError,
+    getArticlesPageIsLoading,
+    getArticlesPageView
+} from '../../model/selectors/articlesPageSelectors';
+import { Text, TextVariants } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
 
 
 interface articlePageProps {
@@ -89,25 +100,52 @@ const article = {
     ]
 } as Article;
 
+const reducers: ReducersList = {
+    articlePage: articlePageReducer,
+};
+
 const ArticlesPage = (props: articlePageProps) => {
     const {
         className,
     } = props;
 
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
+    const articles = useAppSelector(getArticleList.selectAll);
+    const isLoading = useAppSelector(getArticlesPageIsLoading);
+    const error = useAppSelector(getArticlesPageError);
+    const view = useAppSelector(getArticlesPageView);
+
+    useInitialEffect(() => {
+        dispatch(fetchArticleList());
+        dispatch(articlePageActions.initState());
+    });
+
+    const onChangeView = useCallback((view: ArticleView) => {
+        dispatch(articlePageActions.setView(view));
+    }, [dispatch]);
+
+    if (error) {
+        return (
+            <DynamicModuleLoader reducers={reducers}>
+                <div className={classNames(cls.articlePage, {}, [className])}>
+                    <Text variant={TextVariants.ERROR} title={t('Произошла ошибка при загрузке списка статей')}/>
+                </div>
+            </DynamicModuleLoader>
+        );
+    }
 
     return (
-        <div className={classNames(cls.articlePage, {}, [className])}>
-            <ArticleList
-                isLoading={false}
-                view={ArticleView.BIG}
-                articles={new Array(16).fill(0).map((item, index) => ({
-                    ...article,
-                    id: String(index + 1),
-                }))
-                }
-            />
-        </div>
+        <DynamicModuleLoader reducers={reducers}>
+            <div className={classNames(cls.articlePage, {}, [className])}>
+                <ArticleViewSelector view={view} onViewClick={onChangeView}/>
+                <ArticleList
+                    isLoading={isLoading}
+                    view={view}
+                    articles={articles}
+                />
+            </div>
+        </DynamicModuleLoader>
     );
 };
 

@@ -96,7 +96,9 @@ export const ArticleListItem = memo((props: articleListItemProps) => {
     return (
         <div
             className={classNames(cls.articleListItem, {}, [className, cls[view]])}
+            onClick={onOpenArticle}
             //{...bindHover}
+
         >
             <Card className={cls.card}>
                 <div className={cls.imageWrapper}>

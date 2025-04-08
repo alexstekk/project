@@ -6,6 +6,6 @@ export const ArticlesPageLazy: LazyExoticComponent<() => ReactNode> = lazy(() =>
         setTimeout(() => {
             // @ts-expect-error types
             resolve(import('./ArticlesPage'));
-        }, 1500);
+        }, 400);
     });
 });
