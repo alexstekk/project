@@ -1,6 +1,9 @@
-import { Article, ArticleDetailsSchema } from 'entities/Article';
-import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById';
-import { articleDetailsReducer } from './articleDetailsSlice';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { ArticleListItem } from './ArticleListItem';
+import { Article, ArticleView } from '../../model/types/Article';
+import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
 
 const article = {
     'id': '1',
@@ -82,38 +85,45 @@ const article = {
 } as Article;
 
 
-describe('articleDetailsSlice', () => {
+const meta = {
+    title: 'entities/ArticleListItem',
+    component: ArticleListItem,
+    decorators: []
+} satisfies Meta<typeof ArticleListItem>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Small: Story = {
+    args: {
+        article,
+        view: ArticleView.SMALL,
+    }
+};
+export const Big: Story = {
+    args: {
+        article,
+        view: ArticleView.BIG,
+    }
+};
+export const smallDark: Story = {
+    args: {
+        article,
+        view: ArticleView.SMALL,
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK)
+    ]
+};
+export const bigDark: Story = {
+    args: {
+        article,
+        view: ArticleView.BIG,
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK)
+    ]
+};
 
 
-    test('test update profile service pending', () => {
-        const state: DeepPartial<ArticleDetailsSchema> = {
-            isLoading: false,
-            error: undefined,
-            data: undefined,
-        };
-        expect(articleDetailsReducer(
-            state as ArticleDetailsSchema,
-            fetchArticleById.pending('', '')
-        )).toEqual({
-            isLoading: true,
-            error: undefined,
-            data: undefined,
-        });
-    });
 
-    test('test update profile service fullfiled', () => {
-        const state: DeepPartial<ArticleDetailsSchema> = {
-            isLoading: false,
-            error: undefined,
-            data: undefined,
-        };
-        expect(articleDetailsReducer(
-            state as ArticleDetailsSchema,
-            fetchArticleById.fulfilled(article, '', '')
-        )).toEqual({
-            isLoading: false,
-            error: undefined,
-            data: article,
-        });
-    });
-});

@@ -1,6 +1,9 @@
-import { Article, ArticleDetailsSchema } from 'entities/Article';
-import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById';
-import { articleDetailsReducer } from './articleDetailsSlice';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { ArticleList } from './ArticleList';
+import { Article, ArticleView } from '../../model/types/Article';
+import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
 
 const article = {
     'id': '1',
@@ -79,41 +82,65 @@ const article = {
             ]
         }
     ]
-} as Article;
+};
+
+const articles = new Array(16).fill(0).map((item, index) => ({
+    ...article,
+    id: String(index + 1),
+})) as Article[];
 
 
-describe('articleDetailsSlice', () => {
+const meta = {
+    title: 'entities/ArticleList',
+    component: ArticleList,
+    decorators: []
+} satisfies Meta<typeof ArticleList>;
 
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-    test('test update profile service pending', () => {
-        const state: DeepPartial<ArticleDetailsSchema> = {
-            isLoading: false,
-            error: undefined,
-            data: undefined,
-        };
-        expect(articleDetailsReducer(
-            state as ArticleDetailsSchema,
-            fetchArticleById.pending('', '')
-        )).toEqual({
-            isLoading: true,
-            error: undefined,
-            data: undefined,
-        });
-    });
+export const Small: Story = {
+    args: {
+        articles,
+        view: ArticleView.SMALL
+    }
+};
+export const Big: Story = {
+    args: {
+        articles,
+        view: ArticleView.BIG
+    }
+};
+export const smallDark: Story = {
+    args: {
+        articles,
+        view: ArticleView.SMALL
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK)
+    ]
+};
+export const bigDark: Story = {
+    args: {
+        articles,
+        view: ArticleView.BIG
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK)
+    ]
+};
+export const isLoadingBig: Story = {
+    args: {
+        articles,
+        view: ArticleView.BIG,
+        isLoading: true,
+    }
+};
+export const isLoadingSmall: Story = {
+    args: {
+        articles,
+        view: ArticleView.SMALL,
+        isLoading: true,
+    }
+};
 
-    test('test update profile service fullfiled', () => {
-        const state: DeepPartial<ArticleDetailsSchema> = {
-            isLoading: false,
-            error: undefined,
-            data: undefined,
-        };
-        expect(articleDetailsReducer(
-            state as ArticleDetailsSchema,
-            fetchArticleById.fulfilled(article, '', '')
-        )).toEqual({
-            isLoading: false,
-            error: undefined,
-            data: article,
-        });
-    });
-});

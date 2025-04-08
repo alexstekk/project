@@ -15,6 +15,11 @@ const article: Article = {
     'type': [
         ArticleType.IT
     ],
+    'user': {
+        id: '1',
+        username: 'admin',
+        avatar: 'https://s.digitalocean.ru/627/upload/1704804178_ZDWsxDYgwxo.jpg',
+    },
     'blocks': [
         {
             'id': '1',

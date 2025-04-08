@@ -3,7 +3,7 @@ import cls from './ArticleDetailsPage.module.scss';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Comment';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
@@ -18,7 +18,9 @@ import {
     fetchCommentsByArticleId
 } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import AddCommentForm from 'features/addCommentForm/ui/AddCommentForm/AddCommentForm';
-import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { Button } from 'shared/ui/Button';
+import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 
 interface articleDetailsPageProps {
@@ -39,6 +41,7 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
 
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const comments = useAppSelector(getArticleComments.selectAll);
     const commentIsLoading = useAppSelector(getArticleCommentsIsLoading);
@@ -52,6 +55,10 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
         dispatch(fetchCommentsByArticleId(id));
     });
 
+    const onBackToList = useCallback(() => {
+        navigate(RoutePath[AppRoutes.ARTICLES]);
+    }, [navigate]);
+
     if (!id && __PROJECT__ !== 'storybook') return (
         <div className={classNames(cls.articleDetailsPage, {}, [className])}>
             {t('Статья не найдена')}
@@ -61,6 +68,11 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount>
             <div className={classNames(cls.articleDetailsPage, {}, [className])}>
+                <Button
+                    onClick={onBackToList}
+                >
+                    {t('Назад к списку')}
+                </Button>
                 <ArticleDetails id={id || '1'}/>
                 <Text
                     className={cls.commentsTitle}

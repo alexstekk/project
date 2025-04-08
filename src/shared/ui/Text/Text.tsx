@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
 import { memo } from 'react';
-import { Trans } from 'react-i18next';
 
 export enum TextVariants {
     PRIMARY = 'primary',
@@ -31,8 +30,8 @@ interface TextProps {
 export const Text = memo((props: TextProps) => {
     const {
         className,
-        text,
-        title,
+        text = '',
+        title = '',
         variant = TextVariants.PRIMARY,
         align = TextAlign.LEFT,
         size = TextSize.M,
@@ -40,10 +39,10 @@ export const Text = memo((props: TextProps) => {
 
     return (
         <div className={classNames(cls.text, {}, [className, cls[variant], cls[align], cls[size]])}>
-            <Trans i18nKey={['title', 'text']}>
-                {title && <p className={cls.title}>{title}</p>}
-                {text && <p className={cls.text}>{text}</p>}
-            </Trans>
+            {/*<Trans i18nKey={[title, text]}>*/}
+            {title && <p className={cls.title}>{title}</p>}
+            {text && <p className={cls.text}>{text}</p>}
+            {/*</Trans>*/}
         </div>
     );
 });
