@@ -32,14 +32,13 @@ export const ArticleListItem = memo((props: articleListItemProps) => {
 
     // const [isHover, bindHover] = useHover();
 
-
     const onOpenArticle = useCallback(() => {
         navigate(RoutePath[AppRoutes.ARTICLE_DETAILS] + article.id);
     }, [article.id, navigate]);
 
     const articleTypes = (
         <Text
-            text={article.type.join(', ')}
+            text={article?.type?.join(', ')}
             className={cls.types}
         />
     );
@@ -60,7 +59,7 @@ export const ArticleListItem = memo((props: articleListItemProps) => {
 
     if (view === ArticleView.BIG) {
 
-        const textBlock = article.blocks.find(block => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
+        const textBlock = article?.blocks?.find(block => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
 
         return (
             <div className={classNames(cls.articleListItem, {}, [className, cls[view]])}>
@@ -100,7 +99,8 @@ export const ArticleListItem = memo((props: articleListItemProps) => {
             //{...bindHover}
 
         >
-            <Card className={cls.card}>
+
+            <Card className={cls.card} onClick={onOpenArticle}>
                 <div className={cls.imageWrapper}>
                     <img
                         src={article.img}

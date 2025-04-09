@@ -46,7 +46,6 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
 
             // Generate a new combined reducer
             combinedReducer = combineReducers(reducers);
-            console.log(mountedReducers);
 
         },
 
@@ -66,8 +65,6 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
 
             // Generate a new combined reducer
             combinedReducer = combineReducers(reducers);
-
-            console.log(mountedReducers);
         }
     };
 }

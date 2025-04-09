@@ -7,10 +7,12 @@ import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from 'entities/Article';
 import { AddCommentFormSchema } from 'features/addCommentForm';
 import { ArticlePageSchema } from 'pages/ArticlePage';
+import { ScrollSaveSchema } from 'features/ScrollSave';
 
 export interface StateSchema {
     counter: CounterSchema,
     user: UserSchema,
+    scrollSave: ScrollSaveSchema,
 
     // Асинхронные редюсеры
     loginForm?: LoginSchema,
@@ -39,7 +41,6 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 
 export interface ThunkExtraArg {
     api: AxiosInstance,
-    // navigate?: (to: To, options?: NavigateOptions) => void
 }
 
 export interface ThunkConfig<T> {

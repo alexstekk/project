@@ -1,7 +1,6 @@
 .card {
   padding: 15px;
   border-radius: 12px;
-  background: var(--card-bg);
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
@@ -9,4 +8,12 @@
   &:hover {
     opacity: 0.8;
   }
+}
+
+.outline {
+  border: 1px solid var(--primary-color);
+}
+
+.normal {
+  background: var(--card-bg);
 }

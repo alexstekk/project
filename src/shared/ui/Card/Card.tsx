@@ -3,16 +3,22 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 import { useTranslation } from 'react-i18next';
 
+export enum CardVariants {
+    NORMAL = 'normal',
+    OUTLINE = 'outline',
+}
 
 interface cardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     children?: ReactNode;
+    variant?: CardVariants;
 }
 
 export const Card = memo((props: cardProps) => {
     const {
         className,
         children,
+        variant = CardVariants.NORMAL,
         ...otherProps
     } = props;
 
@@ -20,7 +26,7 @@ export const Card = memo((props: cardProps) => {
 
     return (
         <div
-            className={classNames(cls.card, {}, [className])}
+            className={classNames(cls.card, {}, [className, cls[variant]])}
             {...otherProps}
         >
             {children}
