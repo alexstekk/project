@@ -11,8 +11,13 @@
   color: var(--primary-color);
 }
 
-.contentPage {
+.pageWrapper {
   display: flex;
+  flex-grow: 1;
+  justify-content: center;
 }
 
 
+.contentPage {
+  display: flex;
+}

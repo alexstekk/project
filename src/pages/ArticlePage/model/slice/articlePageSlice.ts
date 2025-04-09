@@ -15,13 +15,14 @@ export const getArticleList = articlePageAdapter.getSelectors<StateSchema>(
 const articlePageSlice = createSlice({
     name: 'articlePageSlice',
     initialState: articlePageAdapter.getInitialState<ArticlePageSchema>({
+        _inited: false,
         isLoading: false,
         error: undefined,
         entities: {},
         ids: [],
         view: ArticleView.SMALL,
         hasMore: true,
-        page: 1,
+        page: 1
 
     }),
     reducers: {
@@ -33,6 +34,7 @@ const articlePageSlice = createSlice({
             const view = localStorage.getItem(ARTICLE_VIEW_LOCALSTORAGE_KEY) as ArticleView;
             state.view = view;
             state.limit = view === ArticleView.BIG ? 4 : 9;
+            state._inited = true;
 
         },
         setPage: (state, action: PayloadAction<number>) => {

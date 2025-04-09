@@ -13,6 +13,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
-    args: {}
+    args: {
+        children: (<div>test</div>)
+    }
 };
 
