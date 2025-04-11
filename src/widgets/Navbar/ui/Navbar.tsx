@@ -7,6 +7,9 @@ import { memo, useCallback, useState } from 'react';
 import { LoginModal } from 'features/AuthByUsername';
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
 import { getUserAuthData, userActions } from 'entities/User';
+import { Text, TextVariants } from 'shared/ui/Text/Text';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 interface NavbarProps {
     className?: string;
@@ -35,7 +38,16 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     if (authData) {
         return (<header className={classNames(cls.navbar, {}, [className])}>
+                <Text title={'AlexStekk prod'} variant={TextVariants.INVERTED}/>
                 <div className={cls.links}>
+                    <AppLink
+                        to={RoutePath[AppRoutes.ARTICLE_CREATE]}
+                        variant={'inverted'}
+                    >
+                        {
+                            t('Создать статью')
+                        }
+                    </AppLink>
                     <Button
                         variant={ButtonVariants.CLEAR_INVERTED}
                         onClick={onLogout}

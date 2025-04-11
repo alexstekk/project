@@ -6,6 +6,7 @@
   color: var(--secondary-color);
 }
 
+
 .left {
   text-align: left;
 }
@@ -16,6 +17,17 @@
 
 .center {
   text-align: center;
+}
+
+.inverted {
+  .title {
+    color: var(--inverted-primary-color);
+  }
+
+  .text {
+    color: var(--inverted-secondary-color);
+  }
+
 }
 
 .error {

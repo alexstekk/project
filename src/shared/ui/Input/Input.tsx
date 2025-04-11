@@ -30,7 +30,7 @@ export const Input = memo((props: InputProps) => {
 
     return (
         <div className={classNames(cls.inputWrapper, { [cls.readonly]: readonly }, [className])}>
-            <Trans i18nKey={placeholder}>
+            <Trans i18nKey={'placeholder'}>
                 {placeholder && <div className={cls.placeholder}>
                     {placeholder}
                 </div>}

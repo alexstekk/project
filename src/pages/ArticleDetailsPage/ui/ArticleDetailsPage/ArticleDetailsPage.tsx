@@ -32,6 +32,7 @@ import {
     fetchArticleRecommendations
 } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slice';
+import { ArticleDetailsPageHeader } from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 
 interface articleDetailsPageProps {
@@ -52,7 +53,6 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
 
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
 
     const comments = useAppSelector(getArticleComments.selectAll);
     const recommendations = useAppSelector(getArticleRecommendations.selectAll);
@@ -69,9 +69,6 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
         dispatch(fetchArticleRecommendations());
     });
 
-    const onBackToList = useCallback(() => {
-        navigate(RoutePath[AppRoutes.ARTICLES]);
-    }, [navigate]);
 
     if (!id && __PROJECT__ !== 'storybook') return (
         <div className={classNames(cls.articleDetailsPage, {}, [className])}>
@@ -80,13 +77,9 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
     );
 
     return (
-        <DynamicModuleLoader reducers={reducer} removeAfterUnmount>
+        <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
             <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
-                <Button
-                    onClick={onBackToList}
-                >
-                    {t('Назад к списку')}
-                </Button>
+                <ArticleDetailsPageHeader/>
                 <ArticleDetails id={id || '1'}/>
                 <Text
                     className={cls.commentsTitle}
