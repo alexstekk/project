@@ -1,11 +1,3 @@
-import { lazy, LazyExoticComponent, ReactNode } from 'react';
+import { lazy } from 'react';
 
-
-export const ArticleEditPageLazy: LazyExoticComponent<() => ReactNode> = lazy(() => {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            // @ts-expect-error types
-            resolve(import('./ArticleEditPage'));
-        }, 1500);
-    });
-});
+export const ArticleEditPageLazy = lazy(() => import('./ArticleEditPage'));

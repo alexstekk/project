@@ -1,11 +1,4 @@
-import { lazy, LazyExoticComponent, ReactNode } from 'react';
+import { lazy } from 'react';
 
 
-export const ProfilePageLazy: LazyExoticComponent<() => ReactNode> = lazy(() => {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            // @ts-expect-error checked
-            resolve(import('./ProfilePage'));
-        }, 1500);
-    });
-});
+export const ProfilePageLazy = lazy(() => import('./ProfilePage'));

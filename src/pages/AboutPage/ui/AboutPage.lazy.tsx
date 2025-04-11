@@ -1,10 +1,5 @@
-import { lazy, LazyExoticComponent, ReactNode } from 'react';
+import { lazy } from 'react';
 
 
-export const AboutPageLazy: LazyExoticComponent<() => ReactNode> = lazy(() => {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(import('./AboutPage'));
-        }, 1500);
-    });
-});
+export const AboutPageLazy = lazy(() => import('./AboutPage'));
+
