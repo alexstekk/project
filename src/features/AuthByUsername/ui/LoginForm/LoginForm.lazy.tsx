@@ -1,11 +1,4 @@
-import { FunctionComponent, lazy } from 'react';
-import { LoginFormProps } from './LoginForm';
+import { lazy } from 'react';
 
 
-export const LoginFormLazy = lazy<FunctionComponent<LoginFormProps>>(() => {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(import('./LoginForm'));
-        }, 1500);
-    });
-});
+export const LoginFormLazy = lazy(() => import('./LoginForm'));
