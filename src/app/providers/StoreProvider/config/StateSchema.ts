@@ -8,6 +8,7 @@ import { ArticleDetailsSchema } from 'entities/Article';
 import { AddCommentFormSchema } from 'features/addCommentForm';
 import { ArticlePageSchema } from 'pages/ArticlePage';
 import { ScrollSaveSchema } from 'features/ScrollSave';
+import { ArticleDetailsPageSchema, ArticleDetailsRecommendationsSchema } from 'pages/ArticleDetailsPage';
 
 export interface StateSchema {
     counter: CounterSchema,
@@ -18,9 +19,11 @@ export interface StateSchema {
     loginForm?: LoginSchema,
     profile?: ProfileSchema,
     articleDetails?: ArticleDetailsSchema,
-    articleDetailsComments?: ArticleDetailsSchema,
+    // articleDetailsComments?: ArticleDetailsSchema,
+    // articleDetailsRecommendations?: ArticleDetailsRecommendationsSchema,
     addCommentForm?: AddCommentFormSchema,
     articlePage?: ArticlePageSchema,
+    articleDetailsPage?: ArticleDetailsPageSchema,
 }
 
 export type StateSchemaKey = keyof StateSchema;

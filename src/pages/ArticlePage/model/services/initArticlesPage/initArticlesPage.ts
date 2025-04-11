@@ -3,7 +3,7 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { getArticlesPageInited } from '../../selectors/articlesPageSelectors';
 import { articlePageActions } from '../../slice/articlePageSlice';
 import { fetchArticleList } from '../fetchArticleList/fetchArticleList';
-import { ArticleSortField } from 'entities/Article';
+import { ArticleSortField, ArticleType } from 'entities/Article';
 import { SortOrder } from 'shared/types';
 
 export const initArticlesPage = createAsyncThunk<
@@ -14,13 +14,14 @@ export const initArticlesPage = createAsyncThunk<
     'articlePage/initArticlesPage',
     async (searchParams, thunkAPI) => {
         const { getState, dispatch } = thunkAPI;
+
         const inited = getArticlesPageInited(getState());
 
         if (!inited) {
             const orderFromUrl = searchParams.get('order') as SortOrder;
             const sortFromUrl = searchParams.get('sort') as ArticleSortField;
             const searchFromUrl = searchParams.get('search');
-            const typeFromUrl = searchParams.get('type');
+            const typeFromUrl = searchParams.get('type') as ArticleType;
 
             if (orderFromUrl) {
                 dispatch(articlePageActions.setOrder(orderFromUrl));
@@ -34,7 +35,12 @@ export const initArticlesPage = createAsyncThunk<
                 dispatch(articlePageActions.setSearch(searchFromUrl));
             }
 
+            if (typeFromUrl) {
+                dispatch(articlePageActions.setType(typeFromUrl));
+            }
+
             dispatch(articlePageActions.initState());
+            
             dispatch(fetchArticleList({}));
         }
     }

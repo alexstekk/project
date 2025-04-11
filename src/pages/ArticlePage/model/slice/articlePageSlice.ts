@@ -11,7 +11,7 @@ import { SortOrder } from 'shared/types';
 const articlePageAdapter = createEntityAdapter<Article>({});
 
 export const getArticleList = articlePageAdapter.getSelectors<StateSchema>(
-    (state) => (state?.articlePage as ArticlePageSchema || articlePageAdapter.getInitialState())
+    (state) => (state.articlePage as ArticlePageSchema || articlePageAdapter.getInitialState())
 );
 
 const articlePageSlice = createSlice({
@@ -65,15 +65,15 @@ const articlePageSlice = createSlice({
                 state.isLoading = true;
                 state.error = undefined;
 
-                if (action?.meta?.arg?.replace) {
+                if (action.meta.arg.replace) {
                     articlePageAdapter.removeAll(state);
                 }
             })
             .addCase(fetchArticleList.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.hasMore = action.payload.length > state.limit;
+                state.hasMore = action.payload.length >= state.limit;
 
-                if (state.page === 1) {
+                if (action.meta.arg.replace) {
                     articlePageAdapter.setAll(state, action.payload);
                 } else {
                     articlePageAdapter.addMany(state, action.payload);

@@ -1,13 +1,16 @@
-import { memo, useCallback, useMemo } from 'react';
+import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticlesPageFilters.module.scss';
 import { useTranslation } from 'react-i18next';
-import { ArticleSortField, ArticleType, ArticleView, ArticleViewSelector } from 'entities/Article';
+import { ArticleSortField, ArticleType, ArticleTypeTabs, ArticleView, ArticleViewSelector } from 'entities/Article';
 import { articlePageActions } from '../../model/slice/articlePageSlice';
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
 import {
-    getArticlesPageError, getArticlesPageOrder, getArticlesPageSearch,
-    getArticlesPageSort, getArticlesPageType,
+    getArticlesPageError,
+    getArticlesPageOrder,
+    getArticlesPageSearch,
+    getArticlesPageSort,
+    getArticlesPageType,
     getArticlesPageView
 } from '../../model/selectors/articlesPageSelectors';
 import { Card } from 'shared/ui/Card/Card';
@@ -16,8 +19,6 @@ import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelector/Art
 import { SortOrder } from 'shared/types';
 import { fetchArticleList } from '../../model/services/fetchArticleList/fetchArticleList';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
-import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
-import { ArticleTypeTabs } from 'entities/Article';
 
 
 interface articlesPageFiltersProps {
@@ -45,14 +46,14 @@ export const ArticlesPageFilters = memo((props: articlesPageFiltersProps) => {
     const debouncedFetchData = useDebounce(fetchData, 500);
 
     const onChangeView = useCallback((view: ArticleView) => {
-        dispatch(articlePageActions.setView(view));
         dispatch(articlePageActions.setPage(1));
+        dispatch(articlePageActions.setView(view));
         fetchData();
     }, [dispatch, fetchData]);
 
     const onChangeSortField = useCallback((newSort: ArticleSortField) => {
-        dispatch(articlePageActions.setSort(newSort));
         dispatch(articlePageActions.setPage(1));
+        dispatch(articlePageActions.setSort(newSort));
         fetchData();
 
     }, [dispatch, fetchData]);
@@ -71,8 +72,8 @@ export const ArticlesPageFilters = memo((props: articlesPageFiltersProps) => {
 
     const onChangeType = useCallback((value: ArticleType) => {
         dispatch(articlePageActions.setType(value));
-        debouncedFetchData();
-    }, [dispatch, debouncedFetchData]);
+        fetchData();
+    }, [dispatch, fetchData]);
 
 
     return (
@@ -97,7 +98,11 @@ export const ArticlesPageFilters = memo((props: articlesPageFiltersProps) => {
                     type={'search'}
                 />
             </Card>
-            <ArticleTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs}/>
+            <ArticleTypeTabs
+                value={type}
+                onChangeType={onChangeType}
+                className={cls.tabs}
+            />
         </div>
     );
 });

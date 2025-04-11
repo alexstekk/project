@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleListItem.module.scss';
 import { useTranslation } from 'react-i18next';
@@ -6,18 +6,18 @@ import { Article, ArticleBlockType, ArticleTextBlock, ArticleView } from '../../
 import { Text } from 'shared/ui/Text/Text';
 import EyeIcon from 'shared/assets/icons/solar--eye-outline.svg';
 import { Card } from 'shared/ui/Card/Card';
-import { useHover } from 'shared/lib/hooks/useHover/useHover';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button } from 'shared/ui/Button';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { useNavigate } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 
 
 interface articleListItemProps {
     className?: string;
     article: Article;
     view: ArticleView;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem = memo((props: articleListItemProps) => {
@@ -25,16 +25,17 @@ export const ArticleListItem = memo((props: articleListItemProps) => {
         className,
         article,
         view,
+        target,
     } = props;
 
     const { t } = useTranslation();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // const [isHover, bindHover] = useHover();
-
-    const onOpenArticle = useCallback(() => {
-        navigate(RoutePath[AppRoutes.ARTICLE_DETAILS] + article.id);
-    }, [article.id, navigate]);
+    //
+    // const onOpenArticle = useCallback(() => {
+    //     navigate();
+    // }, [article.id, navigate]);
 
     const articleTypes = (
         <Text
@@ -78,14 +79,18 @@ export const ArticleListItem = memo((props: articleListItemProps) => {
                     <div
                         className={cls.footer}
                     >
-                        <Button
-                            onClick={onOpenArticle}
+                        <AppLink to={RoutePath[AppRoutes.ARTICLE_DETAILS] + article.id} target={target}
                         >
-                            {t('Читать далее')}
-                        </Button>
+                            <Button
+                                // onClick={onOpenArticle}
+                            >
+                                {t('Читать далее')}
+                            </Button>
+                        </AppLink>
                         {
                             views
                         }
+
                     </div>
                 </Card>
             </div>
@@ -93,14 +98,14 @@ export const ArticleListItem = memo((props: articleListItemProps) => {
     }
 
     return (
-        <div
+        <AppLink
+            target={target}
             className={classNames(cls.articleListItem, {}, [className, cls[view]])}
-            onClick={onOpenArticle}
+            // onClick={onOpenArticle}
             //{...bindHover}
-
+            to={RoutePath[AppRoutes.ARTICLE_DETAILS] + article.id}
         >
-
-            <Card className={cls.card} onClick={onOpenArticle}>
+            <Card className={cls.card}>
                 <div className={cls.imageWrapper}>
                     <img
                         src={article.img}
@@ -118,6 +123,6 @@ export const ArticleListItem = memo((props: articleListItemProps) => {
                 </div>
                 <Text title={article.title} className={cls.title}/>
             </Card>
-        </div>
+        </AppLink>
     );
 });

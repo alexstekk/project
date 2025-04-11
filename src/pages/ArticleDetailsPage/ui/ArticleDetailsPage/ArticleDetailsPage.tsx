@@ -22,6 +22,16 @@ import { addCommentForArticle } from '../../model/services/addCommentForArticle/
 import { Button } from 'shared/ui/Button';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'shared/ui/Page/Page';
+import {
+    articleDetailsRecommendationReducer,
+    getArticleRecommendations
+} from '../../model/slice/articleDetailsRecommendationSlice';
+import { getArticleRecommendationsIsLoading } from '../../model/selectors/getRecommendationsData';
+import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
+import {
+    fetchArticleRecommendations
+} from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slice';
 
 
 interface articleDetailsPageProps {
@@ -29,7 +39,7 @@ interface articleDetailsPageProps {
 }
 
 const reducer: ReducersList = {
-    articleDetailsComments: articleDetailsCommentsReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 const ArticleDetailsPage = (props: articleDetailsPageProps) => {
@@ -45,7 +55,9 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
     const navigate = useNavigate();
 
     const comments = useAppSelector(getArticleComments.selectAll);
+    const recommendations = useAppSelector(getArticleRecommendations.selectAll);
     const commentIsLoading = useAppSelector(getArticleCommentsIsLoading);
+    const recommendationsIsLoading = useAppSelector(getArticleRecommendationsIsLoading);
     const error = useAppSelector(getArticleCommentsError);
 
     const onSendComment = useCallback((value: string) => {
@@ -54,6 +66,7 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
+        dispatch(fetchArticleRecommendations());
     });
 
     const onBackToList = useCallback(() => {
@@ -77,8 +90,19 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
                 <ArticleDetails id={id || '1'}/>
                 <Text
                     className={cls.commentsTitle}
+                    title={t('Рекомендуем')}
+                    align={TextAlign.CENTER}
+                />
+                <Text
+                    className={cls.commentsTitle}
                     title={t('Комментарии')}
                     align={TextAlign.CENTER}
+                />
+                <ArticleList
+                    className={cls.recommendations}
+                    articles={recommendations}
+                    isLoading={recommendationsIsLoading}
+                    target={'_blank'}
                 />
                 <AddCommentForm
                     onSendComment={onSendComment}

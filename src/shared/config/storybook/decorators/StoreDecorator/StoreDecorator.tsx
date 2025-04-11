@@ -5,13 +5,15 @@ import { profileReducer } from 'entities/Profile';
 import React, { FunctionComponent } from 'react';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slice/addCommentFormSlice';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slice';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     loginForm: loginReducer,
     profile: profileReducer,
     articleDetails: articleDetailsReducer,
     addCommentForm: addCommentFormReducer,
-    articleDetailsComments: articleDetailsReducer,
+    // articleDetailsComments: articleDetailsReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 export const StoreDecorator = (

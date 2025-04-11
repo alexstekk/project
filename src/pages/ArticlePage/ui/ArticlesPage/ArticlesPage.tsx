@@ -57,11 +57,9 @@ const ArticlesPage = (props: articlePageProps) => {
 
     if (error) {
         return (
-            <DynamicModuleLoader reducers={reducers}>
-                <Page className={classNames(cls.articlePage, {}, [className])}>
-                    <Text variant={TextVariants.ERROR} title={t('Произошла ошибка при загрузке списка статей')}/>
-                </Page>
-            </DynamicModuleLoader>
+            <div className={classNames(cls.articlePage, {}, [className])}>
+                <Text variant={TextVariants.ERROR} title={t('Произошла ошибка при загрузке списка статей')}/>
+            </div>
         );
     }
 

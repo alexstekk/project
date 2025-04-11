@@ -33,7 +33,6 @@ export const fetchArticleList = createAsyncThunk<
         const type = getArticlesPageType(getState());
 
         try {
-
             addQueryParams({
                 sort,
                 order,
@@ -49,7 +48,7 @@ export const fetchArticleList = createAsyncThunk<
                     _order: order,
                     _sort: sort,
                     q: search,
-                    type: type === ArticleType.ALL ? undefined : type,
+                    type_like: type === ArticleType.ALL ? undefined : type,
                 }
             });
 
