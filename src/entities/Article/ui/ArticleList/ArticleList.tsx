@@ -34,6 +34,8 @@ export const ArticleList = memo((props: articleListProps) => {
 
     const { t } = useTranslation();
 
+    // todo virtual list
+
     const renderArticle = (article: Article) => (
         <ArticleListItem
             article={article}

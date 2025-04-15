@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
 import { getUserAuthData } from 'entities/User';
 import { getArticlesDetailsData } from 'entities/Article';
-import { getCanEditArticle } from 'pages/ArticleDetailsPage/model/selectors/getArticleData';
+import { getCanEditArticle } from '../../model/selectors/getArticleData';
 
 
 interface articleDetailsPageHeaderProps {

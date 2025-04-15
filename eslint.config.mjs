@@ -4,6 +4,7 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import pluginHooks from 'eslint-plugin-react-hooks';
+import alexstekk from "eslint-plugin-alexstekk";
 
 
 export default defineConfig([
@@ -18,6 +19,7 @@ export default defineConfig([
         plugins: {
             js,
             'react-hooks': pluginHooks,
+            alexstekk,
         },
         extends: [
             'js/recommended',
@@ -34,9 +36,14 @@ export default defineConfig([
             'object-curly-spacing': ['error', 'always'],
             'quotes': [2, 'single', {'avoidEscape': true}],
             'react/display-name': 'off',
-            "no-unused-vars": "warn",
-            "@typescript-eslint/no-unused-vars": ["warn", {args: "none"}],
-            'no-undef': 'off',
+            "no-unused-vars": ["warn", {"argsIgnorePattern": "^_", "args": "none", "vars": "all",}],
+            "@typescript-eslint/no-unused-vars": ["warn", {
+                "argsIgnorePattern": "^_",
+                "args": "none",
+                "vars": "all",
+            }],
+            "noUnusedParameters": 'off',
+            "alexstekk/path-checker": "error"
         },
 
 

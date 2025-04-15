@@ -4,7 +4,7 @@ import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
 import { getUserAuthData } from 'entities/User';
-import { SidebarItemType } from 'widgets/Sidebar/model/types/Sidebar';
+import { SidebarItemType } from '../../model/types/Sidebar';
 
 
 interface SidebarItemProps {

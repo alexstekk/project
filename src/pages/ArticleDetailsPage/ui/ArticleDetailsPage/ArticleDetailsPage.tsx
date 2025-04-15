@@ -3,36 +3,26 @@ import cls from './ArticleDetailsPage.module.scss';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Comment';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
+import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
-import {
-    getArticleCommentsError,
-    getArticleCommentsIsLoading
-} from '../../model/selectors/getCommentsData';
+import { getArticleCommentsError, getArticleCommentsIsLoading } from '../../model/selectors/getCommentsData';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import {
-    fetchCommentsByArticleId
-} from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import AddCommentForm from 'features/addCommentForm/ui/AddCommentForm/AddCommentForm';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { Button } from 'shared/ui/Button';
-import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'shared/ui/Page/Page';
-import {
-    articleDetailsRecommendationReducer,
-    getArticleRecommendations
-} from '../../model/slice/articleDetailsRecommendationSlice';
+import { getArticleRecommendations } from '../../model/slice/articleDetailsRecommendationSlice';
 import { getArticleRecommendationsIsLoading } from '../../model/selectors/getRecommendationsData';
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import {
     fetchArticleRecommendations
 } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
-import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slice';
-import { ArticleDetailsPageHeader } from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { articleDetailsPageReducer } from '../../model/slice';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 
 interface articleDetailsPageProps {

@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { Page } from 'shared/ui/Page/Page';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-import { ArticlesPageFilters } from 'pages/ArticlePage/ui/ArticlesPageFilters/ArticlesPageFilters';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { useSearchParams } from 'react-router-dom';
 
 

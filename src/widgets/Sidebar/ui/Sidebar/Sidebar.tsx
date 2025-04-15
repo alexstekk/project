@@ -7,7 +7,7 @@ import { Button } from 'shared/ui/Button';
 import { ButtonSize, ButtonVariants } from 'shared/ui/Button/ui/Button';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
-import { getSidebarItems } from 'widgets/Sidebar/model/selectors/getSidebarItems';
+import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 
 interface SidebarProps {
     className?: string;
