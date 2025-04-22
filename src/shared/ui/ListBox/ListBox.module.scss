@@ -1,0 +1,31 @@
+.listBox {
+}
+
+.optionsList {
+  background: var(--listbox-bg);
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px var(--listbox-bg);
+  outline-color: transparent;
+  min-width: var(--button-width);
+}
+
+.option {
+  color: var(--primary-color);
+  padding: 5px;
+  font: var(--font-m);
+}
+
+.trigger {
+  display: inline-block;
+  position: relative;
+}
+
+.focused {
+  color: red;
+  cursor: pointer;
+  background: var(--inverted-primary-color);
+}
+
+.disabled {
+  opacity: 0.5;
+}
