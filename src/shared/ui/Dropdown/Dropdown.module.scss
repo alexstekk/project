@@ -1,0 +1,29 @@
+.button {
+  background: none;
+  outline-color: transparent;
+  margin: 0;
+  padding: 0;
+  border-color: transparent;
+  cursor: pointer;
+
+}
+
+.items {
+  background: var(--card-bg);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  color: var(--primary-color);
+  padding: 10px 25px;
+  background: none;
+  outline-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.active {
+  background: var(--inverted-primary-color);
+}

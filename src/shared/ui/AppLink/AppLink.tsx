@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
 import { Link, LinkProps } from 'react-router-dom';
-import { memo } from 'react';
+import { ForwardedRef, forwardRef, memo } from 'react';
 
 export type AppLinkVariant = 'primary' | 'inverted';
 
@@ -11,7 +11,7 @@ interface AppLinkProps extends LinkProps {
 }
 
 
-export const AppLink = memo((props: AppLinkProps) => {
+export const AppLink = forwardRef((props: AppLinkProps, ref: ForwardedRef<HTMLAnchorElement>) => {
 
     const {
         to,
@@ -24,6 +24,7 @@ export const AppLink = memo((props: AppLinkProps) => {
     return (
         <Link
             to={to}
+            ref={ref}
             className={classNames(cls.appLink, {}, [className, cls[variant]])}
             {...otherProps}
         >
@@ -31,3 +32,4 @@ export const AppLink = memo((props: AppLinkProps) => {
         </Link>
     );
 });
+
