@@ -43,6 +43,7 @@ export default defineConfig([
                 "vars": "all",
             }],
             "noUnusedParameters": 'off',
+            "no-undef": "off",
             "alexstekk/path-checker": "error"
         },
 

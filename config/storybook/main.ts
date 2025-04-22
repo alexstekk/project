@@ -24,7 +24,9 @@ const config: StorybookConfig = {
             build: '',
             entry: '',
             html: '',
-            src: path.resolve(__dirname, '..', '..', 'src')
+            src: path.resolve(__dirname, '..', '..', 'src'),
+            locales: '',
+            buildLocales: '',
         };
 
         config?.resolve?.modules?.push(paths.src);

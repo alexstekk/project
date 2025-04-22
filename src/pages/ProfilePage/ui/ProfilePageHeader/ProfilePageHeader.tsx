@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxType
 import { getProfileData, getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile';
 import { useCallback } from 'react';
 import { getUserAuthData } from 'entities/User';
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
 
 
 interface ProfilePageHeaderProps {
@@ -41,7 +42,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     }, [dispatch]);
 
     return (
-        <div className={classNames(cls.profilePageHeader, {}, [className])}>
+        <HStack className={classNames(cls.profilePageHeader, {}, [className])} justify={'between'} max>
             <Text title={t('Профиль')}/>
             <div className={cls.buttons}>
                 {
@@ -55,7 +56,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                                 {t('Редактировать')}
                             </Button>
                         ) : (
-                            <>
+                            <HStack gap={'8'}>
                                 <Button
                                     className={cls.cancelBtn}
                                     variant={ButtonVariants.OUTLINE_RED}
@@ -70,7 +71,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                                 >
                                     {t('Сохранить ')}
                                 </Button>
-                            </>
+                            </HStack>
                         )
 
                     )
@@ -78,6 +79,6 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
 
             </div>
 
-        </div>
+        </HStack>
     );
 };
