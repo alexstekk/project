@@ -35,6 +35,8 @@ interface TextProps {
     variant?: string;
     align?: TextAlign;
     size?: TextSize;
+
+    'data-testid'?: string;
 }
 
 
@@ -46,6 +48,7 @@ export const Text = memo((props: TextProps) => {
         variant = TextVariants.PRIMARY,
         align = TextAlign.LEFT,
         size = TextSize.M,
+        'data-testid': dataTestId = '',
     } = props;
 
     const HeaderTag = mapSizeToHeaderTag[size];
@@ -53,8 +56,8 @@ export const Text = memo((props: TextProps) => {
     return (
         <div className={classNames(cls.text, {}, [className, cls[variant], cls[align], cls[size]])}>
             {/*<Trans i18nKey={[title, text]}>*/}
-            {title && <HeaderTag className={cls.title}>{title}</HeaderTag>}
-            {text && <p className={cls.text}>{text}</p>}
+            {title && <HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>{title}</HeaderTag>}
+            {text && <p className={cls.text} data-testid={`${dataTestId}.Text`}>{text}</p>}
             {/*</Trans>*/}
         </div>
     );

@@ -9,7 +9,9 @@ const meta = {
     decorators: [
         StoreDecorator({}),
     ],
-    args: {},
+    args: {
+        id: '1'
+    },
 } satisfies Meta<typeof EditableProfileCard>;
 
 export default meta;

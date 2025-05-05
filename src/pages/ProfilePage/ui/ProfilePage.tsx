@@ -18,7 +18,7 @@ const ProfilePage = (props: ProfilePageProps) => {
     return (
         <Page className={classNames('', {}, [className])}>
             <VStack max align={'center'} justify={'center'}>
-                <EditableProfileCard id={id}/>
+                <EditableProfileCard id={id || '1'}/>
             </VStack>
         </Page>
     );
