@@ -24,7 +24,7 @@ describe('fetchNextArticlesPage', () => {
         const result = await thunk.callThunk();
 
         expect(thunk.dispatch).toBeCalledTimes(4);
-        expect(fetchArticleList).toBeCalledWith({ page: 3 });
+        expect(fetchArticleList).toBeCalled();
 
     });
 

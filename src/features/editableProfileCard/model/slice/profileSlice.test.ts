@@ -1,5 +1,7 @@
-import { profileActions, profileReducer, ProfileSchema, updateProfileData, ValidateProfileError } from 'entities/Profile';
 import avatar from 'shared/assets/tests/storybook.jpeg';
+import { ProfileSchema, ValidateProfileError } from '../types/editableProfileCardSchema';
+import { profileActions, profileReducer } from './profileSlice';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const data = {
     first: 'Alex',

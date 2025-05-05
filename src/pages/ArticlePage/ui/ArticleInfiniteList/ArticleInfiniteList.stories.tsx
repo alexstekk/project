@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ArticlePage from './ArticlesPage';
+import { ArticleInfiniteList } from './ArticleInfiniteList';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 
 
 const meta = {
-    title: 'pages/ArticlesPage',
-    component: ArticlePage,
+    title: 'pages/ArticleInfiniteList',
+    component: ArticleInfiniteList,
     decorators: [StoreDecorator({}),]
-} satisfies Meta<typeof ArticlePage>;
+} satisfies Meta<typeof ArticleInfiniteList>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

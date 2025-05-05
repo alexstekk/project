@@ -1,9 +1,11 @@
 import axios from 'axios';
 import avatar from 'shared/assets/tests/storybook.jpeg';
-import { Profile, updateProfileData, ValidateProfileError } from 'entities/Profile';
+import { Profile } from 'entities/Profile';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { ValidateProfileError } from '../../types/editableProfileCardSchema';
+import { updateProfileData } from './updateProfileData';
 
 const data: Profile = {
     first: 'Alex',

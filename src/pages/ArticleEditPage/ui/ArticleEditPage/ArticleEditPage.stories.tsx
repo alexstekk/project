@@ -1,12 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import ArticleEditPage from './ArticleEditPage';
+import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 
 
 const meta = {
-    title: 'FIX/ArticleEditPage',
+    title: 'pages/ArticleEditPage',
     component: ArticleEditPage,
-    decorators: []
+    decorators: [
+        StoreDecorator({}),
+    ]
 } satisfies Meta<typeof ArticleEditPage>;
 
 export default meta;
