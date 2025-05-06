@@ -6,7 +6,7 @@ import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorato
 
 
 const meta = {
-    title: 'pages/AboutPage',
+    title: 'pages/AdminPanelPage',
     component: AboutPage,
     decorators: [
         StoreDecorator({}),

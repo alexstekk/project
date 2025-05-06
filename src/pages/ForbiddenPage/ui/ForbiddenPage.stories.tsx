@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NotFoundPage } from './NotFoundPage';
+import { ForbiddenPage } from './ForbiddenPage';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
@@ -7,11 +7,11 @@ import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorato
 
 const meta = {
     title: 'pages/ForbiddenPage',
-    component: NotFoundPage,
+    component: ForbiddenPage,
     decorators: [
         StoreDecorator({}),
     ]
-} satisfies Meta<typeof NotFoundPage>;
+} satisfies Meta<typeof ForbiddenPage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

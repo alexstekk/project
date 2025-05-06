@@ -6,7 +6,7 @@ import { ButtonVariants } from 'shared/ui/Button/ui/Button';
 import { memo, useCallback, useState } from 'react';
 import { LoginModal } from 'features/AuthByUsername';
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
-import { getUserAuthData, userActions } from 'entities/User';
+import { getUserAuthData, isUserAdmin, isUserManager, userActions } from 'entities/User';
 import { Text, TextVariants } from 'shared/ui/Text/Text';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
@@ -25,6 +25,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const [isAuthModal, setIsAuthModal] = useState(false);
 
     const authData = useAppSelector(getUserAuthData);
+    const isAdmin = useAppSelector(isUserAdmin);
+    const isManager = useAppSelector(isUserManager);
 
     const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
@@ -37,6 +39,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const onLogout = useCallback(() => {
         dispatch(userActions.logout());
     }, [dispatch]);
+
+    const isAdminPanelAvailable = isAdmin || isManager;
 
     if (authData) {
         return (<header className={classNames(cls.navbar, {}, [className])}>
@@ -53,8 +57,12 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     <Dropdown
                         trigger={<Avatar size={30} src={authData.avatar}/>}
                         items={[
+                            ...(isAdminPanelAvailable ? [{
+                                content: t('Админка'),
+                                href: RoutePath[AppRoutes.ADMIN_PANEL],
+                            }] : []),
                             {
-                                content: t('Профиль пользователя'),
+                                content: t('Профиль'),
                                 href: RoutePath[AppRoutes.PROFILE] + authData.id,
                             },
                             {
