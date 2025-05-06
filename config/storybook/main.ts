@@ -12,7 +12,8 @@ const config: StorybookConfig = {
         '@storybook/addon-essentials',
         '@chromatic-com/storybook',
         '@storybook/addon-interactions',
-        '@storybook/addon-actions'
+        '@storybook/addon-actions',
+        'storybook-addon-mock',
     ],
     framework: {
         name: '@storybook/react-webpack5',
@@ -56,7 +57,7 @@ const config: StorybookConfig = {
 
         config?.plugins?.push(new webpack.DefinePlugin({
             __IS_DEV__: true,
-            __API__: JSON.stringify(''),
+            __API__: JSON.stringify('https://testapi.ru'),
             __PROJECT__: JSON.stringify('storybook')
         }));
 

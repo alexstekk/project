@@ -6,7 +6,7 @@ import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorato
 
 
 const meta = {
-    title: 'pages/ForbiddenPage',
+    title: 'pages/NotFoundPage',
     component: NotFoundPage,
     decorators: [
         StoreDecorator({}),
@@ -19,10 +19,5 @@ type Story = StoryObj<typeof meta>;
 export const Light: Story = {
     args: {}
 };
-Light.decorators = [ThemeDecorator(Theme.LIGHT)];
 
-export const Dark: Story = {
-    args: {}
-};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
 
