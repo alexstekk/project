@@ -19,6 +19,7 @@ import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelector/Art
 import { SortOrder } from 'shared/types';
 import { fetchArticleList } from '../../model/services/fetchArticleList/fetchArticleList';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
+import { HStack, VStack } from 'shared/ui/Stack';
 
 
 interface articlesPageFiltersProps {
@@ -77,8 +78,8 @@ export const ArticlesPageFilters = memo((props: articlesPageFiltersProps) => {
 
 
     return (
-        <div className={classNames(cls.aticlesPageFilters, {}, [className])}>
-            <div className={cls.sortWrapper}>
+        <VStack max className={classNames(cls.aticlesPageFilters, {}, [className])}>
+            <HStack max className={cls.sortWrapper}>
                 <ArticleSortSelector
                     sort={sort}
                     order={order}
@@ -89,7 +90,7 @@ export const ArticlesPageFilters = memo((props: articlesPageFiltersProps) => {
                     view={view}
                     onViewClick={onChangeView}
                 />
-            </div>
+            </HStack>
             <Card className={cls.search}>
                 <Input
                     placeholder={t('Поиск')}
@@ -103,6 +104,6 @@ export const ArticlesPageFilters = memo((props: articlesPageFiltersProps) => {
                 onChangeType={onChangeType}
                 className={cls.tabs}
             />
-        </div>
+        </VStack>
     );
 });

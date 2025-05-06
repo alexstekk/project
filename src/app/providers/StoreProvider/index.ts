@@ -6,7 +6,7 @@ export {
     createReduxStore
 } from './config/store';
 
-export {
+export type {
     StateSchema,
     ReduxStoreWithManager,
     ThunkExtraArg,

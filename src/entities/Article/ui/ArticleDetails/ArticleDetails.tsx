@@ -16,10 +16,12 @@ import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import EyeIcon from 'shared/assets/icons/solar--eye-outline.svg';
 import CalendarIcon from 'shared/assets/icons/solar--calendar-outline.svg';
-import { ArticleBlock, ArticleBlockType } from '../../model/types/Article';
+import { ArticleBlock } from '../../model/types/Article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
+
+import { ArticleBlockType } from '../../model/consts/articleConsts';
 
 
 interface articleDetailsProps {

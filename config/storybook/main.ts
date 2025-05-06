@@ -1,7 +1,9 @@
 import type {StorybookConfig} from '@storybook/react-webpack5';
 import {BuildPaths} from '../build/types/config';
+// @ts-ignore
 import path from 'path';
 import {buildCssLoader} from '../build/loaders/buildCssLoader';
+// @ts-ignore
 import webpack, {ProvidePlugin} from 'webpack';
 
 const config: StorybookConfig = {
