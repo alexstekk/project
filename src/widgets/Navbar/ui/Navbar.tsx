@@ -54,6 +54,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                             t('Создать статью')
                         }
                     </AppLink>
+                    
                     <Dropdown
                         trigger={<Avatar size={30} src={authData.avatar}/>}
                         items={[
@@ -78,6 +79,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     {/*    {t('Выйти')}*/}
 
                     {/*</Button>*/}
+
                 </div>
             </header>
 
