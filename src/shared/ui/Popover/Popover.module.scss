@@ -1,0 +1,19 @@
+.popover {
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  color: var(--inverted-primary-color);
+}
+
+.relative {
+  position: relative;
+}
+
+.popover {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--inverted-bg-color);
+  color: var(--primary-color);
+}
