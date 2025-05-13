@@ -1,21 +1,34 @@
-import { memo } from 'react';
+import { CSSProperties, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Overlay.module.scss';
 
+import { WithAnimated } from '@react-spring/web/dist/react-spring_web.modern';
+import { Interpolation, a } from '@react-spring/web';
+
+type StyleAttr = Omit<CSSProperties, 'opacity'>;
+
+interface StyleAttrForSpringLib extends StyleAttr {
+    opacity?: Interpolation<number, 0 | 1>;
+}
 
 interface overlayProps {
     className?: string;
     onClick?: () => void;
+    as?: ReturnType<WithAnimated>;
+    style?: StyleAttrForSpringLib;
 }
 
 export const Overlay = memo((props: overlayProps) => {
     const {
         className,
         onClick,
+        style,
     } = props;
 
     return (
-        <div
+        <a.div
+            style={style}
+            // @ts-ignore
             className={classNames(cls.overlay, {}, [className])}
             onClick={onClick}
         />

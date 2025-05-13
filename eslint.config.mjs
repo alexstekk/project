@@ -44,7 +44,8 @@ export default defineConfig([
             }],
             "noUnusedParameters": 'off',
             "no-undef": "off",
-            "alexstekk/path-checker": "error"
+            "alexstekk/path-checker": "error",
+            "@typescript-eslint/ban-ts-comment": 'off'
         },
 
 

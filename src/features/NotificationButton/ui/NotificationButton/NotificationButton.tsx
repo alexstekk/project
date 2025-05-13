@@ -8,6 +8,7 @@ import { Drawer } from 'shared/ui/Drawer/Drawer';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { Button } from 'shared/ui/Button';
 import { ButtonVariants } from 'shared/ui/Button/ui/Button';
+import { AnimationProvider } from 'shared/lib/components/AnimationProvider';
 
 interface NotificationButtonProps {
     className?: string;
@@ -21,6 +22,7 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
     const onOpenDrawer = useCallback(() => {
         setIsOpen(true);
     }, []);
+
     const onCloseDrawer = useCallback(() => {
         setIsOpen(false);
     }, []);
@@ -44,11 +46,12 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
                 >
                     {trigger}
                 </Button>
-                <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                    <NotificationList/>
-                </Drawer>
+                <AnimationProvider>
+                    <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+                        <NotificationList/>
+                    </Drawer>
+                </AnimationProvider>
             </MobileView>
-
         </div>
     );
 });
