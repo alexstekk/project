@@ -1,4 +1,4 @@
-import { counterActions, counterReducer, CounterSchema } from 'entities/Counter';
+import { counterActions, counterReducer, CounterSchema } from '@/entities/Counter';
 
 describe('counterSlice', () => {
     test('decrement test', () => {

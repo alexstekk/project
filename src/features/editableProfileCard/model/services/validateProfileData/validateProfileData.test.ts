@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { validateProfileData } from './validateProfileData';
-import avatar from 'shared/assets/tests/storybook.jpeg';
-import { Profile } from 'entities/Profile';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import avatar from '@/shared/assets/tests/storybook.jpeg';
+import { Profile } from '@/entities/Profile';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 
 import { ValidateProfileError } from '../../consts/editableProfileCardConsts';
 

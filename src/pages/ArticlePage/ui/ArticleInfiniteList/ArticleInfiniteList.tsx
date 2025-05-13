@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
+import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { getArticleList } from '../../model/slice/articlePageSlice';
 import { getArticlesPageIsLoading, getArticlesPageView } from '../../model/selectors/articlesPageSelectors';
-import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
+import { ArticleList } from '@/entities/Article/ui/ArticleList/ArticleList';
 
 
 interface articleInfiniteListProps {

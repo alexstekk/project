@@ -1,9 +1,9 @@
-import { getUserAuthData, UserRole } from 'entities/User';
+import { getUserAuthData, UserRole } from '@/entities/User';
 import { ReactNode, useMemo } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
-import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { getUserRoles } from 'entities/User';
+import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
+import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { getUserRoles } from '@/entities/User';
 
 interface RequireAuthProps {
     children?: ReactNode;

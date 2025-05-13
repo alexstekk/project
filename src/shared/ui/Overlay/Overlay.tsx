@@ -1,5 +1,5 @@
 import { CSSProperties, memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Overlay.module.scss';
 
 import { WithAnimated } from '@react-spring/web/dist/react-spring_web.modern';

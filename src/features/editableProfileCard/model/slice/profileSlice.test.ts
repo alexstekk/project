@@ -1,8 +1,8 @@
-import avatar from 'shared/assets/tests/storybook.jpeg';
+import avatar from '@/shared/assets/tests/storybook.jpeg';
 import { ProfileSchema } from '../types/editableProfileCardSchema';
 import { profileActions, profileReducer } from './profileSlice';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
-import { ValidateProfileError } from 'features/editableProfileCard/model/consts/editableProfileCardConsts';
+import { ValidateProfileError } from '@/features/editableProfileCard/model/consts/editableProfileCardConsts';
 
 const data = {
     first: 'Alex',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { CommentCard } from './CommentCard';
-import { Comment } from 'entities/Comment';
+import { Comment } from '@/entities/Comment';
 
 const comment: Comment =
     {

@@ -1,16 +1,16 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleListItem.module.scss';
 import { useTranslation } from 'react-i18next';
 import { Article, ArticleTextBlock } from '../../model/types/Article';
-import { Text } from 'shared/ui/Text/Text';
-import EyeIcon from 'shared/assets/icons/solar--eye-outline.svg';
-import { Card } from 'shared/ui/Card/Card';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Button } from 'shared/ui/Button';
+import { Text } from '@/shared/ui/Text/Text';
+import EyeIcon from '@/shared/assets/icons/solar--eye-outline.svg';
+import { Card } from '@/shared/ui/Card/Card';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Button } from '@/shared/ui/Button';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { ArticleView, ArticleBlockType } from '../../model/consts/articleConsts';
 
 

@@ -1,21 +1,21 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleDetails.module.scss';
 import { useTranslation } from 'react-i18next';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { memo, useCallback, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/redux/reduxTypedHooks';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import {
     getArticlesDetailsData,
     getArticlesDetailsError,
     getArticlesDetailsIsLoading
 } from '../../model/selectors/getArticlesDetails';
-import { Text, TextAlign, TextSize, TextVariants } from 'shared/ui/Text/Text';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import EyeIcon from 'shared/assets/icons/solar--eye-outline.svg';
-import CalendarIcon from 'shared/assets/icons/solar--calendar-outline.svg';
+import { Text, TextAlign, TextSize, TextVariants } from '@/shared/ui/Text/Text';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import EyeIcon from '@/shared/assets/icons/solar--eye-outline.svg';
+import CalendarIcon from '@/shared/assets/icons/solar--calendar-outline.svg';
 import { ArticleBlock } from '../../model/types/Article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';

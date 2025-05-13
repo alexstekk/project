@@ -108,6 +108,7 @@ const config: Config = {
         '\\.(s?css|less)$': 'identity-obj-proxy',
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
             '<rootDir>config/jest/JestMockComponent.tsx',
+        '^@/(.*)$': '<rootDir>src/$1',
     },
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { fetchProfileData } from './fetchProfileData';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import avatar from 'shared/assets/tests/storybook.jpeg';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import avatar from '@/shared/assets/tests/storybook.jpeg';
 
 const data = {
     first: 'Alex',

@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
-import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
+import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import { EditableProfileCard } from './EditableProfileCard';
-import { Profile } from 'entities/Profile';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { Profile } from '@/entities/Profile';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 import { profileReducer } from '../../model/slice/profileSlice';
 import { userEvent } from '@testing-library/user-event';
-import { $api } from 'shared/api/api';
+import { $api } from '@/shared/api/api';
 
 const mockData: Profile = {
     'id': '1',
@@ -69,6 +69,7 @@ describe('features/EditableProfileCard', () => {
 
         expect(screen.getByTestId('EditableProfileCard.Error.Text')).toBeInTheDocument();
     });
+    
     test('Send PUT request with correct data', async () => {
 
         const mockPutReq = jest.spyOn($api, 'put');

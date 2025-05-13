@@ -1,9 +1,9 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Theme, useTheme } from 'app/providers/ThemeProvider';
-import SunIcon from 'shared/assets/icons/solar--sun-2-bold.svg';
-import MoonIcon from 'shared/assets/icons/solar--moon-bold.svg';
-import { Button } from 'shared/ui/Button';
-import { ButtonVariants } from 'shared/ui/Button/ui/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Theme, useTheme } from '@/app/providers/ThemeProvider';
+import SunIcon from '@/shared/assets/icons/solar--sun-2-bold.svg';
+import MoonIcon from '@/shared/assets/icons/solar--moon-bold.svg';
+import { Button } from '@/shared/ui/Button';
+import { ButtonVariants } from '@/shared/ui/Button/ui/Button';
 import { memo } from 'react';
 import cls from './ThemeSwitcher.module.scss';
 

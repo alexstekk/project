@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProfilePage from './ProfilePage';
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import avatar from 'shared/assets/tests/storybook.jpeg';
-import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
+import avatar from '@/shared/assets/tests/storybook.jpeg';
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 
 
 const meta = {
