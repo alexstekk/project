@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { PopoverComp } from './Popover';
+import { AvatarDropdown } from './AvatarDropdown';
 
 
 const meta = {
-    title: 'Shared/Popover',
-    component: PopoverComp,
+    title: 'FIX/AvatarDropdown',
+    component: AvatarDropdown,
     decorators: []
-} satisfies Meta<typeof PopoverComp>;
+} satisfies Meta<typeof AvatarDropdown>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

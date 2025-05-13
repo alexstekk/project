@@ -1,39 +1,35 @@
 import { memo, ReactNode } from 'react';
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
+import { useTheme } from 'app/providers/ThemeProvider';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Popover.module.scss';
-import { PopoverButton, PopoverPanel } from '@headlessui/react';
-import { Button } from 'shared/ui/Button';
-import { ButtonVariants } from 'shared/ui/Button/ui/Button';
-import { useTheme } from 'app/providers/ThemeProvider';
+import { AnchorProps } from '@headlessui/react/dist/internal/floating';
 
 
 interface popoverProps {
     className?: string;
+    trigger?: ReactNode;
     children?: ReactNode;
+    anchorDirection?: AnchorProps;
 }
 
-export const Popover = memo((props: popoverProps) => {
+export const PopoverComp = memo((props: popoverProps) => {
     const {
         className,
+        trigger,
         children,
+        anchorDirection,
     } = props;
 
     const { theme } = useTheme();
 
     return (
-        <Popover className={cls.relative}>
-            <PopoverButton className={cls.button}>
-                <Button
-                    variant={ButtonVariants.CLEAR_INVERTED}
-                >
-                </Button>
+        <Popover className={classNames(cls.relative, {}, [theme, className])}>
+            <PopoverButton className={cls.trigger}>
+                {trigger}
             </PopoverButton>
-            <PopoverPanel anchor="bottom"
-                          className={classNames(cls.popover, {}, [cls.popover, theme, 'lalala'])}>
-                <span>Analytics</span>
-                <span>Engagement</span>
-                <span>Security</span>
-                <span>Integrations</span>
+            <PopoverPanel anchor={anchorDirection}
+                          className={classNames(cls.popoverPanel, {}, [theme])}>
                 {children}
             </PopoverPanel>
         </Popover>

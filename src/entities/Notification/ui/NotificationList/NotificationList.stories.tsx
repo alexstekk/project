@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { PopoverComp } from './Popover';
+import { NotificationList } from './NotificationList';
 
 
 const meta = {
-    title: 'Shared/Popover',
-    component: PopoverComp,
+    title: 'FIX/NotificationList',
+    component: NotificationList,
     decorators: []
-} satisfies Meta<typeof PopoverComp>;
+} satisfies Meta<typeof NotificationList>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
