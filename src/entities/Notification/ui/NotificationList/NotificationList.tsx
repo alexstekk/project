@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './NotificationList.module.scss';
-import { useTranslation } from 'react-i18next';
 import { useGetNotificationsQuery } from '../../api/notificationApi';
 import { VStack } from '@/shared/ui/Stack';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
