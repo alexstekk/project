@@ -10,6 +10,7 @@ import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { ArticleDetailsComments } from '@/pages/ArticleDetailsPage/ui/ArticleDetailsComments/ArticleDetailsComments';
+import { ArticleRating } from '@/features/articleRating';
 
 
 interface articleDetailsPageProps {
@@ -40,6 +41,7 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
             <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
                 <ArticleDetailsPageHeader/>
                 <ArticleDetails id={id || '1'}/>
+                <ArticleRating articleId={id}/>
                 <ArticleRecommendationsList/>
                 <ArticleDetailsComments id={id || '1'}/>
             </Page>

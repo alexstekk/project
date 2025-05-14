@@ -21,6 +21,7 @@ interface ratingCardProps {
     hasFeedback?: boolean;
     onCancel?: (starsCount: number) => void;
     onAccept?: (starsCount: number, feedback?: string) => void;
+    rate?: number;
 }
 
 export const RatingCard = memo((props: ratingCardProps) => {
@@ -31,12 +32,13 @@ export const RatingCard = memo((props: ratingCardProps) => {
         title,
         onAccept,
         hasFeedback,
+        rate = 0,
     } = props;
 
     const { t } = useTranslation();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [starsCount, setStarsCount] = useState(0);
+    const [starsCount, setStarsCount] = useState(rate);
     const [feedback, setFeedback] = useState('');
 
     const onSelectedStars = useCallback((selectedStarsCount: number) => {
@@ -61,20 +63,20 @@ export const RatingCard = memo((props: ratingCardProps) => {
     const modalContent = (
         <>
             <Text title={feedBackTitle}/>
-            <Input placeholder={t('Ваш отзыв')}/>
+            <Input placeholder={t('Ваш отзыв')} value={feedback} onChange={setFeedback}/>
         </>
     );
 
     return (
         <Card className={classNames(cls.ratingCard, {}, [className])}>
             <VStack align={'center'} gap={'16'}>
-                <Text title={title}/>
-                <StarRating size={40} onSelect={onSelectedStars}/>
+                <Text title={starsCount ? t('Спасибо за оценку') : title}/>
+                <StarRating selectedStars={starsCount} size={40} onSelect={onSelectedStars}/>
             </VStack>
 
             <BrowserView renderWithFragment>
                 <Modal isOpen={isModalOpen} lazy>
-                    <VStack>
+                    <VStack gap={'32'}>
                         {modalContent}
                         <HStack gap={'8'} max justify={'end'}>
                             <Button variant={ButtonVariants.OUTLINE_RED} onClick={handleCancel}>{t('Закрыть')}</Button>
