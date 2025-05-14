@@ -1,0 +1,20 @@
+.starRating {
+}
+
+.starIcon {
+  cursor: pointer;
+}
+
+.normal {
+  stroke: currentcolor;
+  fill: currentcolor;
+}
+
+.hovered {
+  stroke: red;
+  fill: red;
+}
+
+.isSelected {
+  cursor: auto;
+}
