@@ -10,25 +10,19 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 export function buildPlugins({paths, isDev, apiUrl, project}: BuildOptions): webpack.WebpackPluginInstance[] {
 
+    const isProd = !isDev;
+
     const plugins = [
         new webpack.ProgressPlugin({}),
         new HtmlWebpackPlugin({
             template: paths.html,
-        }),
-        new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css',
-            chunkFilename: '[name].[contenthash].css',
         }),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project),
         }),
-        new CopyPlugin({
-            patterns: [
-                {from: paths.locales, to: paths.buildLocales},
-            ],
-        }),
+
     ];
 
     if (isDev) {
@@ -62,6 +56,21 @@ export function buildPlugins({paths, isDev, apiUrl, project}: BuildOptions): web
         )
     }
 
+    if (isProd) {
+        plugins.push(
+            new MiniCssExtractPlugin({
+                filename: '[name].[contenthash].css',
+                chunkFilename: '[name].[contenthash].css',
+            })
+        )
+        plugins.push(
+            new CopyPlugin({
+                patterns: [
+                    {from: paths.locales, to: paths.buildLocales},
+                ],
+            })
+        )
+    }
 
     return plugins;
 }

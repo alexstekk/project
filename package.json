@@ -25,7 +25,8 @@
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "prepare": "husky",
-    "generate:slice": "node ./scripts/createSlice/index.js"
+    "generate:slice": "node ./scripts/createSlice/index.js",
+    "postinstall": "node ./scripts/clear-cache.js"
   },
   "keywords": [],
   "author": "",
@@ -95,6 +96,7 @@
     "reg-cli": "^0.18.10",
     "regenerator-runtime": "^0.14.1",
     "resize-observer-polyfill": "^1.5.1",
+    "rimraf": "^6.0.1",
     "sass": "^1.83.4",
     "sass-loader": "^16.0.4",
     "storybook": "^8.5.4",
