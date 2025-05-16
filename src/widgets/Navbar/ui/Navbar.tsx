@@ -5,11 +5,11 @@ import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';
-import { AppRoutes, RoutePath } from '@/shared/const/router';
+import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { AppLink } from '@/shared/ui/AppLink';
-import { ButtonVariants , Button } from '@/shared/ui/Button';
+import { ButtonVariants, Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text, TextVariants } from '@/shared/ui/Text';
 
@@ -41,7 +41,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 <Text title={'AlexStekk prod'} variant={TextVariants.INVERTED}/>
                 <div className={cls.links}>
                     <AppLink
-                        to={RoutePath[AppRoutes.ARTICLE_CREATE]}
+                        to={getRouteArticleCreate()}
                         variant={'inverted'}
                     >
                         {

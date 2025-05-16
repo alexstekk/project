@@ -7,19 +7,24 @@ import ArticlesIcon from '@/shared/assets/icons/solar--document-outline.svg';
 import AboutIcon from '@/shared/assets/icons/solar--file-text-linear.svg';
 import MainIcon from '@/shared/assets/icons/solar--shop-2-linear.svg';
 import ProfileIcon from '@/shared/assets/icons/solar--user-circle-linear.svg';
-import { AppRoutes, RoutePath } from '@/shared/const/router';
+import {
+    getRouteAbout,
+    getRouteArticles,
+    getRouteMain,
+    getRouteProfile
+} from '@/shared/const/router';
 
 export const getSidebarItems = createSelector(
     getUserAuthData,
     (userData) => {
         const sidebarItemsList: SidebarItemType[] = [
             {
-                path: RoutePath[AppRoutes.MAIN],
+                path: getRouteMain(),
                 Icon: MainIcon,
                 text: 'Главная'
             },
             {
-                path: RoutePath[AppRoutes.ABOUT],
+                path: getRouteAbout(),
                 Icon: AboutIcon,
                 text: 'О сайте'
             }
@@ -28,13 +33,13 @@ export const getSidebarItems = createSelector(
         if (userData) {
             sidebarItemsList.push(
                 {
-                    path: RoutePath[AppRoutes.PROFILE] + userData?.id,
+                    path: getRouteProfile(userData?.id),
                     Icon: ProfileIcon,
                     text: 'Профиль',
                     authOnly: true,
                 },
                 {
-                    path: RoutePath[AppRoutes.ARTICLES],
+                    path: getRouteArticles(),
                     Icon: ArticlesIcon,
                     text: 'Статьи',
                     authOnly: true,

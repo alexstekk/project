@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ArticleType } from '../../model/consts/articleConsts';
+import { ArticleType } from '../../entities/Article/model/consts/articleConsts';
 
 import { ArticleTypeTabs } from './ArticleTypeTabs';
 

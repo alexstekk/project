@@ -6,11 +6,11 @@ export type { ArticleDetailsSchema } from './model/types/ArticleDetailsSchema';
 
 export { getArticlesDetailsData } from './model/selectors/getArticlesDetails';
 
-export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
+export { ArticleViewSelector } from '@/features/ArticleViewSelector/ArticleViewSelector';
 
-export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
+export { ArticleSortSelector } from '@/features/ArticleSortSelector/ArticleSortSelector';
 
-export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
+export { ArticleTypeTabs } from '@/features/ArticleTypeTabs/ArticleTypeTabs';
 
 export { ArticleView, ArticleType, ArticleSortField, ArticleBlockType } from './model/consts/articleConsts';
 

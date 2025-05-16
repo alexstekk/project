@@ -6,7 +6,7 @@ import { Article, ArticleTextBlock } from '../../model/types/Article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 import EyeIcon from '@/shared/assets/icons/solar--eye-outline.svg';
-import { AppRoutes, RoutePath } from '@/shared/const/router';
+import { getRouteArticleDetails } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
@@ -83,7 +83,7 @@ export const ArticleListItem = memo((props: articleListItemProps) => {
                     <div
                         className={cls.footer}
                     >
-                        <AppLink to={RoutePath[AppRoutes.ARTICLE_DETAILS] + article.id} target={target}
+                        <AppLink to={getRouteArticleDetails(article.id)} target={target}
                         >
                             <Button
                                 // onClick={onOpenArticle}
@@ -107,7 +107,7 @@ export const ArticleListItem = memo((props: articleListItemProps) => {
             className={classNames(cls.articleListItem, {}, [className, cls[view]])}
             // onClick={onOpenArticle}
             //{...bindHover}
-            to={RoutePath[AppRoutes.ARTICLE_DETAILS] + article.id}
+            to={getRouteArticleDetails(article.id)}
         >
             <Card className={cls.card}>
                 <div className={cls.imageWrapper}>

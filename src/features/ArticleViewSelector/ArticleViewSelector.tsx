@@ -1,14 +1,13 @@
 import { memo } from 'react';
 
-import { ArticleView } from '../../model/consts/articleConsts';
+import { ArticleView } from '../../entities/Article/model/consts/articleConsts';
 
 import ListIcon from '@/shared/assets/icons/solar--list-outline.svg';
 import GridIcon from '@/shared/assets/icons/solar--widget-outline.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button , ButtonVariants } from '@/shared/ui/Button';
+import { Button, ButtonVariants } from '@/shared/ui/Button';
 
 import cls from './ArticleViewSelector.module.scss';
-
 
 
 interface articleViewSelectorProps {

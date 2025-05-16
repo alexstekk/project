@@ -8,59 +8,60 @@ import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
-import { AppRoutes, RoutePath } from '@/shared/const/router';
+import {
+    getRouteAbout, getRouteAdmin, getRouteArticleCreate,
+    getRouteArticleDetails, getRouteArticleEdit,
+    getRouteArticles, getRouteForbidden,
+    getRouteMain, getRouteProfile
+} from '@/shared/const/router';
 import { AppRoutesProps } from '@/shared/types/router';
 
 export const routeConfig: AppRoutesProps[] = [
     {
-        path: RoutePath[AppRoutes.MAIN],
+        path: getRouteMain(),
         element: <MainPage/>
-
     },
     {
-        path: RoutePath[AppRoutes.ABOUT],
+        path: getRouteAbout(),
         element: <AboutPage/>
     },
     {
-        path: RoutePath[AppRoutes.ARTICLES],
+        path: getRouteArticles(),
         element: <ArticlesPage/>,
         authOnly: true,
-
     },
     {
-        path: `${RoutePath[AppRoutes.ARTICLE_DETAILS]}:id`,
+        path: getRouteArticleDetails(':id'),
         element: <ArticleDetailsPage/>,
         authOnly: true,
-
     },
     {
-        path: `${RoutePath[AppRoutes.PROFILE]}:id`,
+        path: getRouteProfile(':id'),
         element: <ProfilePage/>,
         authOnly: true,
     },
     {
-        path: RoutePath[AppRoutes.NOT_FOUND],
-        element: <NotFoundPage/>
-    },
-    {
-        path: RoutePath[AppRoutes.ARTICLE_CREATE],
+        path: getRouteArticleCreate(),
         element: <ArticleEditPage/>,
         authOnly: true,
     },
     {
-        path: RoutePath[AppRoutes.ARTICLE_EDIT],
+        path: getRouteArticleEdit(':id'),
         element: <ArticleEditPage/>,
         authOnly: true,
-
     },
     {
-        path: RoutePath[AppRoutes.FORBIDDEN],
+        path: getRouteForbidden(),
         element: <ForbiddenPage/>,
     },
     {
-        path: RoutePath[AppRoutes.ADMIN_PANEL],
+        path: getRouteAdmin(),
         element: <AdminPanelPage/>,
         roles: [UserRole.MANAGER, UserRole.ADMIN],
         authOnly: true,
+    },
+    {
+        path: '*',
+        element: <NotFoundPage/>
     },
 ];
