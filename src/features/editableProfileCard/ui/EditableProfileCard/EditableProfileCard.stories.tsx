@@ -8,11 +8,36 @@ const meta = {
     title: 'features/EditableProfileCard',
     component: EditableProfileCard,
     decorators: [
-        StoreDecorator({}),
+        StoreDecorator({
+            profile: {
+                form: {
+                    first: 'Alex',
+                    lastname: 'Stekk',
+                    age: 34,
+                    city: 'Krasnodar',
+                    username: 'admin',
+                    avatar: '',
+                }
+            }
+        }),
     ],
     args: {
         id: '1'
     },
+    parameters: {
+        mockData: [
+            {
+                url: __API__ + '/profile/' + '1',
+                method: 'GET',
+                status: 200,
+                response: [
+                    {
+                        rate: 4,
+                    }
+                ],
+            },
+        ],
+    }
 } satisfies Meta<typeof EditableProfileCard>;
 
 export default meta;

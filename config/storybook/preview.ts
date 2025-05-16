@@ -1,10 +1,10 @@
-import type {Preview} from '@storybook/react';
+import {Preview} from '@storybook/react';
 
 import {StyleDecorator} from '../../src/shared/config/storybook/decorators/StyleDecorator/StyleDecorator';
 import {ThemeDecorator} from '../../src/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 import {RouterDecorator} from '../../src/shared/config/storybook/decorators/RouterDecorator/RouterDecorator';
 import {SuspenceDecorator} from "../../src/shared/config/storybook/decorators/SuspenceDecorator/SuspenceDecorator";
-import {Theme} from "../../src";
+import {Theme} from '@/shared/const/theme';
 
 
 const preview: Preview = {
@@ -14,6 +14,9 @@ const preview: Preview = {
         RouterDecorator,
         SuspenceDecorator,
     ],
+    parameters: {
+        layout: 'fullscreen',
+    }
 };
 
 export default preview;
