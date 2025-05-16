@@ -1,3 +1,4 @@
+// eslint-disable-next-line alexstekk/layer-imports
 import '@/app/styles/index.scss';
 import { FunctionComponent } from 'react';
 

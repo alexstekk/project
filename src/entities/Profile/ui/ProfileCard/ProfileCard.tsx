@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { Text, TextAlign, TextVariants } from '@/shared/ui/Text/Text';
 import { Input } from '@/shared/ui/Input/Input';
 import { Profile } from '../../model/types/Profile';
-import { PageLoader } from '@/widgets/PageLoader';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Currency, CurrencySelect } from '@/entities/Currency';
 
@@ -71,7 +70,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
         return (
             <VStack max justify={'center'} align={'center'}
                     className={classNames(cls.profileCard, {}, [className, cls.loading])}>
-                <PageLoader/>
             </VStack>
         );
     }

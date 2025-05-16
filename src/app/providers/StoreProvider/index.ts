@@ -16,3 +16,5 @@ export type {
 export type {
     AppDispatch
 } from './types/reduxAppTypes';
+
+export type { StateSchemaKey } from './config/StateSchema';

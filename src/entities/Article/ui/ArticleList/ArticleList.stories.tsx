@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ArticleList } from './ArticleList';
 import { Article } from '../../model/types/Article';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
-import { Theme } from '@/app/providers/ThemeProvider';
 import { ArticleView } from '../../model/consts/articleConsts';
+import { Theme } from '@/shared/const/theme';
 
 const article = {
     'id': '1',

@@ -2,7 +2,7 @@ import { Listbox as HListBox, ListboxButton, ListboxOption, ListboxOptions } fro
 import React, { ReactNode, useState } from 'react';
 import cls from './ListBox.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useTheme } from '@/app/providers/ThemeProvider';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { Button } from '../Button';
 
 export interface ListBoxItem {

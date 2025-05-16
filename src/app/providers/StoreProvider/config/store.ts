@@ -1,10 +1,9 @@
 import { configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { StateSchema, ThunkExtraArg } from '@/app/providers/StoreProvider/config/StateSchema';
-import { counterReducer } from '@/entities/Counter';
+import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { userReducer } from '@/entities/User';
-import { createReducerManager } from '@/app/providers/StoreProvider/config/reducerManager';
+import { createReducerManager } from './reducerManager';
 import { $api } from '@/shared/api/api';
-import { scrollSaveSliceReducer } from '@/features/ScrollSave';
+import { scrollSaveSliceReducer } from '@/shared/lib/ScrollSave';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 
@@ -14,7 +13,6 @@ export function createReduxStore(
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
-        counter: counterReducer,
         user: userReducer,
         scrollSave: scrollSaveSliceReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,

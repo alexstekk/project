@@ -9,12 +9,12 @@ import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { getUserAuthData } from '@/entities/User';
 import { Text, TextVariants } from '@/shared/ui/Text/Text';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
 import { NotificationList } from '@/entities/Notification';
+import { AppRoutes, RoutePath } from '@/shared/const/router';
 
 interface NavbarProps {
     className?: string;

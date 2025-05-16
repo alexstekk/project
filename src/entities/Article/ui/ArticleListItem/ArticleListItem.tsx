@@ -9,9 +9,9 @@ import { Card } from '@/shared/ui/Card/Card';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Button } from '@/shared/ui/Button';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { ArticleView, ArticleBlockType } from '../../model/consts/articleConsts';
+import { AppRoutes, RoutePath } from '@/shared/const/router';
 
 
 interface articleListItemProps {

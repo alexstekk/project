@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Page.module.scss';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { getScrollSavePositionByPath, scrollSaveSliceActions } from '@/features/ScrollSave';
+import { getScrollSavePositionByPath, scrollSaveSliceActions } from '@/shared/lib/scrollSave';
 import { useLocation } from 'react-router-dom';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { StateSchema } from '@/app/providers/StoreProvider';
@@ -30,7 +30,6 @@ export const Page = memo((props: pageProps) => {
     const scrollPosition = useAppSelector((state: StateSchema) => getScrollSavePositionByPath(state, pathname));
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
-        console.log('position saved');
         dispatch(scrollSaveSliceActions.setScrollPosition({
             path: pathname,
             position: e.currentTarget.scrollTop,

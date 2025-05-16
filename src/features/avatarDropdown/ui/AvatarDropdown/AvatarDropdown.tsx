@@ -2,10 +2,10 @@ import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { Dropdown } from '@/shared/ui/Dropdown/Dropdown';
 import { getUserAuthData, isUserAdmin, isUserManager, userActions } from '@/entities/User';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
+import { AppRoutes, RoutePath } from '@/shared/const/router';
 
 
 interface avatarDropdownProps {

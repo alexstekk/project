@@ -1,5 +1,7 @@
-import { Theme, ThemeProvider } from '@/app/providers/ThemeProvider';
+// eslint-disable-next-line alexstekk/layer-imports
+import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import { FunctionComponent } from 'react';
+import { Theme } from '@/shared/const/theme';
 
 
 export const ThemeDecorator = (theme: Theme) => (Story: FunctionComponent) => {

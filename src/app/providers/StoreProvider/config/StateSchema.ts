@@ -1,4 +1,3 @@
-import { CounterSchema } from '@/entities/Counter';
 import { UserSchema } from '@/entities/User';
 import { LoginSchema } from '@/features/AuthByUsername';
 import { EnhancedStore, Reducer, ReducersMapObject, UnknownAction } from '@reduxjs/toolkit';
@@ -6,13 +5,12 @@ import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from '@/entities/Article';
 import { AddCommentFormSchema } from '@/features/addCommentForm';
 import { ArticlePageSchema } from '@/pages/ArticlePage';
-import { ScrollSaveSchema } from '@/features/ScrollSave';
+import { ScrollSaveSchema } from 'src/shared/lib/ScrollSave';
 import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ProfileSchema } from '@/features/editableProfileCard';
 
 export interface StateSchema {
-    counter: CounterSchema,
     user: UserSchema,
     scrollSave: ScrollSaveSchema,
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>

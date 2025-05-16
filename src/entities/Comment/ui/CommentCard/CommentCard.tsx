@@ -6,7 +6,8 @@ import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Text } from '@/shared/ui/Text/Text';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+
+import { AppRoutes, RoutePath } from '@/shared/const/router';
 
 
 interface commentCardProps {

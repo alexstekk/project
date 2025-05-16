@@ -1,11 +1,8 @@
 import { ReactNode } from 'react';
 import { Provider } from 'react-redux';
-import { createReduxStore } from '@/app/providers/StoreProvider/config/store';
-import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
+import { createReduxStore } from '../config/store';
+import { StateSchema } from '../config/StateSchema';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { useNavigate } from 'react-router-dom';
-import type { To } from '@remix-run/router';
-import type { NavigateOptions } from 'react-router/dist/lib/context';
 
 interface StoreProviderProps {
     children?: ReactNode;

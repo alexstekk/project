@@ -56,6 +56,16 @@ export default defineConfig([
                     ]
                 }
             ],
+            "alexstekk/layer-imports": [
+                'error',
+                {
+                    alias: '@',
+                    ignoreImportPatterns: [
+                        '**/StoreProvider',
+                        '**/testing'
+                    ]
+                }
+            ],
             "@typescript-eslint/ban-ts-comment": 'off'
         },
 
