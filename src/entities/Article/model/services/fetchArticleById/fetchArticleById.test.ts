@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { fetchArticleById } from './fetchArticleById';
 import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { Article } from '@/entities/Article';
+import { Article } from '../../types/Article';
 
 const article = {
     'id': '1',

@@ -1,7 +1,6 @@
 import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from "vite-plugin-svgr";
-import tsconfigPaths from 'vite-tsconfig-paths/dist';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -10,7 +9,6 @@ export default defineConfig({
         svgr({
             include: "**/*.svg",
         }),
-        // tsconfigPaths()
     ],
     resolve: {
         alias: [

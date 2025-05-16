@@ -1,3 +1,5 @@
 export type { AddCommentFormSchema } from './model/types/addCommentForm';
 
-export { addCommentFormLazy as addCommentForm } from './ui/AddCommentForm/AddCommentForm.lazy';
+export { AddCommentFormLazy as AddCommentForm } from './ui/AddCommentForm/AddCommentForm.lazy';
+
+export { addCommentFormActions, addCommentFormReducer } from './model/slice/addCommentFormSlice';

@@ -3,7 +3,7 @@ import React, { ReactNode, useState } from 'react';
 import cls from './ListBox.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/app/providers/ThemeProvider';
-import { Button } from '@/shared/ui/Button';
+import { Button } from '../Button';
 
 export interface ListBoxItem {
     value: string;

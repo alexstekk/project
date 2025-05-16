@@ -4,7 +4,7 @@ import ArticleDetailsPage from './ArticleDetailsPage';
 import { Article, ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 
-import { ArticleBlockType } from '@/entities/Article/model/consts/articleConsts';
+import { ArticleBlockType } from '@/entities/Article';
 
 const article: Article = {
     'id': '1',

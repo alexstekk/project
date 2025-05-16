@@ -36,7 +36,7 @@ export default defineConfig([
             'object-curly-spacing': ['error', 'always'],
             'quotes': [2, 'single', {'avoidEscape': true}],
             'react/display-name': 'off',
-            "no-unused-vars": ["warn", {"argsIgnorePattern": "^_", "args": "none", "vars": "all",}],
+            "no-unused-vars": 'off',
             "@typescript-eslint/no-unused-vars": ["warn", {
                 "argsIgnorePattern": "^_",
                 "args": "none",
@@ -44,7 +44,18 @@ export default defineConfig([
             }],
             "noUnusedParameters": 'off',
             "no-undef": "off",
-            "alexstekk/path-checker": "error",
+            "alexstekk/path-checker": ["error", {alias: '@'}],
+            "alexstekk/public-api-imports": [
+                "error",
+                {
+                    alias: '@',
+                    testFilesPatterns: [
+                        '**/*.test.*',
+                        '**/*.story.*',
+                        '**/StoreDecorator.tsx',
+                    ]
+                }
+            ],
             "@typescript-eslint/ban-ts-comment": 'off'
         },
 

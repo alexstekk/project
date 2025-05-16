@@ -2,8 +2,7 @@ import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Text, TextAlign } from '@/shared/ui/Text/Text';
-import cls from '@/pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage.module.scss';
-import AddCommentForm from '@/features/addCommentForm/ui/AddCommentForm/AddCommentForm';
+import { AddCommentForm } from '@/features/addCommentForm';
 import { CommentList } from '@/entities/Comment';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
@@ -12,7 +11,7 @@ import { addCommentForArticle } from '../../model/services/addCommentForArticle/
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import {
     fetchCommentsByArticleId
-} from '@/pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+} from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 
 interface articleDetailsCommentsProps {
@@ -41,9 +40,8 @@ export const ArticleDetailsComments = memo((props: articleDetailsCommentsProps) 
     });
 
     return (
-        <div className={classNames(cls.articleDetailsComments, {}, [className])}>
+        <div className={classNames('', {}, [className])}>
             <Text
-                className={cls.commentsTitle}
                 title={t('Комментарии')}
                 align={TextAlign.CENTER}
             />
