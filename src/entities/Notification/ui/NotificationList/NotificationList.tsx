@@ -4,7 +4,7 @@ import cls from './NotificationList.module.scss';
 import { useGetNotificationsQuery } from '../../api/notificationApi';
 import { VStack } from '@/shared/ui/Stack';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 
 interface notificationListProps {

@@ -3,13 +3,13 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleListItem.module.scss';
 import { useTranslation } from 'react-i18next';
 import { Article, ArticleTextBlock } from '../../model/types/Article';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text';
 import EyeIcon from '@/shared/assets/icons/solar--eye-outline.svg';
-import { Card } from '@/shared/ui/Card/Card';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Card } from '@/shared/ui/Card';
+import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { AppLink } from '@/shared/ui/AppLink';
 import { ArticleView, ArticleBlockType } from '../../model/consts/articleConsts';
 import { AppRoutes, RoutePath } from '@/shared/const/router';
 

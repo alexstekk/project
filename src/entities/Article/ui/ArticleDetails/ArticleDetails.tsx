@@ -11,9 +11,9 @@ import {
     getArticlesDetailsError,
     getArticlesDetailsIsLoading
 } from '../../model/selectors/getArticlesDetails';
-import { Text, TextAlign, TextSize, TextVariants } from '@/shared/ui/Text/Text';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Text, TextAlign, TextSize, TextVariants } from '@/shared/ui/Text';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { Avatar } from '@/shared/ui/Avatar';
 import EyeIcon from '@/shared/assets/icons/solar--eye-outline.svg';
 import CalendarIcon from '@/shared/assets/icons/solar--calendar-outline.svg';
 import { ArticleBlock } from '../../model/types/Article';

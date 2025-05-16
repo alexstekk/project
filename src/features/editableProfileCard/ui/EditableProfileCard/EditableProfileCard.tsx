@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTy
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Text, TextVariants } from '@/shared/ui/Text/Text';
+import { Text, TextVariants } from '@/shared/ui/Text';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';

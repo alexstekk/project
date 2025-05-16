@@ -3,11 +3,11 @@ import cls from './NotificationButton.module.scss';
 import { memo, useCallback, useState } from 'react';
 import BellIcon from '@/shared/assets/icons/solar--bell-outline.svg';
 import { NotificationList } from '@/entities/Notification';
-import { PopoverComp } from '@/shared/ui/Popover/Popover';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { PopoverComp } from '@/shared/ui/Popover';
+import { Drawer } from '@/shared/ui/Drawer';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { Button } from '@/shared/ui/Button';
-import { ButtonVariants } from '@/shared/ui/Button/ui/Button';
+import { ButtonVariants } from '@/shared/ui/Button';
 import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
 
 interface NotificationButtonProps {

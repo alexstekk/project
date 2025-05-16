@@ -6,7 +6,7 @@ import { ArticleView } from '../../model/consts/articleConsts';
 import ListIcon from '@/shared/assets/icons/solar--list-outline.svg';
 import GridIcon from '@/shared/assets/icons/solar--widget-outline.svg';
 import { Button } from '@/shared/ui/Button';
-import { ButtonVariants } from '@/shared/ui/Button/ui/Button';
+import { ButtonVariants } from '@/shared/ui/Button';
 
 
 interface articleViewSelectorProps {
