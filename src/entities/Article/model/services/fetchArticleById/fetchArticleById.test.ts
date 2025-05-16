@@ -1,7 +1,10 @@
 import axios from 'axios';
-import { fetchArticleById } from './fetchArticleById';
-import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+
 import { Article } from '../../types/Article';
+
+import { fetchArticleById } from './fetchArticleById';
+
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 
 const article = {
     'id': '1',

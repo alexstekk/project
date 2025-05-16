@@ -1,9 +1,11 @@
-import { memo, ReactNode } from 'react';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
-import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+import type { AnchorProps } from '@headlessui/react/dist/internal/floating';
+import { memo, ReactNode } from 'react';
+
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+
 import cls from './Popover.module.scss';
-import { AnchorProps } from '@headlessui/react/dist/internal/floating';
 
 
 interface popoverProps {

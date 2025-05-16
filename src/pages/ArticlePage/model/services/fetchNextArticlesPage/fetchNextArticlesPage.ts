@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from '@/app/providers/StoreProvider';
+
 import {
     getArticlesPageHasMore,
     getArticlesPageIsLoading,
@@ -7,6 +7,8 @@ import {
 } from '../../selectors/articlesPageSelectors';
 import { articlePageActions } from '../../slice/articlePageSlice';
 import { fetchArticleList } from '../fetchArticleList/fetchArticleList';
+
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 
 export const fetchNextArticlesPage = createAsyncThunk<
     void,

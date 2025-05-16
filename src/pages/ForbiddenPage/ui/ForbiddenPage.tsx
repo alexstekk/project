@@ -1,7 +1,9 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './ForbiddenPage.module.scss';
 import { useTranslation } from 'react-i18next';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/shared/ui/Page';
+
+import cls from './ForbiddenPage.module.scss';
 
 interface NotFoundPageProps {
     className?: string;

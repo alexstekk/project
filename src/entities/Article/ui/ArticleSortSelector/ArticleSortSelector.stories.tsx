@@ -1,8 +1,10 @@
+import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ArticleSortSelector } from './ArticleSortSelector';
 import { ArticleSortField } from '../../model/consts/articleConsts';
-import { action } from '@storybook/addon-actions';
+
+import { ArticleSortSelector } from './ArticleSortSelector';
+
 import { SortOrder } from '@/shared/types';
 
 

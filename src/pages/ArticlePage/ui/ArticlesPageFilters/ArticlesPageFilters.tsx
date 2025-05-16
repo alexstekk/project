@@ -1,25 +1,33 @@
 import { memo, useCallback } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './ArticlesPageFilters.module.scss';
 import { useTranslation } from 'react-i18next';
-import { ArticleSortField, ArticleType, ArticleTypeTabs, ArticleView, ArticleViewSelector } from '@/entities/Article';
-import { articlePageActions } from '../../model/slice/articlePageSlice';
-import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
+
 import {
-    getArticlesPageError,
     getArticlesPageOrder,
     getArticlesPageSearch,
     getArticlesPageSort,
     getArticlesPageType,
     getArticlesPageView
 } from '../../model/selectors/articlesPageSelectors';
+import { fetchArticleList } from '../../model/services/fetchArticleList/fetchArticleList';
+import { articlePageActions } from '../../model/slice/articlePageSlice';
+
+import {
+    ArticleSortField,
+    ArticleType,
+    ArticleTypeTabs,
+    ArticleView,
+    ArticleViewSelector,
+    ArticleSortSelector
+} from '@/entities/Article';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
+import { SortOrder } from '@/shared/types';
 import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
-import { ArticleSortSelector } from '@/entities/Article';
-import { SortOrder } from '@/shared/types';
-import { fetchArticleList } from '../../model/services/fetchArticleList/fetchArticleList';
-import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { HStack, VStack } from '@/shared/ui/Stack';
+
+import cls from './ArticlesPageFilters.module.scss';
 
 
 interface articlesPageFiltersProps {
@@ -33,7 +41,6 @@ export const ArticlesPageFilters = memo((props: articlesPageFiltersProps) => {
 
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
-    const error = useAppSelector(getArticlesPageError);
     const view = useAppSelector(getArticlesPageView);
     const sort = useAppSelector(getArticlesPageSort);
     const order = useAppSelector(getArticlesPageOrder);

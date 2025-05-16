@@ -1,11 +1,12 @@
-import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
-import { ReducersMapObject } from '@reduxjs/toolkit';
-import { loginReducer } from '@/features/AuthByUsername/testing';
+import { type ReducersMapObject } from '@reduxjs/toolkit';
 import React, { FunctionComponent } from 'react';
+
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { articleDetailsReducer } from '@/entities/Article/testing';
+import { loginReducer } from '@/features/AuthByUsername/testing';
 import { addCommentFormReducer } from '@/features/addCommentForm/testing';
-import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/testing';
 import { profileReducer } from '@/features/editableProfileCard/testing';
+import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/testing';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     loginForm: loginReducer,

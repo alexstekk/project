@@ -1,11 +1,14 @@
 import axios from 'axios';
-import { validateProfileData } from './validateProfileData';
-import avatar from '@/shared/assets/tests/storybook.jpeg';
-import { Profile } from '@/entities/Profile';
-import { Currency } from '@/entities/Currency';
-import { Country } from '@/entities/Country';
 
 import { ValidateProfileError } from '../../consts/editableProfileCardConsts';
+
+import { validateProfileData } from './validateProfileData';
+
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { Profile } from '@/entities/Profile';
+import avatar from '@/shared/assets/tests/storybook.jpeg';
+
 
 const data: Profile = {
     first: 'Alex',

@@ -1,8 +1,9 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { Select } from '@/shared/ui/Select';
-import { Currency } from '../../model/types/currency';
 import { memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { Currency } from '../../model/types/currency';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { ListBox } from '@/shared/ui/ListBox';
 
 

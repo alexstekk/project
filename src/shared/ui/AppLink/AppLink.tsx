@@ -1,7 +1,9 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './AppLink.module.scss';
-import { Link, LinkProps } from 'react-router-dom';
 import { ForwardedRef, forwardRef } from 'react';
+import { Link, type LinkProps } from 'react-router-dom';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
+
+import cls from './AppLink.module.scss';
 
 export type AppLinkVariant = 'primary' | 'inverted';
 

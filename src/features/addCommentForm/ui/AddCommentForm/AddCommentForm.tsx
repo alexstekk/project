@@ -1,7 +1,10 @@
 import { memo } from 'react';
+
 import { addCommentFormReducer } from '../../model/slice/addCommentFormSlice';
-import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+
 import { AddCommentForm } from './AddCommentForm.1';
+
+import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 
 export interface addCommentFormProps {
