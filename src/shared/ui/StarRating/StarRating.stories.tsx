@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { StarRating } from './StarRating';
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 
 
 const meta = {
-    title: 'FIX/StarRating',
+    title: 'shared/StarRating',
     component: StarRating,
     decorators: []
 } satisfies Meta<typeof StarRating>;

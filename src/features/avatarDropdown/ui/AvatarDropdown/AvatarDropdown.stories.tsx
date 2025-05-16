@@ -4,7 +4,7 @@ import { AvatarDropdown } from './AvatarDropdown';
 
 
 const meta = {
-    title: 'FIX/AvatarDropdown',
+    title: 'features/AvatarDropdown',
     component: AvatarDropdown,
     decorators: []
 } satisfies Meta<typeof AvatarDropdown>;

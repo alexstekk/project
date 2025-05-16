@@ -4,7 +4,7 @@ import { Dropdown } from './Dropdown';
 
 
 const meta = {
-    title: 'FIX/Dropdown',
+    title: 'shared/Dropdown',
     component: Dropdown,
     decorators: []
 } satisfies Meta<typeof Dropdown>;

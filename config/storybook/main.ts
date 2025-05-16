@@ -13,9 +13,9 @@ const config: StorybookConfig = {
         '@storybook/addon-onboarding',
         '@storybook/addon-essentials',
         '@chromatic-com/storybook',
-        '@storybook/addon-interactions',
         '@storybook/addon-actions',
         'storybook-addon-mock',
+        '@storybook/addon-interactions',
     ],
     framework: {
         name: '@storybook/react-webpack5',
@@ -41,7 +41,10 @@ const config: StorybookConfig = {
             React: 'react',
         }));
 
-        config!.resolve!.alias = {'@': path.resolve(__dirname, '..', '..', 'src')};
+        config!.resolve!.alias = {
+            ...config!.resolve!.alias,
+            '@': path.resolve(__dirname, '..', '..', 'src')
+        };
 
         // @ts-ignore
         config.module.rules = config?.module?.rules?.map((rule: webpack.RuleSetRule) => {

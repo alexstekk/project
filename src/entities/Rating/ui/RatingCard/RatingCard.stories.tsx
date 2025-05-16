@@ -4,7 +4,7 @@ import { RatingCard } from './RatingCard';
 
 
 const meta = {
-    title: 'FIX/RatingCard',
+    title: 'entities/RatingCard',
     component: RatingCard,
     decorators: []
 } satisfies Meta<typeof RatingCard>;

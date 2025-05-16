@@ -11,10 +11,6 @@ const MainPage = () => {
     return (
         <Page>
             {t('Главная страница')}
-            <div>
-                test
-            </div>
-            <RatingCard title={'Оцените статью'} feedBackTitle={'Оставьте отзыв о статье'} hasFeedback/>
         </Page>
     );
 };

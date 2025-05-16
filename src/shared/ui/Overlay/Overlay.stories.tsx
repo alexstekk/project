@@ -4,7 +4,7 @@ import { Overlay } from './Overlay';
 
 
 const meta = {
-    title: 'FIX/Overlay',
+    title: 'shared/Overlay',
     component: Overlay,
     decorators: []
 } satisfies Meta<typeof Overlay>;

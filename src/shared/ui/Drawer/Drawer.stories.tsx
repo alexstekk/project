@@ -4,7 +4,7 @@ import { Drawer } from './Drawer';
 
 
 const meta = {
-    title: 'FIX/Drawer',
+    title: 'shared/Drawer',
     component: Drawer,
     decorators: []
 } satisfies Meta<typeof Drawer>;
