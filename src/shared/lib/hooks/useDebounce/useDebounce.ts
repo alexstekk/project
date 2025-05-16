@@ -1,5 +1,10 @@
 import { useCallback, useEffect, useRef } from 'react';
 
+/**
+ * Хук, который позволяет отменять предыдущий вызов функции, пока не истечет delay
+ * @param callback
+ * @param delay - задержка в мс
+ */
 // eslint-disable-next-line
 export function useDebounce(callback: (...args: any[]) => void, delay: number) {
 

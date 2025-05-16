@@ -1,5 +1,6 @@
-import { StateSchema } from '@/app/providers/StoreProvider';
 import { getProfileForm } from './getProfileForm';
+
+import { StateSchema } from '@/app/providers/StoreProvider';
 import avatar from '@/shared/assets/tests/storybook.jpeg';
 
 describe('getProfileForm', () => {

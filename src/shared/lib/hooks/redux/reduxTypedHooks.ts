@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import { StateSchema } from '@/app/providers/StoreProvider';
 // eslint-disable-next-line alexstekk/layer-imports
 import { AppDispatch } from '@/app/providers/StoreProvider/types/reduxAppTypes';

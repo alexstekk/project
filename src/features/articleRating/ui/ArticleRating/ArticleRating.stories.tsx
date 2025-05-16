@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import ArticleRating from './ArticleRating';
+
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 
 

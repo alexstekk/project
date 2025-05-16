@@ -1,19 +1,21 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './LoginForm.module.scss';
-import { useTranslation } from 'react-i18next';
-import { Button } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input';
-import { ButtonVariants } from '@/shared/ui/Button';
 import { memo, useCallback } from 'react';
-import { loginActions, loginReducer } from '../../model/slice/loginSlice';
-import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
-import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Text, TextVariants } from '@/shared/ui/Text';
-import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
-import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
-import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { useTranslation } from 'react-i18next';
+
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
+import { Button , ButtonVariants } from '@/shared/ui/Button';
+import { Input } from '@/shared/ui/Input';
+import { Text, TextVariants } from '@/shared/ui/Text';
+
+import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     className?: string;

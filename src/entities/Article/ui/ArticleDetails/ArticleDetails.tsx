@@ -1,27 +1,29 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './ArticleDetails.module.scss';
-import { useTranslation } from 'react-i18next';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { memo, useCallback, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+import { useTranslation } from 'react-i18next';
+
+import { ArticleBlockType } from '../../model/consts/articleConsts';
 import {
     getArticlesDetailsData,
     getArticlesDetailsError,
     getArticlesDetailsIsLoading
 } from '../../model/selectors/getArticlesDetails';
-import { Text, TextAlign, TextSize, TextVariants } from '@/shared/ui/Text';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { Avatar } from '@/shared/ui/Avatar';
-import EyeIcon from '@/shared/assets/icons/solar--eye-outline.svg';
-import CalendarIcon from '@/shared/assets/icons/solar--calendar-outline.svg';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { ArticleBlock } from '../../model/types/Article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
-import { ArticleBlockType } from '../../model/consts/articleConsts';
+import CalendarIcon from '@/shared/assets/icons/solar--calendar-outline.svg';
+import EyeIcon from '@/shared/assets/icons/solar--eye-outline.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { Text, TextAlign, TextSize, TextVariants } from '@/shared/ui/Text';
+
+import cls from './ArticleDetails.module.scss';
 
 
 interface articleDetailsProps {

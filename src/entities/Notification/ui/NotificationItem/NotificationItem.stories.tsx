@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { NotificationItem } from './NotificationItem';
 import { Notification } from '../../model/types/notification';
+
+import { NotificationItem } from './NotificationItem';
 
 const item: Notification = {
     'id': '1',

@@ -1,8 +1,11 @@
-import avatar from '@/shared/assets/tests/storybook.jpeg';
-import { ProfileSchema } from '../types/editableProfileCardSchema';
-import { profileActions, profileReducer } from './profileSlice';
-import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { ValidateProfileError } from '../consts/editableProfileCardConsts';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
+import { ProfileSchema } from '../types/editableProfileCardSchema';
+
+import { profileActions, profileReducer } from './profileSlice';
+
+import avatar from '@/shared/assets/tests/storybook.jpeg';
+
 
 const data = {
     first: 'Alex',

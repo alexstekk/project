@@ -1,11 +1,14 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppRouter } from './providers/router';
-import { Navbar } from '../widgets/Navbar/ui/Navbar';
-import { Sidebar } from '@/widgets/Sidebar';
-import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useEffect } from 'react';
+
+import { Navbar } from '../widgets/Navbar/ui/Navbar';
+
+import { AppRouter } from './providers/router';
+
 import { getUserInited, userActions } from '@/entities/User';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+import { Sidebar } from '@/widgets/Sidebar';
 
 
 export const App = () => {

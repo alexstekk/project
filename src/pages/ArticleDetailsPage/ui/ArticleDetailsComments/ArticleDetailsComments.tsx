@@ -1,17 +1,19 @@
 import { memo, useCallback } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Text, TextAlign } from '@/shared/ui/Text';
-import { AddCommentForm } from '@/features/addCommentForm';
-import { CommentList } from '@/entities/Comment';
-import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
+
 import { getArticleCommentsIsLoading } from '../../model/selectors/getCommentsData';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import {
     fetchCommentsByArticleId
 } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
+
+import { CommentList } from '@/entities/Comment';
+import { AddCommentForm } from '@/features/addCommentForm';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Text, TextAlign } from '@/shared/ui/Text';
 
 
 interface articleDetailsCommentsProps {

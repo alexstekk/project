@@ -1,11 +1,16 @@
 import axios from 'axios';
-import avatar from '@/shared/assets/tests/storybook.jpeg';
-import { Profile } from '@/entities/Profile';
-import { Currency } from '@/entities/Currency';
-import { Country } from '@/entities/Country';
-import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { updateProfileData } from './updateProfileData';
+
 import { ValidateProfileError } from '../../consts/editableProfileCardConsts';
+
+import { updateProfileData } from './updateProfileData';
+
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { Profile } from '@/entities/Profile';
+import avatar from '@/shared/assets/tests/storybook.jpeg';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+
+
 
 const data: Profile = {
     first: 'Alex',

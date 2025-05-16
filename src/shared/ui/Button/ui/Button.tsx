@@ -1,6 +1,8 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './Button.module.scss';
 import { ButtonHTMLAttributes, memo } from 'react';
+
+import { classNames } from '@/shared/lib/classNames/classNames';
+
+import cls from './Button.module.scss';
 
 export enum ButtonVariants {
     CLEAR = 'clear',
@@ -19,10 +21,25 @@ export enum ButtonSize {
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
+    /**
+     * Вариант кнопки: с рамкой, прозрачный и т.п.
+     */
     variant?: ButtonVariants;
+    /**
+     * Флаг, делающий кнопку квадратной
+     */
     square?: boolean;
+    /**
+     * Размер кнопки
+     */
     size?: ButtonSize;
+    /**
+     * Флаг для "выключения" кнопки
+     */
     disabled?: boolean;
+    /**
+     * Ширина кнопки 100%
+     */
     fullWidth?: boolean;
 }
 

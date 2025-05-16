@@ -1,4 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
+
 import { getArticlesDetailsData } from '@/entities/Article';
 import { getUserAuthData } from '@/entities/User';
 

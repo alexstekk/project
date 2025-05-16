@@ -1,9 +1,13 @@
 import { Listbox as HListBox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
-import React, { ReactNode, useState } from 'react';
-import cls from './ListBox.module.scss';
+import React, { ReactNode } from 'react';
+
+import { Button } from '../Button';
+
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { Button } from '../Button';
+
+import cls from './ListBox.module.scss';
+
 
 export interface ListBoxItem {
     value: string;

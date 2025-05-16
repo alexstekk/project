@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Card } from './Card';
 import { Text } from '../Text/Text';
-import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 
+import { Card } from './Card';
+
+import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
 
 

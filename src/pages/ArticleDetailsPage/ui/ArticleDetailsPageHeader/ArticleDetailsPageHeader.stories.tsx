@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader';
+
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 
 

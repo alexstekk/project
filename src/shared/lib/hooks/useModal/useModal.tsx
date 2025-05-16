@@ -6,6 +6,12 @@ interface UseModalProps {
     animationDelay?: number;
 }
 
+/**
+ *Переиспользуемый хук для модальных компонентов
+ * @param isOpen - флаг показывается или нет модалка
+ * @param onClose - коллбек на закрытие
+ * @param animationDelay - задержка в мс
+ */
 export function useModal({ isOpen, onClose, animationDelay }: UseModalProps) {
 
     const [isMounted, setIsMounted] = useState(false);
