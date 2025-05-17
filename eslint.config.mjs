@@ -43,7 +43,7 @@ export default defineConfig([
             'quotes': [2, 'single', {'avoidEscape': true}],
             'react/display-name': 'off',
             "no-unused-vars": 'off',
-            "@typescript-eslint/no-unused-vars": ["warn", {
+            "@typescript-eslint/no-unused-vars": ["off", {
                 "argsIgnorePattern": "^_",
                 "args": "none",
                 "vars": "all",

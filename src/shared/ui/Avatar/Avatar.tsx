@@ -1,9 +1,10 @@
 import { CSSProperties, useMemo } from 'react';
 
+import { AppImage } from '../AppImage';
+import { Skeleton } from '../Skeleton';
+
 import UserIcon from '@/shared/assets/icons/solar--user-outline.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppImage } from '@/shared/ui/AppImage';
-import { Skeleton } from '@/shared/ui/Skeleton';
 
 import cls from './Avatar.module.scss';
 
