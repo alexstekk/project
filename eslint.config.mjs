@@ -12,7 +12,7 @@ import importPlugin from 'eslint-plugin-import';
 
 
 export default defineConfig([
-    globalIgnores(['build', 'config', 'json-server', 'storybook-static', 'scripts']),
+    globalIgnores(['build', 'config', 'json-server', 'storybook-static', 'scripts', 'cypress']),
     tseslint.configs.recommended,
     pluginReact.configs.flat.recommended,
     importPlugin.flatConfigs.recommended,
