@@ -16,4 +16,6 @@ export { ArticleView, ArticleType, ArticleSortField, ArticleBlockType } from './
 
 export { ArticleList } from './ui/ArticleList/ArticleList';
 
+export { articleDetailsReducer } from './model/slice/articleDetailsSlice';
+
 
