@@ -25,7 +25,12 @@ export function componentRender(component: ReactNode, options: ComponentRenderOp
     } = options;
 
     return render(
-        <MemoryRouter initialEntries={[route]}>
+        <MemoryRouter
+            initialEntries={[route]}
+            future={{
+                v7_startTransition: true,
+                v7_relativeSplatPath: true,
+            }}>
             <StoreProvider initialState={initialState as StateSchema} asyncReducers={asyncReducers}>
                 <ThemeProvider>
                     <I18nextProvider i18n={i18nForTest}>

@@ -5,7 +5,7 @@ import { ArticleSortField } from '../../entities/Article/model/consts/articleCon
 
 import { ArticleSortSelector } from './ArticleSortSelector';
 
-import { SortOrder } from '@/shared/types';
+import { SortOrder } from '@/shared/types/sort';
 
 
 const meta = {

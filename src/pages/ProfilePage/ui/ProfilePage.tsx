@@ -17,7 +17,7 @@ const ProfilePage = (props: ProfilePageProps) => {
     const { id } = useParams<{ id: string }>();
 
     return (
-        <Page className={classNames('', {}, [className])}>
+        <Page className={classNames('', {}, [className])} data-testid={'ProfilePage'}>
             <VStack max align={'center'} justify={'center'}>
                 <EditableProfileCard id={id || '1'}/>
             </VStack>
