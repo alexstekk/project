@@ -2,12 +2,12 @@ import { memo, ReactNode, UIEvent, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { getScrollSavePositionByPath, scrollSaveSliceActions } from '@/shared/lib/ScrollSave';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
+import { getScrollSavePositionByPath, scrollSaveSliceActions } from '@/shared/lib/ssscrollSave';
 import { TestProps } from '@/shared/types/tests';
 
 import cls from './Page.module.scss';

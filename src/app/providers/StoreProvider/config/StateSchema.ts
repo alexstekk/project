@@ -1,6 +1,6 @@
 import { EnhancedStore, Reducer, ReducersMapObject, UnknownAction } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { ScrollSaveSchema } from 'src/shared/lib/ScrollSave';
+import { ScrollSaveSchema } from 'src/shared/lib/ssscrollSave';
 
 import { ArticleDetailsSchema } from '@/entities/Article';
 import { CounterSchema } from '@/entities/Counter';
