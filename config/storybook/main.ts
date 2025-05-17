@@ -4,7 +4,7 @@ import {BuildPaths} from '../build/types/config';
 import path from 'path';
 import {buildCssLoader} from '../build/loaders/buildCssLoader';
 // @ts-ignore
-import webpack, {ProvidePlugin} from 'webpack';
+import webpack, {Configuration, ProvidePlugin} from 'webpack';
 
 const config: StorybookConfig = {
     stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -27,8 +27,7 @@ const config: StorybookConfig = {
         name: '@storybook/react-webpack5',
         options: {},
     },
-    webpackFinal: async (config) => {
-
+    webpackFinal: async (config: Configuration) => {
         const paths: BuildPaths = {
             build: '',
             entry: '',
