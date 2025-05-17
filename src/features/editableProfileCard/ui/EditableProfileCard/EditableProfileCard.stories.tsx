@@ -4,6 +4,7 @@ import { EditableProfileCard } from './EditableProfileCard';
 
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 
+
 const meta = {
     title: 'features/EditableProfileCard',
     component: EditableProfileCard,
@@ -17,12 +18,12 @@ const meta = {
                     city: 'Krasnodar',
                     username: 'admin',
                     avatar: '',
-                }
-            }
+                },
+            },
         }),
     ],
     args: {
-        id: '1'
+        id: '1',
     },
     parameters: {
         mockData: [
@@ -33,16 +34,16 @@ const meta = {
                 response: [
                     {
                         rate: 4,
-                    }
+                    },
                 ],
             },
         ],
-    }
+    },
 } satisfies Meta<typeof EditableProfileCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
-    args: {}
+    args: {},
 };

@@ -10,16 +10,17 @@ interface ProfilePageProps {
 }
 
 const ProfilePage = (props: ProfilePageProps) => {
-    const {
-        className,
-    } = props;
+    const { className } = props;
 
     const { id } = useParams<{ id: string }>();
 
     return (
-        <Page className={classNames('', {}, [className])} data-testid={'ProfilePage'}>
+        <Page
+            className={classNames('', {}, [className])}
+            data-testid={'ProfilePage'}
+        >
             <VStack max align={'center'} justify={'center'}>
-                <EditableProfileCard id={id || '1'}/>
+                <EditableProfileCard id={id || '1'} />
             </VStack>
         </Page>
     );

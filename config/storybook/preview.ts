@@ -1,15 +1,13 @@
-import {Preview} from '@storybook/react';
+import { withThemeByClassName } from '@storybook/addon-themes';
+import { Preview } from '@storybook/react';
 
-import {StyleDecorator} from '../../src/shared/config/storybook/decorators/StyleDecorator/StyleDecorator';
-import {ThemeDecorator} from '../../src/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
-import {RouterDecorator} from '../../src/shared/config/storybook/decorators/RouterDecorator/RouterDecorator';
-import {SuspenceDecorator} from "../../src/shared/config/storybook/decorators/SuspenceDecorator/SuspenceDecorator";
-import {Theme} from '@/shared/const/theme';
-import {withThemeByClassName} from "@storybook/addon-themes";
-import {
-    withDisabledAnimations
-} from "../../src/shared/config/storybook/decorators/DisabledAnimationsDecorator/DisabledAnimationsDecorator";
+import { Theme } from '@/shared/const/theme';
 
+import { withDisabledAnimations } from '../../src/shared/config/storybook/decorators/DisabledAnimationsDecorator/DisabledAnimationsDecorator';
+import { RouterDecorator } from '../../src/shared/config/storybook/decorators/RouterDecorator/RouterDecorator';
+import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator/StyleDecorator';
+import { SuspenceDecorator } from '../../src/shared/config/storybook/decorators/SuspenceDecorator/SuspenceDecorator';
+import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 
 const preview: Preview = {
     decorators: [

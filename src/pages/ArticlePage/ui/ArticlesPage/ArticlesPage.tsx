@@ -10,15 +10,21 @@ import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList'
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    useAppDispatch,
+    useAppSelector,
+} from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Page } from '@/shared/ui/Page';
 import { VStack } from '@/shared/ui/Stack';
 import { Text, TextVariants } from '@/shared/ui/Text';
 
-import cls from './ArticlesPage.module.scss';
 
+import cls from './ArticlesPage.module.scss';
 
 interface articlePageProps {
     className?: string;
@@ -29,9 +35,7 @@ const reducers: ReducersList = {
 };
 
 const ArticlesPage = (props: articlePageProps) => {
-    const {
-        className,
-    } = props;
+    const { className } = props;
 
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
@@ -52,18 +56,24 @@ const ArticlesPage = (props: articlePageProps) => {
     if (error) {
         return (
             <div className={classNames(cls.articlePage, {}, [className])}>
-                <Text variant={TextVariants.ERROR} title={t('Произошла ошибка при загрузке списка статей')}/>
+                <Text
+                    variant={TextVariants.ERROR}
+                    title={t('Произошла ошибка при загрузке списка статей')}
+                />
             </div>
         );
     }
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <Page onScrollEnd={onLoadNextPart} className={classNames(cls.articlePage, {}, [className])}
-                  data-testid={'ArticlesPage'}>
+            <Page
+                onScrollEnd={onLoadNextPart}
+                className={classNames(cls.articlePage, {}, [className])}
+                data-testid={'ArticlesPage'}
+            >
                 <VStack gap={'16'} max>
-                    <ArticlesPageFilters/>
-                    <ArticleInfiniteList/>
+                    <ArticlesPageFilters />
+                    <ArticleInfiniteList />
                 </VStack>
             </Page>
         </DynamicModuleLoader>

@@ -1,4 +1,12 @@
-import { createContext, ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import {
+    ReactNode,
+    createContext,
+    useContext,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from 'react';
 
 type SpringType = typeof import('@react-spring/web');
 type GestureType = typeof import('@use-gesture/react');
@@ -23,7 +31,6 @@ export const useAnimationLibs = () => {
 };
 
 export const AnimationProvider = ({ children }: { children: ReactNode }) => {
-
     const SpringRef = useRef<SpringType>(undefined);
     const GestureRef = useRef<GestureType>(undefined);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -36,11 +43,14 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
         });
     }, []);
 
-    const value = useMemo(() => ({
-        Gesture: GestureRef.current,
-        Spring: SpringRef.current,
-        isLoaded,
-    }), [isLoaded]);
+    const value = useMemo(
+        () => ({
+            Gesture: GestureRef.current,
+            Spring: SpringRef.current,
+            isLoaded,
+        }),
+        [isLoaded],
+    );
 
     return (
         <AnimationContext.Provider value={value}>
@@ -48,4 +58,3 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
         </AnimationContext.Provider>
     );
 };
-

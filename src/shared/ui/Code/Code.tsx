@@ -6,9 +6,8 @@ import { ButtonVariants } from '../Button/ui/Button';
 import CopyIcon from '@/shared/assets/icons/solar--copy-outline.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
+
 import cls from './Code.module.scss';
-
-
 
 interface codeProps {
     className?: string;
@@ -16,10 +15,7 @@ interface codeProps {
 }
 
 export const Code = memo((props: codeProps) => {
-    const {
-        className,
-        text,
-    } = props;
+    const { className, text } = props;
 
     const onCopy = useCallback(() => {
         navigator.clipboard.writeText(text);
@@ -32,11 +28,9 @@ export const Code = memo((props: codeProps) => {
                 variant={ButtonVariants.CLEAR}
                 onClick={onCopy}
             >
-                <CopyIcon/>
+                <CopyIcon />
             </Button>
-            <code>
-                {text}
-             </code>
+            <code>{text}</code>
         </pre>
     );
 });

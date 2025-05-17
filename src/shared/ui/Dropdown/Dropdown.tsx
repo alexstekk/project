@@ -22,49 +22,59 @@ interface DropdownProps {
 }
 
 export function Dropdown(props: DropdownProps) {
-
-    const {
-        className,
-        trigger,
-        items,
-    } = props;
+    const { className, trigger, items } = props;
 
     const { theme } = useTheme();
 
     return (
-        <Menu className={classNames(cls.dropDown, {}, [className, theme])} as={'div'}>
-            <MenuButton className={cls.button}>
-                {trigger}
-            </MenuButton>
-            <MenuItems anchor="bottom end" className={classNames(cls.items, {}, [className, theme])}>
-                {
-                    items?.map((item) => {
-                        const content = ({ active }: { active: boolean }) => (
-                            <button
-                                className={classNames(cls.item, { [cls.active]: active }, [])}
-                                disabled={item.disabled}
-                                onClick={item.onClick}
-                                key={item.href}
-                            >
-                                {item.content}
-                            </button>
-                        );
+        <Menu
+            className={classNames(cls.dropDown, {}, [className, theme])}
+            as={'div'}
+        >
+            <MenuButton className={cls.button}>{trigger}</MenuButton>
+            <MenuItems
+                anchor="bottom end"
+                className={classNames(cls.items, {}, [className, theme])}
+            >
+                {items?.map((item) => {
+                    const content = ({ active }: { active: boolean }) => (
+                        <button
+                            className={classNames(
+                                cls.item,
+                                { [cls.active]: active },
+                                [],
+                            )}
+                            disabled={item.disabled}
+                            onClick={item.onClick}
+                            key={item.href}
+                        >
+                            {item.content}
+                        </button>
+                    );
 
-                        if (item.href) {
-                            return (
-                                <MenuItem as={AppLink} to={item.href} key={item.href} disabled={item.disabled}>
-                                    {content}
-                                </MenuItem>
-                            );
-                        }
-
+                    if (item.href) {
                         return (
-                            <MenuItem as={Fragment} key={String(item.content)} disabled={item.disabled}>
+                            <MenuItem
+                                as={AppLink}
+                                to={item.href}
+                                key={item.href}
+                                disabled={item.disabled}
+                            >
                                 {content}
                             </MenuItem>
                         );
-                    })
-                }
+                    }
+
+                    return (
+                        <MenuItem
+                            as={Fragment}
+                            key={String(item.content)}
+                            disabled={item.disabled}
+                        >
+                            {content}
+                        </MenuItem>
+                    );
+                })}
             </MenuItems>
         </Menu>
     );

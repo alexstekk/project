@@ -9,7 +9,7 @@ import { Theme } from '@/shared/const/theme';
 const meta = {
     title: 'shared/Input',
     component: Input,
-    decorators: []
+    decorators: [],
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -18,25 +18,20 @@ type Story = StoryObj<typeof meta>;
 export const withPlaceholder: Story = {
     args: {
         value: 'Test input',
-        placeholder: 'Placeholder'
-    }
+        placeholder: 'Placeholder',
+    },
 };
 
 export const withoutPlaceholder: Story = {
     args: {
         value: 'Test input',
-    }
+    },
 };
 
 export const withPlaceholderDark: Story = {
     args: {
         value: 'Test input',
-        placeholder: 'Placeholder'
+        placeholder: 'Placeholder',
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK)
-    ]
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
-
-
-

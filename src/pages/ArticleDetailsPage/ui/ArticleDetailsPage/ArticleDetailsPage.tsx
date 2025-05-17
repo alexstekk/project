@@ -10,11 +10,14 @@ import { ArticleDetails } from '@/entities/Article';
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from '@/shared/ui/Page';
 
-import cls from './ArticleDetailsPage.module.scss';
 
+import cls from './ArticleDetailsPage.module.scss';
 
 interface articleDetailsPageProps {
     className?: string;
@@ -25,28 +28,31 @@ const reducer: ReducersList = {
 };
 
 const ArticleDetailsPage = (props: articleDetailsPageProps) => {
-    const {
-        className,
-    } = props;
+    const { className } = props;
 
     const { t } = useTranslation('article-details');
 
     const { id } = useParams<{ id: string }>();
 
-    if (!id && __PROJECT__ !== 'storybook') return (
-        <div className={classNames(cls.articleDetailsPage, {}, [className])}>
-            {t('Статья не найдена')}
-        </div>
-    );
+    if (!id && __PROJECT__ !== 'storybook')
+        return (
+            <div
+                className={classNames(cls.articleDetailsPage, {}, [className])}
+            >
+                {t('Статья не найдена')}
+            </div>
+        );
 
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
-            <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
-                <ArticleDetailsPageHeader/>
-                <ArticleDetails id={id || '1'}/>
-                <ArticleRating articleId={id}/>
-                <ArticleRecommendationsList/>
-                <ArticleDetailsComments id={id || '1'}/>
+            <Page
+                className={classNames(cls.articleDetailsPage, {}, [className])}
+            >
+                <ArticleDetailsPageHeader />
+                <ArticleDetails id={id || '1'} />
+                <ArticleRating articleId={id} />
+                <ArticleRecommendationsList />
+                <ArticleDetailsComments id={id || '1'} />
             </Page>
         </DynamicModuleLoader>
     );

@@ -2,11 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button, ButtonSize, ButtonVariants } from './Button';
 
-
 const meta = {
     title: 'shared/Button',
     component: Button,
-    decorators: []
+    decorators: [],
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -15,13 +14,13 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
     args: {
         children: 'Text',
-    }
+    },
 };
 
 export const Clear: Story = {
     args: {
         children: 'Text',
-        variant: ButtonVariants.CLEAR
+        variant: ButtonVariants.CLEAR,
     },
 };
 
@@ -35,20 +34,20 @@ export const ClearInverted: Story = {
 export const Outline: Story = {
     args: {
         children: 'Text',
-        variant: ButtonVariants.OUTLINE
+        variant: ButtonVariants.OUTLINE,
     },
 };
 
 export const Background: Story = {
     args: {
         children: 'Text',
-        variant: ButtonVariants.BACKGROUND
+        variant: ButtonVariants.BACKGROUND,
     },
 };
 export const BackgroundInverted: Story = {
     args: {
         children: 'Text',
-        variant: ButtonVariants.BACKGROUND_INVERTED
+        variant: ButtonVariants.BACKGROUND_INVERTED,
     },
 };
 
@@ -106,5 +105,3 @@ export const Disabled: Story = {
         disabled: true,
     },
 };
-
-

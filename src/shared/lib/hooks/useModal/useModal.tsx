@@ -13,7 +13,6 @@ interface UseModalProps {
  * @param animationDelay - задержка в мс
  */
 export function useModal({ isOpen, onClose, animationDelay }: UseModalProps) {
-
     const [isMounted, setIsMounted] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
 
@@ -25,7 +24,6 @@ export function useModal({ isOpen, onClose, animationDelay }: UseModalProps) {
         }
     }, [isOpen]);
 
-
     const closeHandler = useCallback(() => {
         if (onClose) {
             setIsClosing(true);
@@ -36,11 +34,14 @@ export function useModal({ isOpen, onClose, animationDelay }: UseModalProps) {
         }
     }, [animationDelay, onClose]);
 
-    const onKeyDown = useCallback((e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-            closeHandler();
-        }
-    }, [closeHandler]);
+    const onKeyDown = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                closeHandler();
+            }
+        },
+        [closeHandler],
+    );
 
     useEffect(() => {
         if (isOpen) {
@@ -56,5 +57,4 @@ export function useModal({ isOpen, onClose, animationDelay }: UseModalProps) {
         closeHandler,
         isClosing,
     };
-
 }

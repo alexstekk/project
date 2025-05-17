@@ -1,15 +1,17 @@
-import { memo, ReactNode, useCallback, useEffect } from 'react';
+import { ReactNode, memo, useCallback, useEffect } from 'react';
 
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
+import {
+    AnimationProvider,
+    useAnimationLibs,
+} from '@/shared/lib/components/AnimationProvider';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
+
 import cls from './Drawer.module.scss';
-
-
 
 interface drawerProps {
     className?: string;
@@ -22,15 +24,9 @@ interface drawerProps {
 const height = window.innerHeight - 150;
 
 export const DrawerContent = memo((props: drawerProps) => {
-
     const { Spring, Gesture } = useAnimationLibs();
 
-    const {
-        className,
-        children,
-        isOpen,
-        onClose,
-    } = props;
+    const { className, children, isOpen, onClose } = props;
 
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
@@ -47,11 +43,22 @@ export const DrawerContent = memo((props: drawerProps) => {
     }, [Spring.config.stiff, api]);
 
     const close = (velocity = 0) => {
-        api.start({ y: height, immediate: false, config: { ...Spring.config.stiff, velocity }, onResolve: handleClose });
+        api.start({
+            y: height,
+            immediate: false,
+            config: { ...Spring.config.stiff, velocity },
+            onResolve: handleClose,
+        });
     };
 
     const bind = Gesture.useDrag(
-        ({ last, velocity: [, vy], direction: [, dy], offset: [, oy], cancel }) => {
+        ({
+            last,
+            velocity: [, vy],
+            direction: [, dy],
+            offset: [, oy],
+            cancel,
+        }) => {
             // if the user drags up passed a threshold, then we cancel
             // the drag so that the sheet resets to its open position
             if (oy < -70) cancel();
@@ -65,11 +72,16 @@ export const DrawerContent = memo((props: drawerProps) => {
                     open();
                 }
             }
-                // when the user keeps dragging, we just move the sheet according to
+            // when the user keeps dragging, we just move the sheet according to
             // the cursor position
             else api.start({ y: oy, immediate: true });
         },
-        { from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true }
+        {
+            from: () => [0, y.get()],
+            filterTaps: true,
+            bounds: { top: 0 },
+            rubberband: true,
+        },
     );
 
     const display = y.to((py) => (py < height ? 'block' : 'none'));
@@ -101,9 +113,12 @@ export const DrawerContent = memo((props: drawerProps) => {
                 {/*@ts-ignore*/}
                 <Spring.a.div
                     className={cls.sheet}
-                    style={{ display, bottom: `calc(-100vh + ${height - 1}px)`, y }}
+                    style={{
+                        display,
+                        bottom: `calc(-100vh + ${height - 1}px)`,
+                        y,
+                    }}
                     {...bind()}
-
                 >
                     {children}
                 </Spring.a.div>
@@ -119,13 +134,13 @@ const DrawerAsync = memo((props: drawerProps) => {
         return null;
     }
 
-    return <DrawerContent {...props}/>;
+    return <DrawerContent {...props} />;
 });
 
 export const Drawer = (props: drawerProps) => {
     return (
         <AnimationProvider>
-            <DrawerAsync {...props}/>
+            <DrawerAsync {...props} />
         </AnimationProvider>
     );
 };

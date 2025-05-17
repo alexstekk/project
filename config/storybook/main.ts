@@ -1,10 +1,11 @@
-import type {StorybookConfig} from '@storybook/react-webpack5';
-import {BuildPaths} from '../build/types/config';
+import type { StorybookConfig } from '@storybook/react-webpack5';
 // @ts-ignore
 import path from 'path';
-import {buildCssLoader} from '../build/loaders/buildCssLoader';
 // @ts-ignore
-import webpack, {Configuration, ProvidePlugin} from 'webpack';
+import webpack, { Configuration, ProvidePlugin } from 'webpack';
+
+import { buildCssLoader } from '../build/loaders/buildCssLoader';
+import { BuildPaths } from '../build/types/config';
 
 const config: StorybookConfig = {
     stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -15,7 +16,7 @@ const config: StorybookConfig = {
             name: '@storybook/addon-essentials',
             options: {
                 backgrounds: false,
-            }
+            },
         },
         '@chromatic-com/storybook',
         '@storybook/addon-actions',
@@ -42,24 +43,27 @@ const config: StorybookConfig = {
 
         config?.module?.rules?.push(buildCssLoader(true));
 
-        config?.plugins?.push(new ProvidePlugin({
-            React: 'react',
-        }));
+        config?.plugins?.push(
+            new ProvidePlugin({
+                React: 'react',
+            }),
+        );
 
         config!.resolve!.alias = {
             ...config!.resolve!.alias,
-            '@': path.resolve(__dirname, '..', '..', 'src')
+            '@': path.resolve(__dirname, '..', '..', 'src'),
         };
 
         // @ts-ignore
-        config.module.rules = config?.module?.rules?.map((rule: webpack.RuleSetRule) => {
-            if (/svg/.test(rule.test as string)) {
-                return {...rule, exclude: /\.svg$/i};
-            }
+        config.module.rules = config?.module?.rules?.map(
+            (rule: webpack.RuleSetRule) => {
+                if (/svg/.test(rule.test as string)) {
+                    return { ...rule, exclude: /\.svg$/i };
+                }
 
-            return rule;
-        });
-
+                return rule;
+            },
+        );
 
         config?.module?.rules?.push({
             test: /\.svg$/i,
@@ -67,11 +71,13 @@ const config: StorybookConfig = {
             use: ['@svgr/webpack'],
         });
 
-        config?.plugins?.push(new webpack.DefinePlugin({
-            __IS_DEV__: true,
-            __API__: JSON.stringify('https://testapi.ru'),
-            __PROJECT__: JSON.stringify('storybook')
-        }));
+        config?.plugins?.push(
+            new webpack.DefinePlugin({
+                __IS_DEV__: true,
+                __API__: JSON.stringify('https://testapi.ru'),
+                __PROJECT__: JSON.stringify('storybook'),
+            }),
+        );
 
         return config;
     },

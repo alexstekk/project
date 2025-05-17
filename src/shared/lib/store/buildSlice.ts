@@ -1,4 +1,9 @@
-import { bindActionCreators, createSlice, CreateSliceOptions, SliceCaseReducers } from '@reduxjs/toolkit';
+import {
+    CreateSliceOptions,
+    SliceCaseReducers,
+    bindActionCreators,
+    createSlice,
+} from '@reduxjs/toolkit';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -22,6 +27,3 @@ export function buildSlice<
         useActions,
     };
 }
-
-
-

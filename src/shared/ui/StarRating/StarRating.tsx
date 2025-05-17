@@ -5,7 +5,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './StarRating.module.scss';
 
-
 interface starRatingProps {
     className?: string;
     onSelect?: (starsCount: number) => void;
@@ -16,12 +15,7 @@ interface starRatingProps {
 const stars = [1, 2, 3, 4, 5];
 
 export const StarRating = memo((props: starRatingProps) => {
-    const {
-        className,
-        selectedStars = 0,
-        size = 30,
-        onSelect
-    } = props;
+    const { className, selectedStars = 0, size = 30, onSelect } = props;
 
     const [currentStarsCount, setCurrentStarsCount] = useState(selectedStars);
     const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
@@ -51,10 +45,14 @@ export const StarRating = memo((props: starRatingProps) => {
             {stars.map((starNumber) => (
                 <StarIcon
                     key={starNumber}
-                    className={classNames(cls.starIcon, {
-                        [cls.hovered]: currentStarsCount >= starNumber,
-                        [cls.isSelected]: isSelected,
-                    }, [])}
+                    className={classNames(
+                        cls.starIcon,
+                        {
+                            [cls.hovered]: currentStarsCount >= starNumber,
+                            [cls.isSelected]: isSelected,
+                        },
+                        [],
+                    )}
                     width={size}
                     height={size}
                     onMouseLeave={onLeave}

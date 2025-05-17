@@ -11,7 +11,7 @@ import { Theme } from '@/shared/const/theme';
 const meta = {
     title: 'shared/Card',
     component: Card,
-    decorators: []
+    decorators: [],
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -19,15 +19,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
     args: {
-        children: <Text title={'Hello world'} text={'Hi hello'}/>
-    }
+        children: <Text title={'Hello world'} text={'Hi hello'} />,
+    },
 };
 export const Dark: Story = {
     args: {
-        children: <Text title={'Hello world'} text={'Hi hello'}/>
+        children: <Text title={'Hello world'} text={'Hi hello'} />,
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK)
-    ]
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
-

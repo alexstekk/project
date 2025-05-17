@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Select } from './Select';
 
-
 const meta = {
     title: 'shared/Select',
     component: Select,
@@ -18,10 +17,6 @@ export const Primary: Story = {
             { value: '1', content: 'Первый' },
             { value: '2', content: 'Второй' },
             { value: '3', content: 'Третий длинный пункт' },
-        ]
+        ],
     },
 };
-
-
-
-

@@ -5,6 +5,7 @@ import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 import { Article } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 
+
 const article: Article = {
     id: '1',
     img: '',
@@ -20,9 +21,7 @@ const article: Article = {
 const meta = {
     title: 'features/ArticleRecommendationsList',
     component: ArticleRecommendationsList,
-    decorators: [
-        StoreDecorator({})
-    ],
+    decorators: [StoreDecorator({})],
     parameters: {
         mockData: [
             {
@@ -44,5 +43,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
-    args: {}
+    args: {},
 };

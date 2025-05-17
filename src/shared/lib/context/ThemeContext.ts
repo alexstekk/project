@@ -8,4 +8,3 @@ export interface ThemeContextValue {
 }
 
 export const ThemeContext = createContext<ThemeContextValue>({});
-

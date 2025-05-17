@@ -9,7 +9,7 @@ import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { AppLink } from '@/shared/ui/AppLink';
-import { ButtonVariants, Button } from '@/shared/ui/Button';
+import { Button, ButtonVariants } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text, TextVariants } from '@/shared/ui/Text';
 
@@ -20,7 +20,6 @@ interface NavbarProps {
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
-
     const { t } = useTranslation();
 
     const [isAuthModal, setIsAuthModal] = useState(false);
@@ -35,26 +34,20 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     const authData = useAppSelector(getUserAuthData);
 
-
     if (authData) {
-        return (<header className={classNames(cls.navbar, {}, [className])}>
-                <Text title={'AlexStekk prod'} variant={TextVariants.INVERTED}/>
+        return (
+            <header className={classNames(cls.navbar, {}, [className])}>
+                <Text
+                    title={'AlexStekk prod'}
+                    variant={TextVariants.INVERTED}
+                />
                 <div className={cls.links}>
-                    <AppLink
-                        to={getRouteArticleCreate()}
-                        variant={'inverted'}
-                    >
-                        {
-                            t('Создать статью')
-                        }
+                    <AppLink to={getRouteArticleCreate()} variant={'inverted'}>
+                        {t('Создать статью')}
                     </AppLink>
-                    <HStack
-                        gap={'16'}
-                        className={cls.actions}
-                        align={'center'}
-                    >
-                        <NotificationButton/>
-                        <AvatarDropdown/>
+                    <HStack gap={'16'} className={cls.actions} align={'center'}>
+                        <NotificationButton />
+                        <AvatarDropdown />
                     </HStack>
 
                     {/*<Button*/}
@@ -64,10 +57,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     {/*    {t('Выйти')}*/}
 
                     {/*</Button>*/}
-
                 </div>
             </header>
-
         );
     }
 
@@ -79,15 +70,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     onClick={onShowModal}
                 >
                     {t('Войти')}
-
                 </Button>
             </div>
-            {isAuthModal && <LoginModal
-                isOpen={isAuthModal}
-                onClose={onCloseModal}
-            />}
+            {isAuthModal && (
+                <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+            )}
         </header>
     );
-
 });
-

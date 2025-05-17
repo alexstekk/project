@@ -2,18 +2,15 @@ import { useTranslation } from 'react-i18next';
 
 import { Profile } from '../../model/types/Profile';
 
-
-import { Country , CountrySelect } from '@/entities/Country';
+import { Country, CountrySelect } from '@/entities/Country';
 import { Currency, CurrencySelect } from '@/entities/Currency';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Input } from '@/shared/ui/Input';
-import { VStack , HStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { Text, TextAlign, TextVariants } from '@/shared/ui/Text';
 
 import cls from './ProfileCard.module.scss';
-
-
 
 interface ProfileCardProps {
     className?: string;
@@ -29,7 +26,6 @@ interface ProfileCardProps {
     onChangeUsername?: (value?: string) => void;
     onChangeCurrency?: (value: Currency) => void;
     onChangeCountry?: (value: Country) => void;
-
 }
 
 export enum validKeyboardKeys {
@@ -55,30 +51,39 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeCountry,
     } = props;
 
-
     const { t } = useTranslation('profile');
 
     const onKeyDown = (event: React.KeyboardEvent) => {
         if (
-            !/[0-9]/.test(event.key)
-            && !(Object.values(validKeyboardKeys).some((v) => v === event.key))
+            !/[0-9]/.test(event.key) &&
+            !Object.values(validKeyboardKeys).some((v) => v === event.key)
         ) {
             event.preventDefault();
         }
     };
 
-
     if (isLoading) {
         return (
-            <VStack max justify={'center'} align={'center'}
-                    className={classNames(cls.profileCard, {}, [className, cls.loading])}>
-            </VStack>
+            <VStack
+                max
+                justify={'center'}
+                align={'center'}
+                className={classNames(cls.profileCard, {}, [
+                    className,
+                    cls.loading,
+                ])}
+            ></VStack>
         );
     }
 
     if (error) {
         return (
-            <div className={classNames(cls.profileCard, {}, [className, cls.error])}>
+            <div
+                className={classNames(cls.profileCard, {}, [
+                    className,
+                    cls.error,
+                ])}
+            >
                 <Text
                     variant={TextVariants.ERROR}
                     title={t('Произошла ошибка при загрузке профиля')}
@@ -89,16 +94,22 @@ export const ProfileCard = (props: ProfileCardProps) => {
         );
     }
 
-
     return (
-        <VStack gap={'8'} max={true} justify={'center'}
-                className={classNames(cls.profileCard, { [cls.editing]: !readonly }, [className])}>
-            {
-                data?.avatar && (
-                    <HStack className={cls.avatarWrapper} justify={'center'} max>
-                        <Avatar src={data?.avatar} alt=""/>
-                    </HStack>
-                )}
+        <VStack
+            gap={'8'}
+            max={true}
+            justify={'center'}
+            className={classNames(
+                cls.profileCard,
+                { [cls.editing]: !readonly },
+                [className],
+            )}
+        >
+            {data?.avatar && (
+                <HStack className={cls.avatarWrapper} justify={'center'} max>
+                    <Avatar src={data?.avatar} alt="" />
+                </HStack>
+            )}
 
             <Input
                 value={data?.first}
@@ -130,7 +141,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 className={cls.input}
                 onChange={onChangeCity}
                 readonly={readonly}
-
             />
             <Input
                 value={data?.username}
@@ -138,7 +148,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 className={cls.input}
                 onChange={onChangeUsername}
                 readonly={readonly}
-
             />
             <Input
                 value={data?.avatar}

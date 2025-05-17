@@ -1,17 +1,17 @@
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
+
 import { ArticleSortField } from '../../entities/Article/model/consts/articleConsts';
 
 import { ArticleSortSelector } from './ArticleSortSelector';
 
 import { SortOrder } from '@/shared/types/sort';
 
-
 const meta = {
     title: 'entities/ArticleSortSelector',
     component: ArticleSortSelector,
-    decorators: []
+    decorators: [],
 } satisfies Meta<typeof ArticleSortSelector>;
 
 export default meta;
@@ -23,6 +23,5 @@ export const Normal: Story = {
         order: 'asc' as SortOrder,
         onChangeOrder: action('onChangeOrder'),
         onChangeSortField: action('onChangeSortField'),
-    }
+    },
 };
-

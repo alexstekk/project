@@ -7,6 +7,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
+
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -20,13 +21,7 @@ interface ModalProps {
 const animationDelay = 300;
 
 export const Modal = (props: ModalProps) => {
-    const {
-        className,
-        children,
-        isOpen,
-        onClose,
-        lazy,
-    } = props;
+    const { className, children, isOpen, onClose, lazy } = props;
 
     const { theme } = useTheme();
 
@@ -43,17 +38,17 @@ export const Modal = (props: ModalProps) => {
     return (
         <Portal>
             <div
-                className={classNames(cls.modal, {
-                    [cls.opened]: isOpen,
-                    [cls.isClosing]: isClosing
-                }, [theme, className])}
+                className={classNames(
+                    cls.modal,
+                    {
+                        [cls.opened]: isOpen,
+                        [cls.isClosing]: isClosing,
+                    },
+                    [theme, className],
+                )}
             >
-                <Overlay onClick={closeHandler}/>
-                <div
-                    className={cls.content}
-                >
-                    {children}
-                </div>
+                <Overlay onClick={closeHandler} />
+                <div className={cls.content}>{children}</div>
             </div>
         </Portal>
     );

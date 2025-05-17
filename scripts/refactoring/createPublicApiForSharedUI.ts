@@ -1,5 +1,5 @@
-import {Project} from 'ts-morph';
 import path from 'path';
+import { Project } from 'ts-morph';
 
 type ExportedNode = Array<string | undefined>;
 
@@ -22,7 +22,14 @@ const slicePattern = 'ui';
 const typeExportDeclarations = ['InterfaceDeclaration', 'TypeAliasDeclaration'];
 
 // получаем путь до папки ui в shared-слое
-const sharedUiPath = path.resolve(__dirname, '..', '..', 'src', layerPattern, slicePattern);
+const sharedUiPath = path.resolve(
+    __dirname,
+    '..',
+    '..',
+    'src',
+    layerPattern,
+    slicePattern,
+);
 const sharedUiDir = project.getDirectory(sharedUiPath);
 // получаем пути до попок с ui-компонентами в shared-слое
 const componentsDirs = sharedUiDir?.getDirectories();
@@ -40,7 +47,8 @@ componentsDirs?.forEach((directory) => {
             '!**/*.test.tsx',
         ]);
         // ВАЖНО: в папке должен быть только 1 файл компонента
-        const componentFilename = filesInFolder[0].getBaseNameWithoutExtension();
+        const componentFilename =
+            filesInFolder[0].getBaseNameWithoutExtension();
 
         // получаем все декларации экспорта (export ...)
         const exportedDeclarations = filesInFolder[0].getExportedDeclarations();
@@ -54,7 +62,8 @@ componentsDirs?.forEach((directory) => {
         for (const [name, declarations] of exportedDeclarations) {
             declarations.map((d) => {
                 const declarationName = d.getKindName();
-                const isTypeOrInterface = typeExportDeclarations.includes(declarationName);
+                const isTypeOrInterface =
+                    typeExportDeclarations.includes(declarationName);
 
                 if (isTypeOrInterface) {
                     exportedNodes.typedNodes.push(name);
@@ -66,18 +75,26 @@ componentsDirs?.forEach((directory) => {
 
         let resultSourceCode = '';
 
-        const exportedVarsWithoutTypesStr = exportedNodes.notTypedNodes.join(', ');
+        const exportedVarsWithoutTypesStr =
+            exportedNodes.notTypedNodes.join(', ');
         const exportWithoutTypes = `export { ${exportedVarsWithoutTypesStr} } from './${componentFilename}';`;
         resultSourceCode += exportWithoutTypes;
 
         if (exportedNodes.typedNodes.length !== 0) {
-            const exportedVarsWithTypesStr = exportedNodes.typedNodes.join(', ');
+            const exportedVarsWithTypesStr =
+                exportedNodes.typedNodes.join(', ');
             const exportWithTypes = `\r\nexport type { ${exportedVarsWithTypesStr} } from './${componentFilename}';`;
             resultSourceCode += exportWithTypes;
         }
 
-        const file = directory.createSourceFile(indexFilePath, resultSourceCode, {overwrite: true});
-        file.save().then(() => console.log(`"index.ts" created for ${componentFolderName}`));
+        const file = directory.createSourceFile(
+            indexFilePath,
+            resultSourceCode,
+            { overwrite: true },
+        );
+        file.save().then(() =>
+            console.log(`"index.ts" created for ${componentFolderName}`),
+        );
     }
 });
 
@@ -94,7 +111,10 @@ files.forEach((sourceFile) => {
         const isUiSlice = segments?.[1] === slicePattern;
 
         if (isAbsolute(valueWithoutAlias) && isSharedLayer && isUiSlice) {
-            const newValidImport = valueWithoutAlias.split('/').slice(0, 3).join('/');
+            const newValidImport = valueWithoutAlias
+                .split('/')
+                .slice(0, 3)
+                .join('/');
             importDeclaration.setModuleSpecifier(`@/${newValidImport}`);
         }
     });
@@ -104,6 +124,13 @@ files.forEach((sourceFile) => {
 project.save().then(() => console.log('All is done!'));
 
 function isAbsolute(path: string) {
-    const layers = ['app', 'entities', 'features', 'pages', 'shared', 'widgets'];
+    const layers = [
+        'app',
+        'entities',
+        'features',
+        'pages',
+        'shared',
+        'widgets',
+    ];
     return layers.some((layer) => path.startsWith(layer));
 }

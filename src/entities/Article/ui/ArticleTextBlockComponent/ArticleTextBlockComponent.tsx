@@ -7,34 +7,30 @@ import { Text } from '@/shared/ui/Text';
 
 import cls from './ArticleTextBlockComponent.module.scss';
 
-
 interface articleTextBlockComponentProps {
     className?: string;
     block: ArticleTextBlock;
 }
 
-export const ArticleTextBlockComponent = memo((props: articleTextBlockComponentProps) => {
-    const {
-        className,
-        block,
-    } = props;
+export const ArticleTextBlockComponent = memo(
+    (props: articleTextBlockComponentProps) => {
+        const { className, block } = props;
 
-    // const { t } = useTranslation();
+        // const { t } = useTranslation();
 
-    return (
-        <div className={classNames(cls.articleTextBlockComponent, {}, [className])}>
-            {block.title && (
-                <Text title={block.title} className={cls.title}/>
-            )}
-            {
-                block.paragraphs.map((p, i) => (
-                    <Text
-                        key={i}
-                        text={p}
-                        className={cls.paragraph}
-                    />
-                ))
-            }
-        </div>
-    );
-});
+        return (
+            <div
+                className={classNames(cls.articleTextBlockComponent, {}, [
+                    className,
+                ])}
+            >
+                {block.title && (
+                    <Text title={block.title} className={cls.title} />
+                )}
+                {block.paragraphs.map((p, i) => (
+                    <Text key={i} text={p} className={cls.paragraph} />
+                ))}
+            </div>
+        );
+    },
+);

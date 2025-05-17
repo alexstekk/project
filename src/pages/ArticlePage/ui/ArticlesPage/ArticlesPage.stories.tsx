@@ -8,13 +8,12 @@ import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecora
 const meta = {
     title: 'pages/ArticlesPage',
     component: ArticlePage,
-    decorators: [StoreDecorator({}),]
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof ArticlePage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
-    args: {}
+    args: {},
 };
-

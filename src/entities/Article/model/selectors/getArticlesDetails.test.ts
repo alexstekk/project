@@ -1,20 +1,24 @@
-import { getArticlesDetailsData, getArticlesDetailsError, getArticlesDetailsIsLoading } from './getArticlesDetails';
+import {
+    getArticlesDetailsData,
+    getArticlesDetailsError,
+    getArticlesDetailsIsLoading,
+} from './getArticlesDetails';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
 
+
+
 describe('getArticlesDetails', () => {
-
     test('Should return data', () => {
-
         const data = {
             id: '1',
-            title: 'subtitle'
+            title: 'subtitle',
         };
 
         const state: DeepPartial<StateSchema> = {
             articleDetails: {
                 data,
-            }
+            },
         };
         expect(getArticlesDetailsData(state as StateSchema)).toEqual(data);
     });
@@ -27,29 +31,32 @@ describe('getArticlesDetails', () => {
     test('Should return error', () => {
         const state: DeepPartial<StateSchema> = {
             articleDetails: {
-                error: 'error'
-            }
+                error: 'error',
+            },
         };
         expect(getArticlesDetailsError(state as StateSchema)).toEqual('error');
     });
 
     test('Should return undefined', () => {
         const state: DeepPartial<StateSchema> = {};
-        expect(getArticlesDetailsError(state as StateSchema)).toEqual(undefined);
+        expect(getArticlesDetailsError(state as StateSchema)).toEqual(
+            undefined,
+        );
     });
 
     test('Should return isLoading', () => {
         const state: DeepPartial<StateSchema> = {
             articleDetails: {
                 isLoading: true,
-            }
+            },
         };
         expect(getArticlesDetailsIsLoading(state as StateSchema)).toEqual(true);
     });
 
     test('Should return false', () => {
         const state: DeepPartial<StateSchema> = {};
-        expect(getArticlesDetailsIsLoading(state as StateSchema)).toEqual(false);
+        expect(getArticlesDetailsIsLoading(state as StateSchema)).toEqual(
+            false,
+        );
     });
-
 });

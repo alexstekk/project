@@ -10,24 +10,18 @@ const meta = {
     title: 'shared/Modal',
     component: Modal,
     args: {
-        children: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi blanditiis delectus, eveniet, ex ipsa ipsam laborum maxime nam, natus necessitatibus neque porro quis repellendus sapiente sit sunt tempore vero voluptatum?\n',
+        children:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi blanditiis delectus, eveniet, ex ipsa ipsam laborum maxime nam, natus necessitatibus neque porro quis repellendus sapiente sit sunt tempore vero voluptatum?\n',
         isOpen: true,
-    }
+    },
 } satisfies Meta<typeof Modal>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-    decorators: [ThemeDecorator(Theme.LIGHT)]
-
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 export const Dark: Story = {
-    decorators: [ThemeDecorator(Theme.DARK)]
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
-
-
-
-
-
-

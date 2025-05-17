@@ -5,7 +5,9 @@ import { ThemeContext } from '../../../../shared/lib/context/ThemeContext';
 import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localstorage';
 import { Theme } from '@/shared/const/theme';
 
-const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT;
+
+const defaultTheme =
+    (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
 
 interface ThemeProviderProps {
     children: ReactNode;
@@ -13,11 +15,7 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = (props: ThemeProviderProps) => {
-
-    const {
-        children,
-        initialTheme
-    } = props;
+    const { children, initialTheme } = props;
 
     const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
 

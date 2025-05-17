@@ -8,16 +8,12 @@ import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecora
 const meta = {
     title: 'pages/NotFoundPage',
     component: NotFoundPage,
-    decorators: [
-        StoreDecorator({}),
-    ]
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof NotFoundPage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
-    args: {}
+    args: {},
 };
-
-

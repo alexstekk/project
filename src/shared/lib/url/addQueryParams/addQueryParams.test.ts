@@ -3,7 +3,7 @@ import { getQueryParams } from './addQueryParams';
 describe('addQueryParams', () => {
     test('with one parameter', () => {
         const params = getQueryParams({
-            test: 'value'
+            test: 'value',
         });
         expect(params).toEqual('?test=value');
     });

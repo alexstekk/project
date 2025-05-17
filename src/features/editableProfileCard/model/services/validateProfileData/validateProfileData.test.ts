@@ -25,27 +25,27 @@ jest.mock('axios');
 jest.mocked(axios);
 
 describe('fetchProfileData', () => {
-
     test('Success', async () => {
         const result = validateProfileData(data);
         expect(result).toEqual([]);
     });
 
     test('Fail with name', async () => {
-        const result = validateProfileData({ ...data, first: '', lastname: '' });
+        const result = validateProfileData({
+            ...data,
+            first: '',
+            lastname: '',
+        });
         expect(result).toEqual([ValidateProfileError.INCORRECT_USER_DATA]);
-
     });
 
     test('Fail with age', async () => {
         const result = validateProfileData({ ...data, age: undefined });
         expect(result).toEqual([ValidateProfileError.INCORRECT_AGE]);
-
     });
 
     test('Fail with country', async () => {
         const result = validateProfileData({ ...data, country: undefined });
         expect(result).toEqual([ValidateProfileError.INCORRECT_COUNTRY]);
     });
-
 });

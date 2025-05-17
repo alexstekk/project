@@ -10,7 +10,6 @@ export interface SelectOptions<T extends string> {
     content: string;
 }
 
-
 interface SelectProps<T extends string> {
     className?: string;
     label?: string;
@@ -21,22 +20,11 @@ interface SelectProps<T extends string> {
 }
 
 export const Select = <T extends string>(props: SelectProps<T>) => {
-    const {
-        className,
-        label,
-        options,
-        value,
-        readonly,
-        onChange,
-    } = props;
+    const { className, label, options, value, readonly, onChange } = props;
 
     const optionList = useMemo(() => {
-        return options?.map(opt => (
-            <option
-                key={opt.value}
-                className={cls.option}
-                value={opt.value}
-            >
+        return options?.map((opt) => (
+            <option key={opt.value} className={cls.option} value={opt.value}>
                 {opt.content}
             </option>
         ));
@@ -46,17 +34,10 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
         onChange?.(e.target.value as T);
     };
 
-
     return (
         <div className={classNames(cls.wrapper, {}, [className])}>
             <Trans i18nKey={label}>
-                {label && (
-                    <span
-                        className={cls.label}
-                    >
-                {label}
-                </span>
-                )}
+                {label && <span className={cls.label}>{label}</span>}
                 <select
                     className={cls.select}
                     value={value}

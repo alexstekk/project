@@ -1,6 +1,12 @@
-import { EnhancedStore, Reducer, ReducersMapObject, UnknownAction } from '@reduxjs/toolkit';
+import {
+    EnhancedStore,
+    Reducer,
+    ReducersMapObject,
+    UnknownAction,
+} from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { ScrollSaveSchema } from 'src/shared/lib/ssscrollSave';
+
 
 import { ArticleDetailsSchema } from '@/entities/Article';
 import { CounterSchema } from '@/entities/Counter';
@@ -13,25 +19,25 @@ import { ArticlePageSchema } from '@/pages/ArticlePage';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
-    counter: CounterSchema,
-    user: UserSchema,
-    scrollSave: ScrollSaveSchema,
-    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
+    counter: CounterSchema;
+    user: UserSchema;
+    scrollSave: ScrollSaveSchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     // Асинхронные редюсеры
-    loginForm?: LoginSchema,
-    profile?: ProfileSchema,
-    articleDetails?: ArticleDetailsSchema,
+    loginForm?: LoginSchema;
+    profile?: ProfileSchema;
+    articleDetails?: ArticleDetailsSchema;
     // articleDetailsComments?: ArticleDetailsSchema,
     // articleDetailsRecommendations?: ArticleDetailsRecommendationsSchema,
-    addCommentForm?: AddCommentFormSchema,
-    articlePage?: ArticlePageSchema,
-    articleDetailsPage?: ArticleDetailsPageSchema,
+    addCommentForm?: AddCommentFormSchema;
+    articlePage?: ArticlePageSchema;
+    articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
 
-export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>
+export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
 
 export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<StateSchema>;
@@ -46,11 +52,11 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 }
 
 export interface ThunkExtraArg {
-    api: AxiosInstance,
+    api: AxiosInstance;
 }
 
 export interface ThunkConfig<T> {
-    rejectValue: T,
-    extra: ThunkExtraArg,
-    state: StateSchema,
+    rejectValue: T;
+    extra: ThunkExtraArg;
+    state: StateSchema;
 }

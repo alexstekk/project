@@ -6,10 +6,12 @@ export interface UseInfiniteScrollOptions {
     wrapperRef: RefObject<HTMLElement | null>;
 }
 
-export function useInfiniteScroll({ callback, wrapperRef, triggerRef }: UseInfiniteScrollOptions) {
-
+export function useInfiniteScroll({
+    callback,
+    wrapperRef,
+    triggerRef,
+}: UseInfiniteScrollOptions) {
     useEffect(() => {
-
         const wrapperElement = wrapperRef.current;
         const triggerElement = triggerRef.current;
 
@@ -26,7 +28,6 @@ export function useInfiniteScroll({ callback, wrapperRef, triggerRef }: UseInfin
                 if (entry.isIntersecting) {
                     callback();
                 }
-
             }, options);
             if (triggerElement) {
                 observer.observe(triggerElement);
@@ -36,11 +37,8 @@ export function useInfiniteScroll({ callback, wrapperRef, triggerRef }: UseInfin
         return () => {
             // debugger;
             if (observer && triggerElement) {
-
                 observer.unobserve(triggerElement);
             }
         };
-
-
     }, [callback, triggerRef, wrapperRef]);
 }

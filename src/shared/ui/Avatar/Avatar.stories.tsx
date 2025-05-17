@@ -4,7 +4,6 @@ import AvatarImg from '../../assets/tests/storybook.jpeg';
 
 import { Avatar } from './Avatar';
 
-
 const meta = {
     title: 'shared/Avatar',
     component: Avatar,
@@ -26,5 +25,3 @@ export const Small: Story = {
         size: 50,
     },
 };
-
-

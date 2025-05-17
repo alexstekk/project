@@ -9,7 +9,6 @@ import { Button, ButtonVariants } from '@/shared/ui/Button';
 
 import cls from './ArticleViewSelector.module.scss';
 
-
 interface articleViewSelectorProps {
     className?: string;
     view: ArticleView;
@@ -19,42 +18,37 @@ interface articleViewSelectorProps {
 const viewTypes = [
     {
         view: ArticleView.SMALL,
-        icon: <GridIcon/>,
+        icon: <GridIcon />,
     },
     {
         view: ArticleView.BIG,
-        icon: <ListIcon/>,
+        icon: <ListIcon />,
     },
 ];
 
 export const ArticleViewSelector = memo((props: articleViewSelectorProps) => {
-    const {
-        className,
-        view,
-        onViewClick,
-    } = props;
+    const { className, view, onViewClick } = props;
 
     const onClick = (view: ArticleView) => () => {
         onViewClick?.(view);
     };
 
-
     return (
         <div className={classNames(cls.articleViewSelector, {}, [className])}>
-            {
-                viewTypes.map(viewType => (
-                    <Button
-                        onClick={onClick?.(viewType.view)}
-                        key={viewType.view}
-                        variant={ButtonVariants.CLEAR}
-                        className={classNames('', { [cls.active]: viewType.view === view }, [className])}
-                    >
-                        {
-                            viewType.icon
-                        }
-                    </Button>
-                ))
-            }
+            {viewTypes.map((viewType) => (
+                <Button
+                    onClick={onClick?.(viewType.view)}
+                    key={viewType.view}
+                    variant={ButtonVariants.CLEAR}
+                    className={classNames(
+                        '',
+                        { [cls.active]: viewType.view === view },
+                        [className],
+                    )}
+                >
+                    {viewType.icon}
+                </Button>
+            ))}
         </div>
     );
 });

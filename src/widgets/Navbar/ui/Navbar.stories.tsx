@@ -10,7 +10,7 @@ import { Theme } from '@/shared/const/theme';
 const meta = {
     title: 'widget/Navbar',
     component: Navbar,
-    decorators: [StoreDecorator({})]
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof Navbar>;
 
 export default meta;
@@ -18,13 +18,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
     args: {},
-    decorators: [ThemeDecorator(Theme.LIGHT)]
-
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Dark: Story = {
     args: {},
-    decorators: [ThemeDecorator(Theme.DARK)]
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const withAuth: Story = {
@@ -34,13 +33,10 @@ export const withAuth: Story = {
         StoreDecorator({
             user: {
                 authData: {
-                    id: '1', username: 'admin'
-                }
+                    id: '1',
+                    username: 'admin',
+                },
             },
-        })
-    ]
+        }),
+    ],
 };
-
-
-
-

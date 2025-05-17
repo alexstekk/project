@@ -5,6 +5,7 @@ import { LoginFormLazy } from '../LoginForm/LoginForm.lazy';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Modal } from '@/shared/ui/Modal';
 
+
 interface LoginModalProps {
     className?: string;
     isOpen: boolean;
@@ -12,11 +13,7 @@ interface LoginModalProps {
 }
 
 export const LoginModal = (props: LoginModalProps) => {
-    const {
-        className,
-        isOpen,
-        onClose,
-    } = props;
+    const { className, isOpen, onClose } = props;
 
     return (
         <Modal
@@ -26,7 +23,7 @@ export const LoginModal = (props: LoginModalProps) => {
             lazy
         >
             <Suspense fallback={<div>Loading...</div>}>
-                <LoginFormLazy onSuccess={onClose}/>
+                <LoginFormLazy onSuccess={onClose} />
             </Suspense>
         </Modal>
     );

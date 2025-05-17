@@ -17,15 +17,11 @@ export const PageError = (props: PageErrorProps) => {
     const reloadPage = () => {
         location.reload();
     };
-    
+
     return (
         <div className={classNames(cls.pageError, {}, [className])}>
             <p>{t('Произошла непредвиденная ошибка')}</p>
-            <Button onClick={reloadPage}>
-                {
-                    t('Обновить страницу')
-                }
-            </Button>
+            <Button onClick={reloadPage}>{t('Обновить страницу')}</Button>
         </div>
-        );
+    );
 };

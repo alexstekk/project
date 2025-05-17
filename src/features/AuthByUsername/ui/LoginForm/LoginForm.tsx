@@ -9,11 +9,18 @@ import { loginByUsername } from '../../model/services/loginByUsername/loginByUse
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Button , ButtonVariants } from '@/shared/ui/Button';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    useAppDispatch,
+    useAppSelector,
+} from '@/shared/lib/hooks/redux/reduxTypedHooks';
+import { Button, ButtonVariants } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Text, TextVariants } from '@/shared/ui/Text';
+
 
 import cls from './LoginForm.module.scss';
 
@@ -27,10 +34,7 @@ const initialReducers: ReducersList = {
 };
 
 const LoginForm = memo((props: LoginFormProps) => {
-    const {
-        className,
-        onSuccess,
-    } = props;
+    const { className, onSuccess } = props;
 
     const username = useAppSelector(getLoginUsername);
     const password = useAppSelector(getLoginPassword);
@@ -40,28 +44,38 @@ const LoginForm = memo((props: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
-    const onChangeUsername = useCallback((value: string) => {
-        dispatch(loginActions.setUsername(value));
-    }, [dispatch]);
+    const onChangeUsername = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setUsername(value));
+        },
+        [dispatch],
+    );
 
-    const onChangePassword = useCallback((value: string) => {
-        dispatch(loginActions.setPassword(value));
-    }, [dispatch]);
+    const onChangePassword = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setPassword(value));
+        },
+        [dispatch],
+    );
 
     const onLoginClick = useCallback(async () => {
         const result = await dispatch(loginByUsername({ password, username }));
-        
+
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess?.();
         }
     }, [dispatch, onSuccess, password, username]);
 
-    return (<DynamicModuleLoader reducers={initialReducers}>
+    return (
+        <DynamicModuleLoader reducers={initialReducers}>
             <div className={classNames(cls.loginForm, {}, [className])}>
-                <Text title={t('Форма авторизации')}/>
-                {
-                    error && <Text text={t('Неправильное имя пользователя/пароль')} variant={TextVariants.ERROR}/>
-                }
+                <Text title={t('Форма авторизации')} />
+                {error && (
+                    <Text
+                        text={t('Неправильное имя пользователя/пароль')}
+                        variant={TextVariants.ERROR}
+                    />
+                )}
                 <Input
                     autoFocus
                     className={cls.input}

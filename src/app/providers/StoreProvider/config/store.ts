@@ -1,4 +1,4 @@
-import { configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
@@ -32,11 +32,12 @@ export function createReduxStore(
         reducer: reducerManager.reduce as Reducer<StateSchema>,
         devTools: __IS_DEV__,
         preloadedState: initialState,
-        middleware: getDefaultMiddleware => getDefaultMiddleware({
-            thunk: {
-                extraArgument: extraArg,
-            }
-        }).concat(rtkApi.middleware)
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                thunk: {
+                    extraArgument: extraArg,
+                },
+            }).concat(rtkApi.middleware),
     });
 
     // @ts-expect-error types
@@ -44,9 +45,3 @@ export function createReduxStore(
 
     return store;
 }
-
-
-
-
-
-

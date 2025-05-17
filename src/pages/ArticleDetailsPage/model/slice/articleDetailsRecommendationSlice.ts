@@ -1,32 +1,34 @@
-import { createEntityAdapter, createSlice, } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
-import {
-    fetchArticleRecommendations
-} from '../services/fetchArticleRecommendations/fetchArticleRecommendations';
+
+
+
+import { fetchArticleRecommendations } from '../services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema';
-import {
-    ArticleDetailsRecommendationsSchema
-} from '../types/ArticleDetailsRecommendationsSchema';
+import { ArticleDetailsRecommendationsSchema } from '../types/ArticleDetailsRecommendationsSchema';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Article } from '@/entities/Article';
 
-
-
 const recommendationsAdapter = createEntityAdapter<Article>({});
 
-export const getArticleRecommendations = recommendationsAdapter.getSelectors<StateSchema>(
-    (state) => (state.articleDetailsPage?.recommendations as ArticleDetailsRecommendationsSchema || recommendationsAdapter.getInitialState())
-);
+export const getArticleRecommendations =
+    recommendationsAdapter.getSelectors<StateSchema>(
+        (state) =>
+            (state.articleDetailsPage
+                ?.recommendations as ArticleDetailsRecommendationsSchema) ||
+            recommendationsAdapter.getInitialState(),
+    );
 
 const articleDetailsRecommendationSlice = createSlice({
     name: 'articleDetailsRecommendationSlice',
-    initialState: recommendationsAdapter.getInitialState<ArticleDetailsCommentsSchema>({
-        isLoading: false,
-        error: undefined,
-        entities: {},
-        ids: [],
-    }),
+    initialState:
+        recommendationsAdapter.getInitialState<ArticleDetailsCommentsSchema>({
+            isLoading: false,
+            error: undefined,
+            entities: {},
+            ids: [],
+        }),
     reducers: {},
     extraReducers: (builder) => {
         builder
@@ -45,4 +47,5 @@ const articleDetailsRecommendationSlice = createSlice({
     },
 });
 
-export const { reducer: articleDetailsRecommendationReducer } = articleDetailsRecommendationSlice;
+export const { reducer: articleDetailsRecommendationReducer } =
+    articleDetailsRecommendationSlice;

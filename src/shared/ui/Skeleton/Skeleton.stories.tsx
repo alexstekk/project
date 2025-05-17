@@ -9,7 +9,7 @@ import { Theme } from '@/shared/const/theme';
 const meta = {
     title: 'shared/Skeleton',
     component: Skeleton,
-    decorators: []
+    decorators: [],
 } satisfies Meta<typeof Skeleton>;
 
 export default meta;
@@ -19,7 +19,7 @@ export const Normal: Story = {
     args: {
         width: '100%',
         height: 200,
-    }
+    },
 };
 
 export const Circle: Story = {
@@ -27,7 +27,7 @@ export const Circle: Story = {
         border: '50%',
         height: 100,
         width: 100,
-    }
+    },
 };
 
 export const Dark: Story = {
@@ -36,8 +36,5 @@ export const Dark: Story = {
         height: 100,
         width: 100,
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK)
-    ]
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
-

@@ -12,26 +12,28 @@ interface AppLinkProps extends LinkProps {
     variant?: AppLinkVariant;
 }
 
+export const AppLink = forwardRef(
+    (props: AppLinkProps, ref: ForwardedRef<HTMLAnchorElement>) => {
+        const {
+            to,
+            className,
+            variant = 'primary',
+            children,
+            ...otherProps
+        } = props;
 
-export const AppLink = forwardRef((props: AppLinkProps, ref: ForwardedRef<HTMLAnchorElement>) => {
-
-    const {
-        to,
-        className,
-        variant = 'primary',
-        children,
-        ...otherProps
-    } = props;
-
-    return (
-        <Link
-            to={to}
-            ref={ref}
-            className={classNames(cls.appLink, {}, [className, cls[variant]])}
-            {...otherProps}
-        >
-            {children}
-        </Link>
-    );
-});
-
+        return (
+            <Link
+                to={to}
+                ref={ref}
+                className={classNames(cls.appLink, {}, [
+                    className,
+                    cls[variant],
+                ])}
+                {...otherProps}
+            >
+                {children}
+            </Link>
+        );
+    },
+);

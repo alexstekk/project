@@ -7,14 +7,13 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { VStack } from '@/shared/ui/Stack';
 
+
 interface notificationListProps {
     className?: string;
 }
 
 export const NotificationList = memo((props: notificationListProps) => {
-    const {
-        className,
-    } = props;
+    const { className } = props;
 
     const { data, isLoading } = useGetNotificationsQuery(null, {
         pollingInterval: 5000,
@@ -26,11 +25,10 @@ export const NotificationList = memo((props: notificationListProps) => {
                 className={classNames('', {}, [className])}
                 gap={'16'}
                 max={true}
-
             >
-                <Skeleton width={'100%'} border={'8px'} height={'80px'}/>
-                <Skeleton width={'100%'} border={'8px'} height={'80px'}/>
-                <Skeleton width={'100%'} border={'8px'} height={'80px'}/>
+                <Skeleton width={'100%'} border={'8px'} height={'80px'} />
+                <Skeleton width={'100%'} border={'8px'} height={'80px'} />
+                <Skeleton width={'100%'} border={'8px'} height={'80px'} />
             </VStack>
         );
     }
@@ -41,11 +39,8 @@ export const NotificationList = memo((props: notificationListProps) => {
             gap={'16'}
             max={true}
         >
-            {data?.map(item => (
-                <NotificationItem
-                    key={item.id}
-                    item={item}
-                />
+            {data?.map((item) => (
+                <NotificationItem key={item.id} item={item} />
             ))}
         </VStack>
     );

@@ -11,7 +11,6 @@ import avatar from '@/shared/assets/tests/storybook.jpeg';
 import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 
 
-
 const data: Profile = {
     first: 'Alex',
     lastname: 'Stekk',
@@ -31,7 +30,7 @@ describe('updateProfileData', () => {
         // @ts-expect-error here
 
         const thunk = new TestAsyncThunk(updateProfileData, {
-            profile: { form: data }
+            profile: { form: data },
         });
         thunk.api.put.mockReturnValue(Promise.resolve({ data }));
         // @ts-expect-error here
@@ -47,7 +46,7 @@ describe('updateProfileData', () => {
         // @ts-expect-error here
 
         const thunk = new TestAsyncThunk(updateProfileData, {
-            profile: { form: data }
+            profile: { form: data },
         });
         thunk.api.put.mockReturnValue(Promise.resolve({ status: 403 }));
         // @ts-expect-error here
@@ -55,16 +54,14 @@ describe('updateProfileData', () => {
         const result = await thunk.callThunk();
 
         expect(result.meta.requestStatus).toBe('rejected');
-        expect(result.payload).toEqual([
-            ValidateProfileError.SERVER_ERROR
-        ]);
+        expect(result.payload).toEqual([ValidateProfileError.SERVER_ERROR]);
     });
 
     test('server error', async () => {
         // @ts-expect-error here
 
         const thunk = new TestAsyncThunk(updateProfileData, {
-            profile: { form: { ...data, lastname: '' } }
+            profile: { form: { ...data, lastname: '' } },
         });
         // @ts-expect-error here
 
@@ -72,8 +69,7 @@ describe('updateProfileData', () => {
 
         expect(result.meta.requestStatus).toBe('rejected');
         expect(result.payload).toEqual([
-            ValidateProfileError.INCORRECT_USER_DATA
+            ValidateProfileError.INCORRECT_USER_DATA,
         ]);
     });
-
 });

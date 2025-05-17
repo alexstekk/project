@@ -6,12 +6,12 @@ const meta = {
     title: 'features/NotificationButton',
     component: NotificationButton,
     decorators: [],
-     args: {},
+    args: {},
 } satisfies Meta<typeof NotificationButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
-    args: {}
+    args: {},
 };

@@ -40,7 +40,6 @@ interface TextProps {
     'data-testid'?: string;
 }
 
-
 export const Text = memo((props: TextProps) => {
     const {
         className,
@@ -55,10 +54,28 @@ export const Text = memo((props: TextProps) => {
     const HeaderTag = mapSizeToHeaderTag[size];
 
     return (
-        <div className={classNames(cls.text, {}, [className, cls[variant], cls[align], cls[size]])}>
+        <div
+            className={classNames(cls.text, {}, [
+                className,
+                cls[variant],
+                cls[align],
+                cls[size],
+            ])}
+        >
             {/*<Trans i18nKey={[title, text]}>*/}
-            {title && <HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>{title}</HeaderTag>}
-            {text && <p className={cls.text} data-testid={`${dataTestId}.Text`}>{text}</p>}
+            {title && (
+                <HeaderTag
+                    className={cls.title}
+                    data-testid={`${dataTestId}.Header`}
+                >
+                    {title}
+                </HeaderTag>
+            )}
+            {text && (
+                <p className={cls.text} data-testid={`${dataTestId}.Text`}>
+                    {text}
+                </p>
+            )}
             {/*</Trans>*/}
         </div>
     );

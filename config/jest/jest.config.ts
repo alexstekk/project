@@ -2,18 +2,12 @@
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
  */
-
-import type {Config} from 'jest';
+import type { Config } from 'jest';
 
 const config: Config = {
+    modulePaths: ['<rootDir>src'],
 
-    'modulePaths': [
-        '<rootDir>src'
-    ],
-
-    setupFilesAfterEnv: [
-        '<rootDir>config/jest/setupTests.ts'
-    ],
+    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
 
     // All imported modules in your tests should be mocked automatically
     // automock: false,
@@ -77,19 +71,16 @@ const config: Config = {
 
     // A set of global variables that need to be available in all test environments
     globals: {
-        '__IS_DEV__': true,
-        '__API__': '',
-        '__PROJECT__': 'jest'
+        __IS_DEV__: true,
+        __API__: '',
+        __PROJECT__: 'jest',
     },
 
     // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
     // maxWorkers: "50%",
 
     // An array of directory names to be searched recursively up from the requiring module's location
-    moduleDirectories: [
-        'node_modules',
-        'src'
-    ],
+    moduleDirectories: ['node_modules', 'src'],
 
     // An array of file extensions your modules use
     moduleFileExtensions: [
@@ -100,7 +91,7 @@ const config: Config = {
         'ts',
         'tsx',
         'json',
-        'node'
+        'node',
     ],
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
@@ -129,14 +120,17 @@ const config: Config = {
     // Use this configuration option to add custom reporters to Jest
     // reporters: undefined,
 
-    "reporters": [
-        "default",
-        ["jest-html-reporters", {
-            "publicPath": "<rootDir>/reports/unit",
-            "filename": "report.html",
-            // "openReport": true,
-            inlineSource: true,
-        }]
+    reporters: [
+        'default',
+        [
+            'jest-html-reporters',
+            {
+                publicPath: '<rootDir>/reports/unit',
+                filename: 'report.html',
+                // "openReport": true,
+                inlineSource: true,
+            },
+        ],
     ],
 
     // Automatically reset mock state before every test
@@ -186,13 +180,11 @@ const config: Config = {
     // The glob patterns Jest uses to detect test files
     testMatch: [
         '**/__tests__/**/*.[jt]s?(x)',
-        '**/?(*.)+(spec|test).[tj]s?(x)'
+        '**/?(*.)+(spec|test).[tj]s?(x)',
     ],
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-    testPathIgnorePatterns: [
-        '\\\\node_modules\\\\'
-    ],
+    testPathIgnorePatterns: ['\\\\node_modules\\\\'],
 
     // The regexp pattern or array of patterns that Jest uses to detect test files
     // testRegex: [],

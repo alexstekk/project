@@ -7,15 +7,12 @@ import { Page } from '@/shared/ui/Page';
 
 import cls from './ArticleEditPage.module.scss';
 
-
 interface articleEditPageProps {
     className?: string;
 }
 
 const ArticleEditPage = (props: articleEditPageProps) => {
-    const {
-        className,
-    } = props;
+    const { className } = props;
 
     const { t } = useTranslation();
     const { id } = useParams<{ id: string }>();
@@ -23,13 +20,7 @@ const ArticleEditPage = (props: articleEditPageProps) => {
 
     return (
         <Page className={classNames(cls.articleEditPage, {}, [className])}>
-            {
-                isEdit ? (
-                    t('Редактирование статьи ') + id
-                ) : (
-                    t('Создание статьи')
-                )
-            }
+            {isEdit ? t('Редактирование статьи ') + id : t('Создание статьи')}
         </Page>
     );
 };

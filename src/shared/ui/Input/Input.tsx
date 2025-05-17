@@ -5,7 +5,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
+type HTMLInputProps = Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'value' | 'onChange' | 'readOnly'
+>;
 
 interface InputProps extends HTMLInputProps {
     className?: string;
@@ -31,11 +34,17 @@ export const Input = memo((props: InputProps) => {
     };
 
     return (
-        <div className={classNames(cls.inputWrapper, { [cls.readonly]: readonly }, [className])}>
+        <div
+            className={classNames(
+                cls.inputWrapper,
+                { [cls.readonly]: readonly },
+                [className],
+            )}
+        >
             <Trans i18nKey={'placeholder'}>
-                {placeholder && <div className={cls.placeholder}>
-                    {placeholder}
-                </div>}
+                {placeholder && (
+                    <div className={cls.placeholder}>{placeholder}</div>
+                )}
                 <input
                     autoFocus={autoFocus}
                     type={type}

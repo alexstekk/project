@@ -17,16 +17,18 @@ const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     articleDetailsPage: articleDetailsPageReducer,
 };
 
-export const StoreDecorator = (
-    state: DeepPartial<StateSchema>,
-    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>,
-) => (Story: FunctionComponent) => {
-
-    return (
-        <StoreProvider
-            initialState={state as StateSchema}
-            asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
-        >
-            <Story/>
-        </StoreProvider>);
-};
+export const StoreDecorator =
+    (
+        state: DeepPartial<StateSchema>,
+        asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>,
+    ) =>
+    (Story: FunctionComponent) => {
+        return (
+            <StoreProvider
+                initialState={state as StateSchema}
+                asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
+            >
+                <Story />
+            </StoreProvider>
+        );
+    };

@@ -15,7 +15,10 @@ export const ForbiddenPage = (props: NotFoundPageProps) => {
     const { t } = useTranslation();
 
     return (
-        <Page className={classNames(cls.notFoundPage, {}, [className])} data-testid={'ForbiddenPage'}>
+        <Page
+            className={classNames(cls.notFoundPage, {}, [className])}
+            data-testid={'ForbiddenPage'}
+        >
             {t('У вас нет доступа к этой странице')}
         </Page>
     );

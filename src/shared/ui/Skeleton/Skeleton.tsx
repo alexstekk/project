@@ -4,7 +4,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Skeleton.module.scss';
 
-
 interface skeletonProps {
     className?: string;
     height?: string | number;
@@ -13,12 +12,7 @@ interface skeletonProps {
 }
 
 export const Skeleton = memo((props: skeletonProps) => {
-    const {
-        className,
-        height,
-        width,
-        border,
-    } = props;
+    const { className, height, width, border } = props;
 
     const styles: CSSProperties = {
         width,
@@ -26,13 +20,10 @@ export const Skeleton = memo((props: skeletonProps) => {
         borderRadius: border,
     };
 
-
     return (
         <div
             className={classNames(cls.skeleton, {}, [className])}
             style={styles}
-        >
-
-        </div>
+        ></div>
     );
 });

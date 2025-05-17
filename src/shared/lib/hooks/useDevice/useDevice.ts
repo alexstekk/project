@@ -1,12 +1,12 @@
 // alternative to react-detect-device
-
 import { useEffect, useState } from 'react';
 
 export const useDevice = () => {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.matchMedia('(pointer:coarse)').matches);
+        const handleResize = () =>
+            setIsMobile(window.matchMedia('(pointer:coarse)').matches);
 
         handleResize();
         window.addEventListener('resize', handleResize);

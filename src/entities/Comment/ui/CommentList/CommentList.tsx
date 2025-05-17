@@ -7,8 +7,8 @@ import { CommentCard } from '../CommentCard/CommentCard';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
 
-import cls from './CommentList.module.scss';
 
+import cls from './CommentList.module.scss';
 
 interface commentListProps {
     className?: string;
@@ -17,42 +17,34 @@ interface commentListProps {
 }
 
 export const CommentList = memo((props: commentListProps) => {
-    const {
-        className,
-        comments = [],
-        isLoading,
-    } = props;
+    const { className, comments = [], isLoading } = props;
 
     const { t } = useTranslation();
 
     if (isLoading) {
         return (
             <div className={classNames(cls.commentList, {}, [className])}>
-                <CommentCard isLoading={true}/>
-                <CommentCard isLoading={true}/>
-                <CommentCard isLoading={true}/>
+                <CommentCard isLoading={true} />
+                <CommentCard isLoading={true} />
+                <CommentCard isLoading={true} />
             </div>
         );
     }
 
     return (
         <div className={classNames(cls.commentList, {}, [className])}>
-            {
-                comments?.length > 0 ? (
-                    comments.map((comment) => (
-                        <
-                            CommentCard
-                            className={cls.comment}
-                            key={comment.id}
-                            comment={comment}
-                            isLoading={isLoading}
-                        />))
-                ) : (
-                    <Text
-                        title={t('Комментарии отсутствуют')}
+            {comments?.length > 0 ? (
+                comments.map((comment) => (
+                    <CommentCard
+                        className={cls.comment}
+                        key={comment.id}
+                        comment={comment}
+                        isLoading={isLoading}
                     />
-                )
-            }
+                ))
+            ) : (
+                <Text title={t('Комментарии отсутствуют')} />
+            )}
         </div>
     );
 });

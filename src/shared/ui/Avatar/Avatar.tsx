@@ -6,8 +6,8 @@ import { Skeleton } from '../Skeleton';
 import UserIcon from '@/shared/assets/icons/solar--user-outline.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-import cls from './Avatar.module.scss';
 
+import cls from './Avatar.module.scss';
 
 interface AvatarProps {
     className?: string;
@@ -17,12 +17,7 @@ interface AvatarProps {
 }
 
 export const Avatar = (props: AvatarProps) => {
-    const {
-        className,
-        src,
-        size = 100,
-        alt,
-    } = props;
+    const { className, src, size = 100, alt } = props;
 
     const styles = useMemo<CSSProperties>(() => {
         return {
@@ -31,8 +26,8 @@ export const Avatar = (props: AvatarProps) => {
         };
     }, [size]);
 
-    const fallback = <Skeleton width={size} height={size} border={'50%'}/>;
-    const errorFallback = <UserIcon/>;
+    const fallback = <Skeleton width={size} height={size} border={'50%'} />;
+    const errorFallback = <UserIcon />;
 
     return (
         <AppImage

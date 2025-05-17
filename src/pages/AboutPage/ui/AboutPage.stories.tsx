@@ -10,21 +10,18 @@ import { Theme } from '@/shared/const/theme';
 const meta = {
     title: 'pages/AdminPanelPage',
     component: AboutPage,
-    decorators: [
-        StoreDecorator({}),
-    ]
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof AboutPage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
-    args: {}
+    args: {},
 };
 Light.decorators = [ThemeDecorator(Theme.LIGHT)];
 
 export const Dark: Story = {
-    args: {}
+    args: {},
 };
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
-

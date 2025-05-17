@@ -5,7 +5,7 @@ import { User } from '@/entities/User';
 
 export interface ArticleBlockBase {
     id: string;
-    type: ArticleBlockType,
+    type: ArticleBlockType;
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
@@ -25,18 +25,19 @@ export interface ArticleTextBlock extends ArticleBlockBase {
     paragraphs: string[];
 }
 
-export type ArticleBlock = ArticleTextBlock | ArticleImageBlock | ArticleCodeBlock;
-
+export type ArticleBlock =
+    | ArticleTextBlock
+    | ArticleImageBlock
+    | ArticleCodeBlock;
 
 export interface Article {
     id: string;
     title: string;
     subtitle: string;
     img: string;
-    views: number,
+    views: number;
     createdAt: string;
     type: ArticleType[];
     blocks: ArticleBlock[];
     user: User;
 }
-

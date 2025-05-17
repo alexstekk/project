@@ -26,16 +26,17 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
         setIsOpen(false);
     }, []);
 
-    const trigger = (
-        <BellIcon/>
-    );
+    const trigger = <BellIcon />;
 
     return (
         <div>
             <BrowserView renderWithFragment>
-                <PopoverComp trigger={trigger} anchorDirection={'bottom end'}
-                             className={classNames('', {}, [className])}>
-                    <NotificationList/>
+                <PopoverComp
+                    trigger={trigger}
+                    anchorDirection={'bottom end'}
+                    className={classNames('', {}, [className])}
+                >
+                    <NotificationList />
                 </PopoverComp>
             </BrowserView>
             <MobileView renderWithFragment>
@@ -47,7 +48,7 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
                 </Button>
                 <AnimationProvider>
                     <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                        <NotificationList/>
+                        <NotificationList />
                     </Drawer>
                 </AnimationProvider>
             </MobileView>

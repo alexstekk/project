@@ -12,7 +12,7 @@ const meta = {
     args: {
         to: '/',
         children: 'Link to',
-    }
+    },
 } satisfies Meta<typeof AppLink>;
 
 export default meta;
@@ -20,30 +20,26 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
     args: {
-        variant: 'primary'
-    }
+        variant: 'primary',
+    },
 };
 
 export const Inverted: Story = {
     args: {
-        variant: 'inverted'
-    }
+        variant: 'inverted',
+    },
 };
 
 export const PrimaryDark: Story = {
     args: {
-        variant: 'primary'
-    }
+        variant: 'primary',
+    },
 };
 PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const InvertedDark: Story = {
     args: {
-        variant: 'inverted'
-    }
+        variant: 'inverted',
+    },
 };
 InvertedDark.decorators = [ThemeDecorator(Theme.DARK)];
-
-
-
-

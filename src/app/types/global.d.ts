@@ -20,8 +20,8 @@ declare const __PROJECT__: 'storybook' | 'frontend' | 'jest';
 
 type DeepPartial<T> = T extends object
     ? {
-        [P in keyof T]?: DeepPartial<T[P]>
-    }
+          [P in keyof T]?: DeepPartial<T[P]>;
+      }
     : T;
 
 // eslint-disable-next-line

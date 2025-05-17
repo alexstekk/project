@@ -6,7 +6,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Overlay.module.scss';
 
-
 type StyleAttr = Omit<CSSProperties, 'opacity'>;
 
 interface StyleAttrForSpringLib extends StyleAttr {
@@ -21,11 +20,7 @@ interface overlayProps {
 }
 
 export const Overlay = memo((props: overlayProps) => {
-    const {
-        className,
-        onClick,
-        style,
-    } = props;
+    const { className, onClick, style } = props;
 
     return (
         <a.div

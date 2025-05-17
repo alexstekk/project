@@ -5,6 +5,7 @@ import { fetchProfileData } from './fetchProfileData';
 import avatar from '@/shared/assets/tests/storybook.jpeg';
 import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 
+
 const data = {
     first: 'Alex',
     lastname: 'Stekk',
@@ -17,9 +18,7 @@ const data = {
 jest.mock('axios');
 jest.mocked(axios);
 describe('fetchProfileData', () => {
-
     test('Fulfilled', async () => {
-
         const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.api.get.mockReturnValue(Promise.resolve({ data }));
         const result = await thunk.callThunk('1');
@@ -35,7 +34,5 @@ describe('fetchProfileData', () => {
         const result = await thunk.callThunk('1');
 
         expect(result.meta.requestStatus).toBe('rejected');
-
     });
-
 });

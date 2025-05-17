@@ -5,11 +5,10 @@ import { ArticleType } from '../../entities/Article/model/consts/articleConsts';
 
 import { ArticleTypeTabs } from './ArticleTypeTabs';
 
-
 const meta = {
     title: 'entities/ArticleTypeTabs',
     component: ArticleTypeTabs,
-    decorators: []
+    decorators: [],
 } satisfies Meta<typeof ArticleTypeTabs>;
 
 export default meta;
@@ -19,6 +18,5 @@ export const Normal: Story = {
     args: {
         value: ArticleType.ALL,
         onChangeType: action('onChangeType'),
-    }
+    },
 };
-

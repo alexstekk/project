@@ -8,30 +8,33 @@ import { Text } from '@/shared/ui/Text';
 
 import cls from './NotificationItem.module.scss';
 
-
 interface notificationItemProps {
     className?: string;
     item: Notification;
 }
 
 export const NotificationItem = memo((props: notificationItemProps) => {
-    const {
-        className,
-        item,
-    } = props;
+    const { className, item } = props;
 
     const content = (
         <Card
             className={classNames(cls.notificationItem, {}, [className])}
             variant={CardVariants.OUTLINE}
         >
-            <Text title={item.title} text={item.description}/>
+            <Text title={item.title} text={item.description} />
         </Card>
     );
 
     if (item.href) {
         return (
-            <a href={item.href} target={'_blank'} rel="noreferrer" className={cls.link}>{content}</a>
+            <a
+                href={item.href}
+                target={'_blank'}
+                rel="noreferrer"
+                className={cls.link}
+            >
+                {content}
+            </a>
         );
     }
 

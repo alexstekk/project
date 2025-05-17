@@ -21,30 +21,30 @@ const meta = {
                     city: 'Krasnodar',
                     username: 'admin',
                     avatar,
-                }
-            }
-        })
-    ]
+                },
+            },
+        }),
+    ],
 } satisfies Meta<typeof ProfilePage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-    args: {}
+    args: {},
 };
 
 export const Dark: Story = {
     args: {},
-    decorators: [ThemeDecorator(Theme.DARK)]
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const withError: Story = {
     args: {},
-    decorators: [ThemeDecorator(Theme.DARK)]
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const withLoading: Story = {
     args: {},
-    decorators: [ThemeDecorator(Theme.DARK)]
+    decorators: [ThemeDecorator(Theme.DARK)],
 };

@@ -3,15 +3,16 @@ import axios, { type AxiosStatic } from 'axios';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
 
-export type ActionCreatorType<Return, Arg, RejectedValue>
-    = (arg: Arg) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>;
+
+export type ActionCreatorType<Return, Arg, RejectedValue> = (
+    arg: Arg,
+) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>;
 
 jest.mock('axios');
 
 const mockedAxios = jest.mocked(axios);
 
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
-
     dispatch: Dispatch<Action>;
     getState: () => StateSchema;
     actionCreator: ActionCreatorType<Return, Arg, RejectedValue>;
@@ -34,13 +35,10 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
 
     async callThunk(arg: Arg) {
         const actionCreator = this.actionCreator(arg);
-        const result = await actionCreator(
-            this.dispatch,
-            this.getState,
-            {
-                api: this.api,
-                navigate: this.navigate,
-            });
+        const result = await actionCreator(this.dispatch, this.getState, {
+            api: this.api,
+            navigate: this.navigate,
+        });
 
         return result;
     }

@@ -8,9 +8,7 @@ import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecora
 const meta = {
     title: 'entities/NotificationList',
     component: NotificationList,
-    decorators: [
-        StoreDecorator({})
-    ],
+    decorators: [StoreDecorator({})],
     parameters: {
         mockData: [
             {
@@ -21,8 +19,8 @@ const meta = {
                     {
                         id: '1',
                         title: 'notification',
-                        description: 'description'
-                    }
+                        description: 'description',
+                    },
                 ],
             },
         ],
@@ -33,6 +31,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
-    args: {}
+    args: {},
 };
-

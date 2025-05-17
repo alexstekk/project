@@ -10,15 +10,17 @@ interface ErrorBoundaryState {
     hasError: boolean;
 }
 
-export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-
+export class ErrorBoundary extends Component<
+    ErrorBoundaryProps,
+    ErrorBoundaryState
+> {
     constructor(props: ErrorBoundaryProps) {
         super(props);
         this.state = { hasError: false };
     }
 
     static getDerivedStateFromError(_: Error) {
-         // Update state so the next render will show the fallback UI.
+        // Update state so the next render will show the fallback UI.
         return { hasError: true };
     }
 
@@ -32,14 +34,12 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     }
 
     render() {
-        const {
-            hasError
-        } = this.state;
+        const { hasError } = this.state;
 
         const { children } = this.props;
         if (hasError) {
             // You can render any custom fallback UI
-            return <PageError/>;
+            return <PageError />;
         }
 
         return children;

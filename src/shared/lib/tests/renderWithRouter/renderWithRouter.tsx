@@ -3,10 +3,5 @@ import { ReactNode } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
 export function renderWithRouter(component: ReactNode) {
-
-    return render(
-        <MemoryRouter initialEntries={[]}>
-            {component}
-        </MemoryRouter>
-    );
+    return render(<MemoryRouter initialEntries={[]}>{component}</MemoryRouter>);
 }

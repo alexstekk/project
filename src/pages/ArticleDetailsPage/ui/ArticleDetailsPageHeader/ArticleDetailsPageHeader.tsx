@@ -12,49 +12,41 @@ import { Button } from '@/shared/ui/Button';
 
 import cls from './ArticleDetailsPageHeader.module.scss';
 
-
 interface articleDetailsPageHeaderProps {
     className?: string;
 }
 
-export const ArticleDetailsPageHeader = memo((props: articleDetailsPageHeaderProps) => {
-    const {
-        className,
-    } = props;
+export const ArticleDetailsPageHeader = memo(
+    (props: articleDetailsPageHeaderProps) => {
+        const { className } = props;
 
-    const navigate = useNavigate();
-    const { t } = useTranslation();
+        const navigate = useNavigate();
+        const { t } = useTranslation();
 
-    const article = useAppSelector(getArticlesDetailsData);
-    const canEdit = useAppSelector(getCanEditArticle);
+        const article = useAppSelector(getArticlesDetailsData);
+        const canEdit = useAppSelector(getCanEditArticle);
 
-    const onBackToList = useCallback(() => {
-        navigate(getRouteArticles());
-    }, [navigate]);
+        const onBackToList = useCallback(() => {
+            navigate(getRouteArticles());
+        }, [navigate]);
 
-    const onEditArticle = useCallback(() => {
-        navigate(getRouteArticleEdit(article?.id || '1'));
-    }, [article?.id, navigate]);
+        const onEditArticle = useCallback(() => {
+            navigate(getRouteArticleEdit(article?.id || '1'));
+        }, [article?.id, navigate]);
 
-
-    return (
-        <div className={classNames(cls.articleDetailsPageHeader, {}, [className])}>
-            <Button
-                onClick={onBackToList}
+        return (
+            <div
+                className={classNames(cls.articleDetailsPageHeader, {}, [
+                    className,
+                ])}
             >
-                {t('Назад к списку')}
-            </Button>
-            {
-                canEdit && (
-                    <Button
-                        onClick={onEditArticle}
-                        className={cls.editBtn}
-                    >
+                <Button onClick={onBackToList}>{t('Назад к списку')}</Button>
+                {canEdit && (
+                    <Button onClick={onEditArticle} className={cls.editBtn}>
                         {t('Редактировать')}
                     </Button>
-                )
-            }
-
-        </div>
-    );
-});
+                )}
+            </div>
+        );
+    },
+);

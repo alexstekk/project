@@ -9,19 +9,18 @@ import { Theme } from '@/shared/const/theme';
 const meta = {
     title: 'widget/PageLoader',
     component: PageLoader,
-    decorators: []
+    decorators: [],
 } satisfies Meta<typeof PageLoader>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
-    args: {}
+    args: {},
 };
 Light.decorators = [ThemeDecorator(Theme.LIGHT)];
 
 export const Dark: Story = {
-    args: {}
+    args: {},
 };
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
-

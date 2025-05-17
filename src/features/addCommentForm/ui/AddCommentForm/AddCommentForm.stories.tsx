@@ -8,9 +8,7 @@ import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecora
 const meta = {
     title: 'features/AddCommentForm',
     component: AddCommentForm,
-    decorators: [
-        StoreDecorator({})
-    ]
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof AddCommentForm>;
 
 export default meta;
@@ -18,8 +16,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
     args: {
-        onSendComment: () => {
-        }
-    }
+        onSendComment: () => {},
+    },
 };
-

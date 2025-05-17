@@ -1,12 +1,12 @@
-import './Spinner.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
+import './Spinner.scss';
+
 interface SpinnerProps {
-    className?: string,
+    className?: string;
 }
 
 export const Spinner = (props: SpinnerProps) => {
-
     const { className } = props;
 
     return (

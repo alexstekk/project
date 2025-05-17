@@ -5,6 +5,6 @@ const DisableAnimationsContext = React.createContext(false);
 
 export const withDisabledAnimations = (Story: FunctionComponent) => (
     <DisableAnimationsContext.Provider value={isLokiRunning()}>
-        <Story/>
-    </DisableAnimationsContext.Provider>);
-
+        <Story />
+    </DisableAnimationsContext.Provider>
+);

@@ -1,10 +1,9 @@
 import { ReactNode, useMemo } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { getUserAuthData, UserRole, getUserRoles } from '@/entities/User';
+import { UserRole, getUserAuthData, getUserRoles } from '@/entities/User';
 import { getRouteForbidden, getRouteMain } from '@/shared/const/router';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-
 
 interface RequireAuthProps {
     children?: ReactNode;
@@ -12,7 +11,6 @@ interface RequireAuthProps {
 }
 
 export function RequireAuth({ children, roles }: RequireAuthProps) {
-
     const auth = useAppSelector(getUserAuthData);
     const location = useLocation();
     const userRoles = useAppSelector(getUserRoles);
@@ -22,19 +20,26 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
             return true;
         }
 
-        return roles.some(requredRole => {
+        return roles.some((requredRole) => {
             const hasRole = userRoles?.includes(requredRole);
             return hasRole;
         });
     }, [roles, userRoles]);
 
-
     if (!auth) {
-        return <Navigate to={getRouteMain()} state={{ from: location }} replace/>;
+        return (
+            <Navigate to={getRouteMain()} state={{ from: location }} replace />
+        );
     }
 
     if (!hasRequiredRoles) {
-        return <Navigate to={getRouteForbidden()} state={{ from: location }} replace/>;
+        return (
+            <Navigate
+                to={getRouteForbidden()}
+                state={{ from: location }}
+                replace
+            />
+        );
     }
 
     return children;

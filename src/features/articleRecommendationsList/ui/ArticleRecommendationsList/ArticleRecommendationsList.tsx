@@ -13,23 +13,27 @@ interface ArticleRecommendationsListProps {
     className?: string;
 }
 
-export const ArticleRecommendationsList = memo((props: ArticleRecommendationsListProps) => {
-    const { className } = props;
-    const { t } = useTranslation();
+export const ArticleRecommendationsList = memo(
+    (props: ArticleRecommendationsListProps) => {
+        const { className } = props;
+        const { t } = useTranslation();
 
-    const { isLoading, data: articles = [] } = useArticleRecommendationsList(3);
+        const { isLoading, data: articles = [] } =
+            useArticleRecommendationsList(3);
 
-    return (
-        <VStack gap={'8'} className={classNames('', {}, [className])} data-testid={'ArticleRecommendationsList'}>
-            <Text
-                title={t('Рекомендуем')}
-                align={TextAlign.CENTER}
-            />
-            <ArticleList
-                articles={articles}
-                isLoading={isLoading}
-                target={'_blank'}
-            />
-        </VStack>
-    );
-});
+        return (
+            <VStack
+                gap={'8'}
+                className={classNames('', {}, [className])}
+                data-testid={'ArticleRecommendationsList'}
+            >
+                <Text title={t('Рекомендуем')} align={TextAlign.CENTER} />
+                <ArticleList
+                    articles={articles}
+                    isLoading={isLoading}
+                    target={'_blank'}
+                />
+            </VStack>
+        );
+    },
+);

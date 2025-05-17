@@ -3,9 +3,7 @@ import { ValidateProfileError } from '../../consts/editableProfileCardConsts';
 import { Profile } from '@/entities/Profile';
 
 
-
 export const validateProfileData = (profile?: Profile) => {
-
     if (!profile) {
         return [ValidateProfileError.NO_DATA];
     }
@@ -27,5 +25,4 @@ export const validateProfileData = (profile?: Profile) => {
     }
 
     return errors;
-
 };

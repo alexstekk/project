@@ -3,10 +3,9 @@ import { getProfileData } from './getProfileData';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import avatar from '@/shared/assets/tests/storybook.jpeg';
 
+
 describe('getProfileData', () => {
-
     test('Should return state', () => {
-
         const data = {
             first: 'Alex',
             lastname: 'Stekk',
@@ -18,8 +17,8 @@ describe('getProfileData', () => {
 
         const state: DeepPartial<StateSchema> = {
             profile: {
-                data
-            }
+                data,
+            },
         };
         expect(getProfileData(state as StateSchema)).toEqual(data);
     });
