@@ -12,7 +12,7 @@ import importPlugin from 'eslint-plugin-import';
 
 
 export default defineConfig([
-    globalIgnores(['build', 'config', 'json-server', 'storybook-static', 'scripts', 'cypress']),
+    globalIgnores(['build', 'config', 'json-server', 'storybook-static', 'scripts']),
     tseslint.configs.recommended,
     pluginReact.configs.flat.recommended,
     importPlugin.flatConfigs.recommended,
@@ -43,7 +43,7 @@ export default defineConfig([
             'quotes': [2, 'single', {'avoidEscape': true}],
             'react/display-name': 'off',
             "no-unused-vars": 'off',
-            "@typescript-eslint/no-unused-vars": "warn",
+            "@typescript-eslint/no-unused-vars": "off",
             "noUnusedParameters": 'off',
             "no-undef": "off",
             "alexstekk/path-checker": ["error", {alias: '@'}],
@@ -93,7 +93,8 @@ export default defineConfig([
             ],
             "import/no-unresolved": 'off',
             'import/named': 'off',
-            '@typescript-eslint/no-explicit-any': 'warn'
+            '@typescript-eslint/no-explicit-any': 'warn',
+            '@typescript-eslint/no-namespace': 'off'
         },
 
 

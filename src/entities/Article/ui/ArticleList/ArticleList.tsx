@@ -12,8 +12,6 @@ import { Text } from '@/shared/ui/Text';
 import cls from './ArticleList.module.scss';
 
 
-
-
 interface articleListProps {
     className?: string;
     articles: Article[];
@@ -60,7 +58,7 @@ export const ArticleList = memo((props: articleListProps) => {
     }
 
     return (
-        <div className={classNames(cls.articleList, {}, [className, cls[view]])}>
+        <div data-testid={'ArticleList'} className={classNames(cls.articleList, {}, [className, cls[view]])}>
             {articles.length > 0 ? (articles.map(renderArticle)) : null}
             {isLoading && getSkeletons(view)}
         </div>

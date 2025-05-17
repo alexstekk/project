@@ -104,7 +104,7 @@ export const ArticleDetails = memo((props: articleDetailsProps) => {
     } else {
         content = (
             <>
-                <div className={cls.avatarWrapper}>
+                <div className={cls.avatarWrapper} data-testid={'ArticleDetails.Info'}>
                     <Avatar size={200} src={article?.img} className={cls.avatar}/>
                 </div>
                 <Text
@@ -113,6 +113,7 @@ export const ArticleDetails = memo((props: articleDetailsProps) => {
                     text={article?.subtitle}
                     size={TextSize.L}
                 />
+
                 <div className={cls.articleInfo}>
                     <EyeIcon/>
                     <Text text={String(article?.views)}/>
