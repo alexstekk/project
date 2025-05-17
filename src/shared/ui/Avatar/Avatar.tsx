@@ -1,6 +1,9 @@
 import { CSSProperties, useMemo } from 'react';
 
+import UserIcon from '@/shared/assets/icons/solar--user-outline.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 import cls from './Avatar.module.scss';
 
@@ -16,25 +19,28 @@ export const Avatar = (props: AvatarProps) => {
     const {
         className,
         src,
-        size,
+        size = 100,
         alt,
     } = props;
 
     const styles = useMemo<CSSProperties>(() => {
         return {
-            width: size || 100,
-            height: size || 100,
-
+            width: size,
+            height: size,
         };
     }, [size]);
 
+    const fallback = <Skeleton width={size} height={size} border={'50%'}/>;
+    const errorFallback = <UserIcon/>;
 
     return (
-        <img
+        <AppImage
             src={src}
             alt={alt}
             style={styles}
             className={classNames(cls.avatar, {}, [className])}
+            fallback={fallback}
+            errorFallback={errorFallback}
         />
     );
 };

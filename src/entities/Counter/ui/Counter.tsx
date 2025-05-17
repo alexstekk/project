@@ -41,8 +41,6 @@ export const Counter = () => {
                 decrement
             </Button> <Button
             onClick={onAddFive}
-            data-testid="decrement-btn"
-
         >
             +5
         </Button>
