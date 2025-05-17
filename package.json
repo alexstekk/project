@@ -126,6 +126,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.2",
+    "@loki/is-loki-running": "^0.35.0",
     "@react-spring/web": "^9.7.5",
     "@reduxjs/toolkit": "^2.6.1",
     "@use-gesture/react": "^10.3.1",

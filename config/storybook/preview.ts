@@ -6,6 +6,9 @@ import {RouterDecorator} from '../../src/shared/config/storybook/decorators/Rout
 import {SuspenceDecorator} from "../../src/shared/config/storybook/decorators/SuspenceDecorator/SuspenceDecorator";
 import {Theme} from '@/shared/const/theme';
 import {withThemeByClassName} from "@storybook/addon-themes";
+import {
+    withDisabledAnimations
+} from "../../src/shared/config/storybook/decorators/DisabledAnimationsDecorator/DisabledAnimationsDecorator";
 
 
 const preview: Preview = {
@@ -14,6 +17,7 @@ const preview: Preview = {
         // ThemeDecorator(Theme.LIGHT),
         RouterDecorator,
         SuspenceDecorator,
+        withDisabledAnimations,
         withThemeByClassName({
             themes: {
                 light: 'app ' + Theme.LIGHT,
