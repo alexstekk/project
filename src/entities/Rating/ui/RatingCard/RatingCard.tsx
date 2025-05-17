@@ -3,7 +3,7 @@ import { BrowserView, MobileView } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button , ButtonVariants } from '@/shared/ui/Button';
+import { Button, ButtonVariants } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Input } from '@/shared/ui/Input';
@@ -11,10 +11,6 @@ import { Modal } from '@/shared/ui/Modal';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { StarRating } from '@/shared/ui/StarRating';
 import { Text } from '@/shared/ui/Text';
-
-import cls from './RatingCard.module.scss';
-
-
 
 interface ratingCardProps {
     className?: string;
@@ -70,7 +66,7 @@ export const RatingCard = memo((props: ratingCardProps) => {
     );
 
     return (
-        <Card className={classNames(cls.ratingCard, {}, [className])}>
+        <Card className={classNames('', {}, [className])}>
             <VStack align={'center'} gap={'16'}>
                 <Text title={starsCount ? t('Спасибо за оценку') : title}/>
                 <StarRating selectedStars={starsCount} size={40} onSelect={onSelectedStars}/>
