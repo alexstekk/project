@@ -9,12 +9,9 @@ import { profileActions } from '../../model/slice/profileSlice';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { ButtonVariants , Button } from '@/shared/ui/Button';
+import { ButtonVariants, Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
-
-import cls from './EditableProfileCardHeader.module.scss';
-
 
 interface editableProfileCardHeaderProps {
     className?: string;
@@ -49,12 +46,11 @@ export const EditableProfileCardHeader = memo((props: editableProfileCardHeaderP
     return (
         <HStack className={classNames('', {}, [className])} justify={'between'} max>
             <Text title={t('Профиль')}/>
-            <div className={cls.buttons}>
+            <div>
                 {
                     canEdit && (
                         readonly ? (
                             <Button
-                                className={cls.editBtn}
                                 variant={ButtonVariants.OUTLINE}
                                 onClick={onEdit}
                                 data-testid={'EditableProfileCardHeader.EditButton'}
@@ -64,7 +60,6 @@ export const EditableProfileCardHeader = memo((props: editableProfileCardHeaderP
                         ) : (
                             <HStack gap={'8'}>
                                 <Button
-                                    className={cls.cancelBtn}
                                     variant={ButtonVariants.OUTLINE_RED}
                                     onClick={onCancelEdit}
                                     data-testid={'EditableProfileCardHeader.CancelButton'}
@@ -72,7 +67,6 @@ export const EditableProfileCardHeader = memo((props: editableProfileCardHeaderP
                                     {t('Отменить')}
                                 </Button>
                                 <Button
-                                    className={cls.saveBtn}
                                     variant={ButtonVariants.OUTLINE}
                                     onClick={onSave}
                                     data-testid={'EditableProfileCardHeader.SaveButton'}

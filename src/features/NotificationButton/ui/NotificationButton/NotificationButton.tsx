@@ -5,11 +5,9 @@ import { NotificationList } from '@/entities/Notification';
 import BellIcon from '@/shared/assets/icons/solar--bell-outline.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
-import { Button , ButtonVariants } from '@/shared/ui/Button';
+import { Button, ButtonVariants } from '@/shared/ui/Button';
 import { Drawer } from '@/shared/ui/Drawer';
 import { PopoverComp } from '@/shared/ui/Popover';
-
-import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
     className?: string;
@@ -36,7 +34,7 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
         <div>
             <BrowserView renderWithFragment>
                 <PopoverComp trigger={trigger} anchorDirection={'bottom end'}
-                             className={classNames(cls.NotificationButton, {}, [className])}>
+                             className={classNames('', {}, [className])}>
                     <NotificationList/>
                 </PopoverComp>
             </BrowserView>
