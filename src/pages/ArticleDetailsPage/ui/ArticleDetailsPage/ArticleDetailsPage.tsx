@@ -15,7 +15,8 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { getFeatureFlag } from '@/shared/lib/features';
+import { getFeatureFlag, toggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/Card';
 import { Page } from '@/shared/ui/Page';
 
 import cls from './ArticleDetailsPage.module.scss';
@@ -36,7 +37,6 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
 
     const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
-    const isCounterEnabled = getFeatureFlag('isCounterEnabled');
 
     if (!id && __PROJECT__ !== 'storybook')
         return (
@@ -47,6 +47,12 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
             </div>
         );
 
+    const articleRatingCard = toggleFeatures({
+        name: 'isArticleRatingEnabled',
+        on: () => <ArticleRating />,
+        off: () => <Card>{t('Оценка скоро появится')}</Card>,
+    });
+
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
             <Page
@@ -54,8 +60,7 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
             >
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id || '1'} />
-                {isArticleRatingEnabled && <Counter />}
-                {isCounterEnabled && <ArticleRating articleId={id} />}
+                {articleRatingCard}
                 <ArticleRecommendationsList />
                 <ArticleDetailsComments id={id || '1'} />
             </Page>
