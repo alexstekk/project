@@ -7,6 +7,7 @@ import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetails
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 import { ArticleDetails } from '@/entities/Article';
+import { Counter } from '@/entities/Counter';
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -14,8 +15,8 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { getFeatureFlag } from '@/shared/lib/features';
 import { Page } from '@/shared/ui/Page';
-
 
 import cls from './ArticleDetailsPage.module.scss';
 
@@ -34,6 +35,9 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
 
     const { id } = useParams<{ id: string }>();
 
+    const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
+    const isCounterEnabled = getFeatureFlag('isCounterEnabled');
+
     if (!id && __PROJECT__ !== 'storybook')
         return (
             <div
@@ -50,7 +54,8 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
             >
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id || '1'} />
-                <ArticleRating articleId={id} />
+                {isArticleRatingEnabled && <Counter />}
+                {isCounterEnabled && <ArticleRating articleId={id} />}
                 <ArticleRecommendationsList />
                 <ArticleDetailsComments id={id || '1'} />
             </Page>
