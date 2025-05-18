@@ -1,5 +1,6 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { ArticleSortField, ArticleType, ArticleView } from '@/entities/Article';
+import { buildSelector } from '@/shared/lib/store';
 
 export const getArticlesPageIsLoading = (state: StateSchema) =>
     state.articlePage?.isLoading;
@@ -23,3 +24,7 @@ export const getArticlesPageSearch = (state: StateSchema) =>
     state.articlePage?.search ?? '';
 export const getArticlesPageType = (state: StateSchema) =>
     state.articlePage?.type ?? ArticleType.IT;
+
+export const [useArticleItemById] = buildSelector(
+    (state, id: string) => state.articlePage?.entities[id],
+);
