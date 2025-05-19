@@ -70,6 +70,7 @@ export default defineConfig([
                 },
             ],
             '@typescript-eslint/ban-ts-comment': 'off',
+            'unused-imports/no-unused-imports': 'error',
             'import/order': [
                 'error',
                 {
