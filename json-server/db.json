@@ -951,7 +951,8 @@
       "jsonSettings": {
         "theme": "appDarkTheme",
         "isFirstVisit": true,
-        "settingsPageHasBeenOpen": false
+        "settingsPageHasBeenOpen": false,
+        "isArticlesPageWasOpened": true
       }
     },
     {

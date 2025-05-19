@@ -2,14 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Skeleton } from './Skeleton';
 
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
-
 
 const meta = {
     title: 'shared/Skeleton',
     component: Skeleton,
-    decorators: [],
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof Skeleton>;
 
 export default meta;

@@ -12,6 +12,7 @@ import { articlePageReducer } from '../../model/slice/articlePageSlice';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 
+import { ArticlePageGreeting } from '@/features/articlePageGreeting';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -81,6 +82,7 @@ const ArticlesPage = (props: articlePageProps) => {
                     <ArticlesPageFilters />
                     <ArticleInfiniteList />
                 </VStack>
+                <ArticlePageGreeting />
             </Page>
         </DynamicModuleLoader>
     );

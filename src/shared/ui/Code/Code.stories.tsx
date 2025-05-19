@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Code } from './Code';
 
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
-
 
 const meta = {
     title: 'shared/Code',
@@ -25,6 +25,7 @@ const meta = {
             'export default meta;\n' +
             'type Story = StoryObj<typeof meta>;',
     },
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof Code>;
 
 export default meta;

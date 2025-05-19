@@ -5,10 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { getCanEditArticle } from '../../model/selectors/getArticleData';
 
 import { getArticlesDetailsData } from '@/entities/Article';
-import { Counter } from '@/entities/Counter';
 import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { toggleFeatures } from '@/shared/lib/features';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { Button } from '@/shared/ui/Button';
 

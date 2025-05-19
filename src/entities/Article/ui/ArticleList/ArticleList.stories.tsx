@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-
 import { ArticleView } from '../../model/consts/articleConsts';
 import { Article } from '../../model/types/Article';
 
 import { ArticleList } from './ArticleList';
 
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
 
@@ -92,7 +92,7 @@ const articles = new Array(16).fill(0).map((item, index) => ({
 const meta = {
     title: 'entities/ArticleList',
     component: ArticleList,
-    decorators: [],
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof ArticleList>;
 
 export default meta;

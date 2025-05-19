@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { AppLink } from './AppLink';
 
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
-
 
 const meta = {
     title: 'shared/AppLink',
@@ -13,6 +13,7 @@ const meta = {
         to: '/',
         children: 'Link to',
     },
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof AppLink>;
 
 export default meta;

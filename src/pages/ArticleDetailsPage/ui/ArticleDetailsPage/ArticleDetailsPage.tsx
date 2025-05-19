@@ -7,7 +7,6 @@ import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetails
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 import { ArticleDetails } from '@/entities/Article';
-import { Counter } from '@/entities/Counter';
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -15,7 +14,7 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { getFeatureFlag, toggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/Card';
 import { Page } from '@/shared/ui/Page';
 
@@ -36,7 +35,7 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
 
     const { id } = useParams<{ id: string }>();
 
-    const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
+    // const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
 
     if (!id && __PROJECT__ !== 'storybook')
         return (
@@ -47,11 +46,11 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
             </div>
         );
 
-    const articleRatingCard = toggleFeatures({
-        name: 'isArticleRatingEnabled',
-        on: () => <ArticleRating />,
-        off: () => <Card>{t('Оценка скоро появится')}</Card>,
-    });
+    // const articleRatingCard = toggleFeatures({
+    //     name: 'isArticleRatingEnabled',
+    //     on: () => <ArticleRating />,
+    //     off: () => <Card>{t('Оценка скоро появится')}</Card>,
+    // });
 
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
@@ -60,7 +59,11 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
             >
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id || '1'} />
-                {articleRatingCard}
+                <ToggleFeatures
+                    feature={'isArticleRatingEnabled'}
+                    on={<ArticleRating />}
+                    off={<Card>{t('Оценка скоро появится')}</Card>}
+                />
                 <ArticleRecommendationsList />
                 <ArticleDetailsComments id={id || '1'} />
             </Page>
