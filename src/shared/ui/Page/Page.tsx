@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { toggleFeatures } from '@/shared/lib/features';
 import {
     useAppDispatch,
     useAppSelector,
@@ -60,7 +61,15 @@ export const Page = memo((props: pageProps) => {
         <section
             data-testid={props['data-testid'] ?? 'Page'}
             ref={wrapperRef}
-            className={classNames(cls.page, {}, [className])}
+            className={classNames(
+                toggleFeatures({
+                    name: 'isAppRedesigned',
+                    on: () => cls.pageRedesigned,
+                    off: () => cls.page,
+                }),
+                {},
+                [className],
+            )}
             onScroll={onScroll}
         >
             {children}

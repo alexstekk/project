@@ -7,6 +7,7 @@ import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Button, ButtonVariants } from '@/shared/ui/Button';
@@ -36,29 +37,57 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     if (authData) {
         return (
-            <header className={classNames(cls.navbar, {}, [className])}>
-                <Text
-                    title={'AlexStekk prod'}
-                    variant={TextVariants.INVERTED}
-                />
-                <div className={cls.links}>
-                    <AppLink to={getRouteArticleCreate()} variant={'inverted'}>
-                        {t('Создать статью')}
-                    </AppLink>
-                    <HStack gap={'16'} className={cls.actions} align={'center'}>
-                        <NotificationButton />
-                        <AvatarDropdown />
-                    </HStack>
+            <ToggleFeatures
+                feature={'isAppRedesigned'}
+                on={
+                    <header
+                        className={classNames(cls.navbarRedesigned, {}, [
+                            className,
+                        ])}
+                    >
+                        <HStack
+                            gap={'16'}
+                            className={cls.actions}
+                            align={'center'}
+                        >
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </header>
+                }
+                off={
+                    <header className={classNames(cls.navbar, {}, [className])}>
+                        <Text
+                            title={'AlexStekk prod'}
+                            variant={TextVariants.INVERTED}
+                        />
+                        <div className={cls.links}>
+                            <AppLink
+                                to={getRouteArticleCreate()}
+                                variant={'inverted'}
+                            >
+                                {t('Создать статью')}
+                            </AppLink>
+                            <HStack
+                                gap={'16'}
+                                className={cls.actions}
+                                align={'center'}
+                            >
+                                <NotificationButton />
+                                <AvatarDropdown />
+                            </HStack>
 
-                    {/*<Button*/}
-                    {/*    variant={ButtonVariants.CLEAR_INVERTED}*/}
-                    {/*    onClick={onLogout}*/}
-                    {/*>*/}
-                    {/*    {t('Выйти')}*/}
+                            {/*<Button*/}
+                            {/*    variant={ButtonVariants.CLEAR_INVERTED}*/}
+                            {/*    onClick={onLogout}*/}
+                            {/*>*/}
+                            {/*    {t('Выйти')}*/}
 
-                    {/*</Button>*/}
-                </div>
-            </header>
+                            {/*</Button>*/}
+                        </div>
+                    </header>
+                }
+            />
         );
     }
 
