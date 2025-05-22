@@ -1,11 +1,11 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+
 import { Country } from '../../model/types/country';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ListBox } from '@/shared/ui/ListBox';
-
+import { ListBox } from '@/shared/ui/deprecated/ListBox';
 
 interface CountrySelectProps {
     className?: string;

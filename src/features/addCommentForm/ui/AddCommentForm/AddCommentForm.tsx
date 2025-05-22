@@ -1,6 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+
 import {
     getAddCommentFormError,
     getAddCommentFormText,
@@ -19,10 +20,9 @@ import {
     useAppDispatch,
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Button } from '@/shared/ui/Button';
-import { ButtonVariants } from '@/shared/ui/Button/ui/Button';
-import { Input } from '@/shared/ui/Input/Input';
-
+import { Button } from '@/shared/ui/deprecated/Button';
+import { ButtonVariants } from '@/shared/ui/deprecated/Button/ui/Button';
+import { Input } from '@/shared/ui/deprecated/Input/Input';
 
 import cls from './AddCommentForm.module.scss';
 

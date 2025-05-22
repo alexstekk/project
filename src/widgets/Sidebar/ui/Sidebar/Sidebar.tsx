@@ -1,5 +1,6 @@
 import { memo, useMemo, useState } from 'react';
 
+
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 
@@ -8,9 +9,13 @@ import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { AppLogo } from '@/shared/ui/AppLogo';
-import { Button, ButtonSize, ButtonVariants } from '@/shared/ui/Button';
-import { VStack } from '@/shared/ui/Stack';
+import { AppLogo } from '@/shared/ui/deprecated/AppLogo';
+import {
+    Button,
+    ButtonSize,
+    ButtonVariants,
+} from '@/shared/ui/deprecated/Button';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 
 import cls from './Sidebar.module.scss';
 

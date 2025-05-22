@@ -1,6 +1,7 @@
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+
 import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { NotificationButton } from '@/features/NotificationButton';
@@ -9,10 +10,10 @@ import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { AppLink } from '@/shared/ui/AppLink';
-import { Button, ButtonVariants } from '@/shared/ui/Button';
-import { HStack } from '@/shared/ui/Stack';
-import { Text, TextVariants } from '@/shared/ui/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { Button, ButtonVariants } from '@/shared/ui/deprecated/Button';
+import { HStack } from '@/shared/ui/deprecated/Stack';
+import { Text, TextVariants } from '@/shared/ui/deprecated/Text';
 
 import cls from './Navbar.module.scss';
 

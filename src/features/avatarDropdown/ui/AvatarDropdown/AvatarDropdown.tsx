@@ -1,6 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+
 import {
     getUserAuthData,
     isUserAdmin,
@@ -12,8 +13,8 @@ import {
     useAppDispatch,
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Avatar } from '@/shared/ui/Avatar';
-import { Dropdown } from '@/shared/ui/Dropdown';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
+import { Dropdown } from '@/shared/ui/deprecated/Dropdown';
 
 interface avatarDropdownProps {
     className?: string;

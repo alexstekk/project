@@ -1,6 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
@@ -12,10 +13,9 @@ import {
     useAppDispatch,
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Button, ButtonVariants } from '@/shared/ui/Button';
-import { HStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text';
-
+import { Button, ButtonVariants } from '@/shared/ui/deprecated/Button';
+import { HStack } from '@/shared/ui/deprecated/Stack';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 interface editableProfileCardHeaderProps {
     className?: string;

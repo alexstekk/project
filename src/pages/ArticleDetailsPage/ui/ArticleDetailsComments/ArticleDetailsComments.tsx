@@ -1,6 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+
 import { getArticleCommentsIsLoading } from '../../model/selectors/getCommentsData';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
@@ -14,8 +15,7 @@ import {
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Text, TextAlign } from '@/shared/ui/Text';
-
+import { Text, TextAlign } from '@/shared/ui/deprecated/Text';
 
 interface articleDetailsCommentsProps {
     className?: string;

@@ -5,7 +5,7 @@ import { SidebarItemType } from '../../model/types/Sidebar';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { AppLink } from '@/shared/ui/AppLink';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
 
 import cls from './SidebarItem.module.scss';
 

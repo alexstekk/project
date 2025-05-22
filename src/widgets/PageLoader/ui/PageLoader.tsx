@@ -1,5 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Spinner } from '@/shared/ui/Spinner';
+import { Spinner } from '@/shared/ui/deprecated/Spinner';
+
 
 import cls from './PageLoader.module.scss';
 

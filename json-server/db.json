@@ -967,6 +967,10 @@
       "features": {
         "isArticleRatingEnabled": false,
         "isCounterEnabled": false
+      },
+      "jsonSettings": {
+        "isArticlesPageWasOpened": true,
+        "theme": "appLightTheme"
       }
     },
     {

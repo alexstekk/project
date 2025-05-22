@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+
 import { ArticleBlockType } from '../../model/consts/articleConsts';
 import {
     getArticlesDetailsData,
@@ -25,10 +26,14 @@ import {
     useAppDispatch,
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Avatar } from '@/shared/ui/Avatar';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { Text, TextAlign, TextSize, TextVariants } from '@/shared/ui/Text';
-
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import {
+    Text,
+    TextAlign,
+    TextSize,
+    TextVariants,
+} from '@/shared/ui/deprecated/Text';
 
 import cls from './ArticleDetails.module.scss';
 

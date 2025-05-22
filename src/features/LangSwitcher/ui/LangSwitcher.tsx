@@ -2,7 +2,8 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonVariants } from '@/shared/ui/Button';
+import { Button, ButtonVariants } from '@/shared/ui/deprecated/Button';
+
 
 import cls from './LangSwitcher.module.scss';
 

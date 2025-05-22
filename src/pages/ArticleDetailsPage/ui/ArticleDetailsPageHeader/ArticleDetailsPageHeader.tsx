@@ -2,13 +2,14 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+
 import { getCanEditArticle } from '../../model/selectors/getArticleData';
 
 import { getArticlesDetailsData } from '@/entities/Article';
 import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Button } from '@/shared/ui/Button';
+import { Button } from '@/shared/ui/deprecated/Button';
 
 import cls from './ArticleDetailsPageHeader.module.scss';
 

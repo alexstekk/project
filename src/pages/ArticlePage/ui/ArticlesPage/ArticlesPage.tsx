@@ -2,6 +2,7 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
+
 import {
     getArticlesPageError,
     useArticleItemById,
@@ -23,9 +24,9 @@ import {
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Page } from '@/shared/ui/Page';
-import { VStack } from '@/shared/ui/Stack';
-import { Text, TextVariants } from '@/shared/ui/Text';
+import { Page } from '@/shared/ui/deprecated/Page';
+import { VStack } from '@/shared/ui/deprecated/Stack';
+import { Text, TextVariants } from '@/shared/ui/deprecated/Text';
 
 import cls from './ArticlesPage.module.scss';
 

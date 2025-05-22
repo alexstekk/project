@@ -1,6 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+
 import { ValidateProfileError } from '../../model/consts/editableProfileCardConsts';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
@@ -24,9 +25,8 @@ import {
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { VStack } from '@/shared/ui/Stack';
-import { Text, TextVariants } from '@/shared/ui/Text';
-
+import { VStack } from '@/shared/ui/deprecated/Stack';
+import { Text, TextVariants } from '@/shared/ui/deprecated/Text';
 
 interface EditableProfileCardProps {
     className?: string;
