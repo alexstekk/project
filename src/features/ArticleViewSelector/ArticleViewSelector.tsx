@@ -1,12 +1,14 @@
 import { memo } from 'react';
 
-
 import { ArticleView } from '../../entities/Article/model/consts/articleConsts';
 
 import ListIcon from '@/shared/assets/icons/solar--list-outline.svg';
 import GridIcon from '@/shared/assets/icons/solar--widget-outline.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonVariants } from '@/shared/ui/deprecated/Button';
+import {
+    ButtonDeprecated,
+    ButtonVariants,
+} from '@/shared/ui/deprecated/Button';
 
 import cls from './ArticleViewSelector.module.scss';
 
@@ -37,7 +39,7 @@ export const ArticleViewSelector = memo((props: articleViewSelectorProps) => {
     return (
         <div className={classNames(cls.articleViewSelector, {}, [className])}>
             {viewTypes.map((viewType) => (
-                <Button
+                <ButtonDeprecated
                     onClick={onClick?.(viewType.view)}
                     key={viewType.view}
                     variant={ButtonVariants.CLEAR}
@@ -48,7 +50,7 @@ export const ArticleViewSelector = memo((props: articleViewSelectorProps) => {
                     )}
                 >
                     {viewType.icon}
-                </Button>
+                </ButtonDeprecated>
             ))}
         </div>
     );

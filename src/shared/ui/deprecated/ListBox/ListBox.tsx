@@ -6,7 +6,7 @@ import {
 } from '@headlessui/react';
 import React, { ReactNode } from 'react';
 
-import { Button } from '../Button';
+import { ButtonDeprecated } from '../Button';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
@@ -70,7 +70,9 @@ export function ListBox(props: ListBoxProps) {
                 as={'span'}
                 disabled={readonly}
             >
-                <Button disabled={readonly}>{value ?? defaultValue}</Button>
+                <ButtonDeprecated disabled={readonly}>
+                    {value ?? defaultValue}
+                </ButtonDeprecated>
             </ListboxButton>
             <ListboxOptions
                 anchor="bottom"

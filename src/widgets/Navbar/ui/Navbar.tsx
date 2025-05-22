@@ -1,7 +1,6 @@
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { NotificationButton } from '@/features/NotificationButton';
@@ -10,10 +9,13 @@ import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { AppLink } from '@/shared/ui/deprecated/AppLink';
-import { Button, ButtonVariants } from '@/shared/ui/deprecated/Button';
+import {
+    ButtonDeprecated,
+    ButtonVariants,
+} from '@/shared/ui/deprecated/Button';
 import { HStack } from '@/shared/ui/deprecated/Stack';
 import { Text, TextVariants } from '@/shared/ui/deprecated/Text';
+import { AppLink } from '@/shared/ui/redesigned/AppLink';
 
 import cls from './Navbar.module.scss';
 
@@ -95,12 +97,12 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     return (
         <header className={classNames(cls.navbar, {}, [className])}>
             <div className={cls.links}>
-                <Button
+                <ButtonDeprecated
                     variant={ButtonVariants.CLEAR_INVERTED}
                     onClick={onShowModal}
                 >
                     {t('Войти')}
-                </Button>
+                </ButtonDeprecated>
             </div>
             {isAuthModal && (
                 <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />

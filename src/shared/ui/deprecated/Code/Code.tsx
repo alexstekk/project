@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 
-import { Button } from '../Button';
+import { ButtonDeprecated } from '../Button';
 import { ButtonVariants } from '../Button/ui/Button';
 
 import CopyIcon from '@/shared/assets/icons/solar--copy-outline.svg';
@@ -26,13 +26,13 @@ export const Code = memo((props: codeProps) => {
 
     return (
         <pre className={classNames(cls.code, {}, [className])}>
-            <Button
+            <ButtonDeprecated
                 className={cls.copyBtn}
                 variant={ButtonVariants.CLEAR}
                 onClick={onCopy}
             >
                 <CopyIcon />
-            </Button>
+            </ButtonDeprecated>
             <code>{text}</code>
         </pre>
     );

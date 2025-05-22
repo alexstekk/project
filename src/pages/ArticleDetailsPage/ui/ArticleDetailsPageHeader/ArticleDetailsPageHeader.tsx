@@ -2,14 +2,13 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-
 import { getCanEditArticle } from '../../model/selectors/getArticleData';
 
 import { getArticlesDetailsData } from '@/entities/Article';
 import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Button } from '@/shared/ui/deprecated/Button';
+import { ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 
 import cls from './ArticleDetailsPageHeader.module.scss';
 
@@ -41,11 +40,16 @@ export const ArticleDetailsPageHeader = memo(
                     className,
                 ])}
             >
-                <Button onClick={onBackToList}>{t('Назад к списку')}</Button>
+                <ButtonDeprecated onClick={onBackToList}>
+                    {t('Назад к списку')}
+                </ButtonDeprecated>
                 {canEdit && (
-                    <Button onClick={onEditArticle} className={cls.editBtn}>
+                    <ButtonDeprecated
+                        onClick={onEditArticle}
+                        className={cls.editBtn}
+                    >
                         {t('Редактировать')}
-                    </Button>
+                    </ButtonDeprecated>
                 )}
             </div>
         );

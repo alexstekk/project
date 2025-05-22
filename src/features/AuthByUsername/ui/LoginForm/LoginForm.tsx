@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
@@ -18,7 +17,10 @@ import {
     useAppDispatch,
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Button, ButtonVariants } from '@/shared/ui/deprecated/Button';
+import {
+    ButtonDeprecated,
+    ButtonVariants,
+} from '@/shared/ui/deprecated/Button';
 import { Input } from '@/shared/ui/deprecated/Input';
 import { Text, TextVariants } from '@/shared/ui/deprecated/Text';
 
@@ -89,14 +91,14 @@ const LoginForm = memo((props: LoginFormProps) => {
                     onChange={onChangePassword}
                     value={password}
                 />
-                <Button
+                <ButtonDeprecated
                     variant={ButtonVariants.OUTLINE}
                     className={cls.loginBtn}
                     onClick={onLoginClick}
                     disabled={isLoading}
                 >
                     {t('Войти')}
-                </Button>
+                </ButtonDeprecated>
             </div>
         </DynamicModuleLoader>
     );

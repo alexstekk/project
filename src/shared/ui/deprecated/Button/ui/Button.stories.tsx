@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, ButtonSize, ButtonVariants } from './Button';
+import { ButtonDeprecated, ButtonSize, ButtonVariants } from './Button';
 
 const meta = {
     title: 'shared/Button',
-    component: Button,
+    component: ButtonDeprecated,
     decorators: [],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof ButtonDeprecated>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

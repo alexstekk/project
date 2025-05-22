@@ -1,8 +1,7 @@
-
 import { useCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 import { useCounter } from '../model/slice/counterSlice';
 
-import { Button } from '@/shared/ui/deprecated/Button';
+import { ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 
 export const Counter = () => {
     // const dispatch = useDispatch();
@@ -25,13 +24,13 @@ export const Counter = () => {
     return (
         <div>
             <h1 data-testid="value-title">value = {counterValue}</h1>
-            <Button onClick={onIncrement} data-testid="increment-btn">
+            <ButtonDeprecated onClick={onIncrement} data-testid="increment-btn">
                 increment
-            </Button>
-            <Button onClick={onDecrement} data-testid="decrement-btn">
+            </ButtonDeprecated>
+            <ButtonDeprecated onClick={onDecrement} data-testid="decrement-btn">
                 decrement
-            </Button>{' '}
-            <Button onClick={onAddFive}>+5</Button>
+            </ButtonDeprecated>{' '}
+            <ButtonDeprecated onClick={onAddFive}>+5</ButtonDeprecated>
         </div>
     );
 };

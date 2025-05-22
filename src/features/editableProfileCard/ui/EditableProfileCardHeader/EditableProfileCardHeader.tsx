@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
@@ -13,7 +12,10 @@ import {
     useAppDispatch,
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Button, ButtonVariants } from '@/shared/ui/deprecated/Button';
+import {
+    ButtonDeprecated,
+    ButtonVariants,
+} from '@/shared/ui/deprecated/Button';
 import { HStack } from '@/shared/ui/deprecated/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 
@@ -56,7 +58,7 @@ export const EditableProfileCardHeader = memo(
                 <div>
                     {canEdit &&
                         (readonly ? (
-                            <Button
+                            <ButtonDeprecated
                                 variant={ButtonVariants.OUTLINE}
                                 onClick={onEdit}
                                 data-testid={
@@ -64,10 +66,10 @@ export const EditableProfileCardHeader = memo(
                                 }
                             >
                                 {t('Редактировать')}
-                            </Button>
+                            </ButtonDeprecated>
                         ) : (
                             <HStack gap={'8'}>
-                                <Button
+                                <ButtonDeprecated
                                     variant={ButtonVariants.OUTLINE_RED}
                                     onClick={onCancelEdit}
                                     data-testid={
@@ -75,8 +77,8 @@ export const EditableProfileCardHeader = memo(
                                     }
                                 >
                                     {t('Отменить')}
-                                </Button>
-                                <Button
+                                </ButtonDeprecated>
+                                <ButtonDeprecated
                                     variant={ButtonVariants.OUTLINE}
                                     onClick={onSave}
                                     data-testid={
@@ -84,7 +86,7 @@ export const EditableProfileCardHeader = memo(
                                     }
                                 >
                                     {t('Сохранить ')}
-                                </Button>
+                                </ButtonDeprecated>
                             </HStack>
                         ))}
                 </div>

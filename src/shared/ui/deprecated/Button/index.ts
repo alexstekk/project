@@ -1,1 +1,1 @@
-export { Button, ButtonVariants, ButtonSize } from './ui/Button';
+export { ButtonDeprecated, ButtonVariants, ButtonSize } from './ui/Button';

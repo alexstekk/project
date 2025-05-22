@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 import {
     getAddCommentFormError,
     getAddCommentFormText,
@@ -20,7 +19,7 @@ import {
     useAppDispatch,
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Button } from '@/shared/ui/deprecated/Button';
+import { ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { ButtonVariants } from '@/shared/ui/deprecated/Button/ui/Button';
 import { Input } from '@/shared/ui/deprecated/Input/Input';
 
@@ -69,13 +68,13 @@ const AddCommentForm = memo((props: addCommentFormProps) => {
                     className={cls.input}
                     data-testid={'AddCommentForm.Input'}
                 />
-                <Button
+                <ButtonDeprecated
                     variant={ButtonVariants.OUTLINE}
                     onClick={onSendHandler}
                     data-testid={'AddCommentForm.Button'}
                 >
                     {t('Отправить')}
-                </Button>
+                </ButtonDeprecated>
             </div>
         </DynamicModuleLoader>
     );

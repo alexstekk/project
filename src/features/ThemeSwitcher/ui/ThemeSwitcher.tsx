@@ -1,14 +1,20 @@
 import { memo, useCallback } from 'react';
 
-
 import { saveJsonSettings } from '@/entities/User';
-import MoonIcon from '@/shared/assets/icons/solar--moon-bold.svg';
-import SunIcon from '@/shared/assets/icons/solar--sun-2-bold.svg';
+import MoonIconDeprecated from '@/shared/assets/icons/solar--moon-bold.svg';
+import SunIconDeprecated from '@/shared/assets/icons/solar--sun-2-bold.svg';
+import ThemeIcon from '@/shared/assets/icons/theme.svg';
 import { Theme } from '@/shared/const/theme';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { Button, ButtonVariants } from '@/shared/ui/deprecated/Button';
+import {
+    ButtonDeprecated,
+    ButtonVariants,
+} from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 import cls from './ThemeSwitcher.module.scss';
 
@@ -31,12 +37,34 @@ export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
     }, [dispatch, toggleTheme]);
 
     return (
-        <Button
-            variant={ButtonVariants.CLEAR}
-            onClick={onToggleHandler}
-            className={classNames(cls.themeSwitcher, {}, [className])}
-        >
-            {theme === Theme.LIGHT ? <SunIcon /> : <MoonIcon />}
-        </Button>
+        <ToggleFeatures
+            feature={'isAppRedesigned'}
+            on={
+                <Button
+                    variant="clear"
+                    onClick={onToggleHandler}
+                    className={classNames(cls.themeSwitcher, {}, [className])}
+                >
+                    <Icon
+                        Svg={<ThemeIcon height={32} width={32} />}
+                        height={32}
+                        width={32}
+                    />
+                </Button>
+            }
+            off={
+                <ButtonDeprecated
+                    variant={ButtonVariants.CLEAR}
+                    onClick={onToggleHandler}
+                    className={classNames(cls.themeSwitcher, {}, [className])}
+                >
+                    {theme === Theme.LIGHT ? (
+                        <SunIconDeprecated />
+                    ) : (
+                        <MoonIconDeprecated />
+                    )}
+                </ButtonDeprecated>
+            }
+        />
     );
 });

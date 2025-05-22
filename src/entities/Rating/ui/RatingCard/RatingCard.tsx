@@ -3,7 +3,10 @@ import { BrowserView, MobileView } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonVariants } from '@/shared/ui/deprecated/Button';
+import {
+    ButtonDeprecated,
+    ButtonVariants,
+} from '@/shared/ui/deprecated/Button';
 import { Card } from '@/shared/ui/deprecated/Card';
 import { Drawer } from '@/shared/ui/deprecated/Drawer';
 import { Input } from '@/shared/ui/deprecated/Input';
@@ -11,7 +14,6 @@ import { Modal } from '@/shared/ui/deprecated/Modal';
 import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
 import { StarRating } from '@/shared/ui/deprecated/StarRating';
 import { Text } from '@/shared/ui/deprecated/Text';
-
 
 interface ratingCardProps {
     className?: string;
@@ -93,20 +95,20 @@ export const RatingCard = memo((props: ratingCardProps) => {
                     <VStack gap={'32'}>
                         {modalContent}
                         <HStack gap={'8'} max justify={'end'}>
-                            <Button
+                            <ButtonDeprecated
                                 data-testid={'RatingCard.Close'}
                                 variant={ButtonVariants.OUTLINE_RED}
                                 onClick={handleCancel}
                             >
                                 {t('Закрыть')}
-                            </Button>
-                            <Button
+                            </ButtonDeprecated>
+                            <ButtonDeprecated
                                 data-testid={'RatingCard.Send'}
                                 variant={ButtonVariants.OUTLINE}
                                 onClick={handleAccept}
                             >
                                 {t('Отправить')}
-                            </Button>
+                            </ButtonDeprecated>
                         </HStack>
                     </VStack>
                 </Modal>
@@ -116,20 +118,20 @@ export const RatingCard = memo((props: ratingCardProps) => {
                     <VStack gap={'32'}>
                         {modalContent}
                         <VStack max gap={'8'}>
-                            <Button
+                            <ButtonDeprecated
                                 fullWidth
                                 variant={ButtonVariants.OUTLINE_RED}
                                 onClick={handleCancel}
                             >
                                 {t('Закрыть')}
-                            </Button>
-                            <Button
+                            </ButtonDeprecated>
+                            <ButtonDeprecated
                                 fullWidth
                                 variant={ButtonVariants.OUTLINE}
                                 onClick={handleAccept}
                             >
                                 {t('Отправить')}
-                            </Button>
+                            </ButtonDeprecated>
                         </VStack>
                     </VStack>
                 </Drawer>

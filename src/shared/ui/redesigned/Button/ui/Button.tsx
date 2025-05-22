@@ -4,20 +4,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Button.module.scss';
 
-export enum ButtonVariants {
-    CLEAR = 'clear',
-    CLEAR_INVERTED = 'clearInverted',
-    OUTLINE = 'outline',
-    OUTLINE_RED = 'outlineRed',
-    BACKGROUND = 'background',
-    BACKGROUND_INVERTED = 'backgroundInverted',
-}
+export type ButtonVariants = 'clear' | 'outline';
 
-export enum ButtonSize {
-    M = 'sizeM',
-    L = 'sizeL',
-    XL = 'sizeXL',
-}
+export type ButtonSize = 'sizeM' | 'sizeL' | 'sizeXL';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
@@ -43,17 +32,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     fullWidth?: boolean;
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
-export const ButtonDeprecated = memo((props: ButtonProps) => {
+export const Button = memo((props: ButtonProps) => {
     const {
         className,
-        variant = ButtonVariants.OUTLINE,
+        variant = 'outline',
         children,
         square,
-        size = ButtonSize.M,
+        size = 'sizeM',
         disabled,
         fullWidth,
         ...otherProps
@@ -72,7 +57,7 @@ export const ButtonDeprecated = memo((props: ButtonProps) => {
             className={classNames(cls.button, mods, [
                 className,
                 cls[variant],
-                [cls[size]],
+                cls[size],
             ])}
             {...otherProps}
         >

@@ -1,19 +1,15 @@
 import { render, screen } from '@testing-library/react';
 
-import { ButtonDeprecated, ButtonVariants } from './Button';
+import { Button } from './Button';
 
 describe('Button', () => {
     test('Test render', () => {
-        render(<ButtonDeprecated>TEST</ButtonDeprecated>);
+        render(<Button>TEST</Button>);
         expect(screen.getByText('TEST')).toBeInTheDocument();
     });
 
     test('Test Button theme: CLEAR', () => {
-        render(
-            <ButtonDeprecated variant={ButtonVariants.CLEAR}>
-                TEST
-            </ButtonDeprecated>,
-        );
+        render(<Button variant={'clear'}>TEST</Button>);
         expect(screen.getByText('TEST')).toHaveClass('clear');
     });
 });

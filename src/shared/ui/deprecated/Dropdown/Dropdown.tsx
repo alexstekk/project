@@ -1,7 +1,8 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
 
-import { AppLink } from '../AppLink/AppLink';
+
+import { AppLink } from '../../redesigned/AppLink/AppLink';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';

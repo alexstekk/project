@@ -1,12 +1,14 @@
 import { memo, useCallback, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 
-
 import { NotificationList } from '@/entities/Notification';
 import BellIcon from '@/shared/assets/icons/solar--bell-outline.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
-import { Button, ButtonVariants } from '@/shared/ui/deprecated/Button';
+import {
+    ButtonDeprecated,
+    ButtonVariants,
+} from '@/shared/ui/deprecated/Button';
 import { Drawer } from '@/shared/ui/deprecated/Drawer';
 import { PopoverComp } from '@/shared/ui/deprecated/Popover';
 
@@ -41,12 +43,12 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
                 </PopoverComp>
             </BrowserView>
             <MobileView renderWithFragment>
-                <Button
+                <ButtonDeprecated
                     variant={ButtonVariants.CLEAR_INVERTED}
                     onClick={onOpenDrawer}
                 >
                     {trigger}
-                </Button>
+                </ButtonDeprecated>
                 <AnimationProvider>
                     <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
                         <NotificationList />
