@@ -5,7 +5,7 @@ import {
     UnknownAction,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { ScrollSaveSchema } from 'src/shared/lib/ssscrollSave';
+
 
 
 import { ArticleDetailsSchema } from '@/entities/Article';
@@ -17,6 +17,7 @@ import { ProfileSchema } from '@/features/editableProfileCard';
 import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 import { ArticlePageSchema } from '@/pages/ArticlePage';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { ScrollSaveSchema } from '@/shared/lib/ssscrollSave';
 
 export interface StateSchema {
     counter: CounterSchema;

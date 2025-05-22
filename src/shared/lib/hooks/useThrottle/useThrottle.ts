@@ -7,8 +7,8 @@ export function useThrottle(callback: (...args: any[]) => void, delay: number) {
     // eslint-disable-next-line
     const timeoutRef = useRef<any>(null);
 
-     
     const throttledCallback = useCallback(
+        // eslint-disable-next-line
         (...args: any[]) => {
             if (!throttleRef.current) {
                 callback(...args);

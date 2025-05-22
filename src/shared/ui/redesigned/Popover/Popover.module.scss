@@ -1,0 +1,29 @@
+.button {
+  display: flex;
+  align-items: center;
+  color: var(--dark-bg-redesigned);
+}
+
+.relative {
+  position: relative;
+}
+
+.popoverPanel {
+  display: flex;
+  flex-direction: column;
+  background: var(--dark-bg-redesigned);
+  color: var(--text-redesigned);
+  border-radius: 24px;
+  padding: 8px;
+  width: 500px;
+  border: 1px solid var(--accent-redesigned);
+}
+
+.trigger {
+  background: none;
+  outline-color: transparent;
+  margin: 0;
+  padding: 0;
+  border-color: transparent;
+  cursor: pointer;
+}

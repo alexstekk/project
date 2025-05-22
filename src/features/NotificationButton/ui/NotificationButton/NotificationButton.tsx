@@ -2,15 +2,21 @@ import { memo, useCallback, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 
 import { NotificationList } from '@/entities/Notification';
-import BellIcon from '@/shared/assets/icons/solar--bell-outline.svg';
+import NotificationIcon from '@/shared/assets/icons/notification.svg';
+import BellIconDeprecated from '@/shared/assets/icons/solar--bell-outline.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
+import { ToggleFeatures } from '@/shared/lib/features';
 import {
     ButtonDeprecated,
     ButtonVariants,
 } from '@/shared/ui/deprecated/Button';
-import { Drawer } from '@/shared/ui/deprecated/Drawer';
-import { PopoverComp } from '@/shared/ui/deprecated/Popover';
+import { Drawer as DrawerDeprecated } from '@/shared/ui/deprecated/Drawer';
+import { PopoverComp as PopoverCompDeprecated } from '@/shared/ui/deprecated/Popover';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { PopoverComp } from '@/shared/ui/redesigned/Popover';
+
+import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
     className?: string;
@@ -29,31 +35,91 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
         setIsOpen(false);
     }, []);
 
-    const trigger = <BellIcon />;
+    const trigger = (
+        <ToggleFeatures
+            feature={'isAppRedesigned'}
+            on={
+                <Icon
+                    Svg={
+                        <NotificationIcon
+                            width={32}
+                            height={32}
+                            className={cls.icon}
+                        />
+                    }
+                    clickable
+                    onClick={onOpenDrawer}
+                />
+            }
+            off={<BellIconDeprecated />}
+        />
+    );
 
     return (
         <div>
             <BrowserView renderWithFragment>
-                <PopoverComp
-                    trigger={trigger}
-                    anchorDirection={'bottom end'}
-                    className={classNames('', {}, [className])}
-                >
-                    <NotificationList />
-                </PopoverComp>
+                <ToggleFeatures
+                    feature={'isAppRedesigned'}
+                    on={
+                        <PopoverComp
+                            trigger={trigger}
+                            anchorDirection={'bottom end'}
+                            className={classNames('', {}, [className])}
+                        >
+                            <NotificationList />
+                        </PopoverComp>
+                    }
+                    off={
+                        <PopoverCompDeprecated
+                            trigger={trigger}
+                            anchorDirection={'bottom end'}
+                            className={classNames('', {}, [className])}
+                        >
+                            <NotificationList />
+                        </PopoverCompDeprecated>
+                    }
+                />
             </BrowserView>
             <MobileView renderWithFragment>
-                <ButtonDeprecated
-                    variant={ButtonVariants.CLEAR_INVERTED}
-                    onClick={onOpenDrawer}
-                >
-                    {trigger}
-                </ButtonDeprecated>
-                <AnimationProvider>
-                    <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                        <NotificationList />
-                    </Drawer>
-                </AnimationProvider>
+                <ToggleFeatures
+                    feature={'isAppRedesigned'}
+                    on={
+                        <>
+                            <ButtonDeprecated
+                                variant={ButtonVariants.CLEAR_INVERTED}
+                                onClick={onOpenDrawer}
+                            >
+                                {trigger}
+                            </ButtonDeprecated>
+                            <AnimationProvider>
+                                <DrawerDeprecated
+                                    isOpen={isOpen}
+                                    onClose={onCloseDrawer}
+                                >
+                                    <NotificationList />
+                                </DrawerDeprecated>
+                            </AnimationProvider>
+                        </>
+                    }
+                    off={
+                        <>
+                            <ButtonDeprecated
+                                variant={ButtonVariants.CLEAR_INVERTED}
+                                onClick={onOpenDrawer}
+                            >
+                                {trigger}
+                            </ButtonDeprecated>
+                            <AnimationProvider>
+                                <DrawerDeprecated
+                                    isOpen={isOpen}
+                                    onClose={onCloseDrawer}
+                                >
+                                    <NotificationList />
+                                </DrawerDeprecated>
+                            </AnimationProvider>
+                        </>
+                    }
+                />
             </MobileView>
         </div>
     );

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { HStack } from '../../deprecated/Stack';
+import { HStack } from '../../redesigned/Stack';
 
 import AppLogoSvg from '@/shared/assets/icons/solar--airbuds-check.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';

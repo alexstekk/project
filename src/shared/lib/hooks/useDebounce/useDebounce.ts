@@ -11,6 +11,7 @@ export function useDebounce(callback: (...args: any[]) => void, delay: number) {
     const timeoutRef = useRef<any>(null);
 
     const debouncedCallback = useCallback(
+        // eslint-disable-next-line
         (...args: any[]) => {
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current);

@@ -1,0 +1,31 @@
+.button {
+  background: none;
+  outline-color: transparent;
+  margin: 0;
+  padding: 0;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.items {
+  background: var(--dark-bg-redesigned);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  border: 1px solid var(--accent-redesigned)
+}
+
+.item {
+  color: var(--text-redesigned);
+  padding: 10px 25px;
+  background: none;
+  outline-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+.active {
+  background: var(--light-bg-redesigned);
+}

@@ -1,0 +1,42 @@
+.card {
+  padding: 24px;
+  border-radius: 32px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.withoutPaddings {
+  padding: 0;
+}
+
+.outline {
+  border: 1px solid var(--accent-redesigned);
+}
+
+.normal {
+  background: var(--dark-bg-redesigned);
+}
+
+.light {
+  background: var(--light-bg-redesigned);
+}
+
+.p0 {
+  padding: 0;
+}
+
+.p8 {
+  padding: 8px;
+}
+
+.p16 {
+  padding: 16px;
+}
+
+.p24 {
+  padding: 24px;
+}

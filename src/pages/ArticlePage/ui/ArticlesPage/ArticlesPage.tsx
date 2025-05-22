@@ -25,8 +25,8 @@ import {
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Page } from '@/shared/ui/deprecated/Page';
-import { VStack } from '@/shared/ui/deprecated/Stack';
 import { Text, TextVariants } from '@/shared/ui/deprecated/Text';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 
 import cls from './ArticlesPage.module.scss';
 

@@ -1,6 +1,6 @@
 import { CSSProperties, useMemo } from 'react';
 
-import { AppImage } from '../AppImage';
+import { AppImage } from '../../redesigned/AppImage';
 import { Skeleton } from '../Skeleton';
 
 import UserIcon from '@/shared/assets/icons/solar--user-outline.svg';

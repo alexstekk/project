@@ -1,5 +1,6 @@
 import { memo, useMemo, useState } from 'react';
 
+
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 
@@ -14,9 +15,9 @@ import {
     ButtonSize,
     ButtonVariants,
 } from '@/shared/ui/deprecated/Button';
-import { VStack } from '@/shared/ui/deprecated/Stack';
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
 import { Icon } from '@/shared/ui/redesigned/Icon';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 
 import cls from './Sidebar.module.scss';
 
