@@ -10,9 +10,8 @@ import {
 } from '../../selectors/articlesPageSelectors';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
-import { Article, ArticleType } from '@/entities/Article';
+import { Article } from '@/entities/Article';
 import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
-
 
 export interface fetchArticleListProps {
     replace?: boolean;
@@ -48,7 +47,8 @@ export const fetchArticleList = createAsyncThunk<
                 _order: order,
                 _sort: sort,
                 q: search,
-                type_like: type === ArticleType.ALL ? undefined : type,
+                // @ts-ignore
+                type: type === 'ALL' ? undefined : type,
             },
         });
 

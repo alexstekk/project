@@ -17,7 +17,6 @@ import {
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 import { SortOrder } from '@/shared/types/sort';
 
-
 const articlePageAdapter = createEntityAdapter<Article>({});
 
 export const getArticleList = articlePageAdapter.getSelectors<StateSchema>(
@@ -44,10 +43,6 @@ const articlePageSlice = createSlice({
         type: ArticleType.ALL,
     }),
     reducers: {
-        setView: (state, action: PayloadAction<ArticleView>) => {
-            state.view = action.payload;
-            localStorage.setItem(ARTICLE_VIEW_LOCALSTORAGE_KEY, action.payload);
-        },
         initState: (state) => {
             const view = localStorage.getItem(
                 ARTICLE_VIEW_LOCALSTORAGE_KEY,
@@ -55,6 +50,10 @@ const articlePageSlice = createSlice({
             state.view = view;
             state.limit = view === ArticleView.BIG ? 4 : 9;
             state._inited = true;
+        },
+        setView: (state, action: PayloadAction<ArticleView>) => {
+            state.view = action.payload;
+            localStorage.setItem(ARTICLE_VIEW_LOCALSTORAGE_KEY, action.payload);
         },
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload;

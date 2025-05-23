@@ -37,34 +37,16 @@ export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
     }, [dispatch, toggleTheme]);
 
     return (
-        <ToggleFeatures
-            feature={'isAppRedesigned'}
-            on={
-                <Button
-                    variant="clear"
-                    onClick={onToggleHandler}
-                    className={classNames(cls.themeSwitcher, {}, [className])}
-                >
-                    <Icon
-                        Svg={<ThemeIcon height={32} width={32} />}
-                        height={32}
-                        width={32}
-                    />
-                </Button>
-            }
-            off={
-                <ButtonDeprecated
-                    variant={ButtonVariants.CLEAR}
-                    onClick={onToggleHandler}
-                    className={classNames(cls.themeSwitcher, {}, [className])}
-                >
-                    {theme === Theme.LIGHT ? (
-                        <SunIconDeprecated />
-                    ) : (
-                        <MoonIconDeprecated />
-                    )}
-                </ButtonDeprecated>
-            }
-        />
+        <Button
+                            variant="clear"
+                            onClick={onToggleHandler}
+                            className={classNames(cls.themeSwitcher, {}, [className])}
+                        >
+                            <Icon
+                                Svg={<ThemeIcon height={32} width={32} />}
+                                height={32}
+                                width={32}
+                            />
+                        </Button>
     );
 });

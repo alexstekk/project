@@ -1,12 +1,15 @@
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 import { ArticleSortField } from '../../entities/Article/model/consts/articleConsts';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { SortOrder } from '@/shared/types/sort';
 import { Select, SelectOptions } from '@/shared/ui/deprecated/Select';
+import { ListBox } from '@/shared/ui/redesigned/ListBox';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 import cls from './ArticleSortSelector.module.scss';
 
@@ -66,19 +69,51 @@ export const ArticleSortSelector = memo((props: articleSortSelectorProps) => {
     // }, [onChangeOrder]);
 
     return (
-        <div className={classNames(cls.articleSortSelector, {}, [className])}>
-            <Select
-                label={t('Сортировать по')}
-                options={sortFieldOptions}
-                value={sort}
-                onChange={onChangeSortField}
-            />
-            <Select
-                label={t('по')}
-                options={orderOptions}
-                value={order}
-                onChange={onChangeOrder}
-            />
-        </div>
+        <ToggleFeatures
+            feature={'isAppRedesigned'}
+            on={
+                <div
+                    className={classNames(cls.articleSortSelector, {}, [
+                        className,
+                    ])}
+                >
+                    <VStack gap={'8'}>
+                        <Text title={t('Сортировать по:')} />
+                        <ListBox
+                            items={sortFieldOptions}
+                            value={sort}
+                            onChange={onChangeSortField}
+                            anchor={'bottom start'}
+                        />
+                        <ListBox
+                            items={orderOptions}
+                            value={order}
+                            anchor={'bottom start'}
+                            onChange={onChangeOrder}
+                        />
+                    </VStack>
+                </div>
+            }
+            off={
+                <div
+                    className={classNames(cls.articleSortSelector, {}, [
+                        className,
+                    ])}
+                >
+                    <Select
+                        label={t('Сортировать по')}
+                        options={sortFieldOptions}
+                        value={sort}
+                        onChange={onChangeSortField}
+                    />
+                    <Select
+                        label={t('по')}
+                        options={orderOptions}
+                        value={order}
+                        onChange={onChangeOrder}
+                    />
+                </div>
+            }
+        />
     );
 });

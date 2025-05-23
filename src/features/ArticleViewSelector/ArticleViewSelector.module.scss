@@ -1,3 +1,13 @@
 .active {
   color: var(--secondary-color);
 }
+
+.articleViewSelectorRedesigned {
+  .btn {
+    color: var(--icon-redesigned);
+  }
+
+  .notSelected {
+    color: var(--light-bg-redesigned);
+  }
+}

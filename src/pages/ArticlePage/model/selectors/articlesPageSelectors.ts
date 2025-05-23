@@ -23,7 +23,7 @@ export const getArticlesPageSort = (state: StateSchema) =>
 export const getArticlesPageSearch = (state: StateSchema) =>
     state.articlePage?.search ?? '';
 export const getArticlesPageType = (state: StateSchema) =>
-    state.articlePage?.type ?? ArticleType.IT;
+    state.articlePage?.type ?? ArticleType.ALL;
 
 export const [useArticleItemById] = buildSelector(
     (state, id: string) => state.articlePage?.entities[id],

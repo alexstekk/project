@@ -1,0 +1,15 @@
+.inputWrapper {
+  display: flex;
+}
+
+.placeholder {
+  margin-right: 5px;
+}
+
+.input {
+  flex-grow: 1;
+}
+
+.readonly {
+  opacity: 0.7;
+}

@@ -1,6 +1,5 @@
 .card {
   padding: 24px;
-  border-radius: 32px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
@@ -40,3 +39,13 @@
 .p24 {
   padding: 24px;
 }
+
+.roundCorners {
+  border-radius: 43px;
+
+}
+
+.normalCorners {
+  border-radius: 12px;
+}
+

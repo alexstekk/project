@@ -27,31 +27,15 @@ export const LangSwitcher = memo<LangSwitcherProps>(
         };
 
         return (
-            <ToggleFeatures
-                feature={'isAppRedesigned'}
-                off={
-                    <ButtonDeprecated
-                        className={classNames(cls.langSwitcher, {}, [
-                            className,
-                        ])}
-                        onClick={toggleLang}
-                        variant={ButtonVariants.CLEAR}
-                    >
-                        {t(short ? 'Короткий язык' : 'Язык')}
-                    </ButtonDeprecated>
-                }
-                on={
-                    <Button
-                        className={classNames(cls.langSwitcher, {}, [
-                            className,
-                        ])}
-                        onClick={toggleLang}
-                        variant="clear"
-                    >
-                        {t(short ? 'Короткий язык' : 'Язык')}
-                    </Button>
-                }
-            />
+            <Button
+                                    className={classNames(cls.langSwitcher, {}, [
+                                        className,
+                                    ])}
+                                    onClick={toggleLang}
+                                    variant="clear"
+                                >
+                                    {t(short ? 'Короткий язык' : 'Язык')}
+                                </Button>
         );
     },
 );

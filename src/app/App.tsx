@@ -32,27 +32,13 @@ export const App = () => {
     }
 
     return (
-        <ToggleFeatures
-            feature={'isAppRedesigned'}
-            on={
-                <div className={classNames('appRedesigned', {}, [theme])}>
-                    <MainLayout
-                        header={<Navbar />}
-                        content={<AppRouter />}
-                        sidebar={<Sidebar />}
-                        toolbar={<div></div>}
-                    />
-                </div>
-            }
-            off={
-                <div className={classNames('app', {}, [theme])}>
-                    <Navbar />
-                    <div className="contentPage">
-                        <Sidebar />
-                        {inited && <AppRouter />}
-                    </div>
-                </div>
-            }
-        />
+        <div className={classNames('appRedesigned', {}, [theme])}>
+                            <MainLayout
+                                header={<Navbar />}
+                                content={<AppRouter />}
+                                sidebar={<Sidebar />}
+                                toolbar={<div></div>}
+                            />
+                        </div>
     );
 };

@@ -4,7 +4,8 @@ import {
     ListboxOption,
     ListboxOptions,
 } from '@headlessui/react';
-import React, { ReactNode } from 'react';
+import type { AnchorPropsWithSelection } from '@headlessui/react/dist/internal/floating';
+import React, { ReactNode, useMemo } from 'react';
 
 import { Button } from '../Button';
 
@@ -13,23 +14,24 @@ import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 import cls from './ListBox.module.scss';
 
-export interface ListBoxItem {
-    value: string;
+export interface ListBoxItem<T extends string> {
+    value: T;
     content: ReactNode;
     disabled?: boolean;
 }
 
-export interface ListBoxProps {
-    items?: ListBoxItem[];
+export interface ListBoxProps<T extends string> {
+    items?: ListBoxItem<T>[];
     className?: string;
-    value?: string;
+    value?: T;
     defaultValue?: string;
-    onChange?: (value: string) => void;
+    onChange?: (value: T) => void;
     readonly?: boolean;
     label?: string;
+    anchor?: AnchorPropsWithSelection;
 }
 
-export function ListBox(props: ListBoxProps) {
+export function ListBox<T extends string>(props: ListBoxProps<T>) {
     const {
         className,
         items = [],
@@ -38,9 +40,14 @@ export function ListBox(props: ListBoxProps) {
         defaultValue,
         readonly,
         label,
+        anchor = 'bottom',
     } = props;
 
     const { theme } = useTheme();
+
+    const selectedItem = useMemo(() => {
+        return items.find((item) => item.value === value);
+    }, [items, value]);
 
     return (
         <HListBox
@@ -66,13 +73,15 @@ export function ListBox(props: ListBoxProps) {
                 as={'span'}
                 disabled={readonly}
             >
-                <Button disabled={readonly}>{value ?? defaultValue}</Button>
+                <Button disabled={readonly} variant={'filled'}>
+                    {selectedItem?.content ?? defaultValue}
+                </Button>
             </ListboxButton>
             <ListboxOptions
-                anchor="bottom"
+                anchor={anchor}
                 className={classNames(cls.optionsList, {}, [theme])}
             >
-                {items.map((item: ListBoxItem) => (
+                {items.map((item: ListBoxItem<T>) => (
                     <ListboxOption
                         key={item.value}
                         value={item.value}
@@ -86,6 +95,7 @@ export function ListBox(props: ListBoxProps) {
                                     {
                                         [cls.focused]: focus,
                                         [cls.disabled]: item.disabled,
+                                        [cls.selected]: selected,
                                     },
                                     [],
                                 )}

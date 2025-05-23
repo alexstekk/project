@@ -25,10 +25,6 @@ interface pageProps extends TestProps {
     onScrollEnd?: () => void;
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 export const Page = memo((props: pageProps) => {
     const { className, children, onScrollEnd } = props;
 

@@ -1,16 +1,16 @@
 .optionsList {
-  background: var(--listbox-bg);
+  background: var(--dark-bg-redesigned);
   border-radius: 12px;
-
-  //box-shadow: 4px 4px 8px var(--listbox-bg);
+  box-shadow: 4px 4px 8px var(--dark-bg-redesigned);
   outline-color: transparent;
   min-width: var(--button-width);
+  border: 1px solid var(--accent-redesigned)
 }
 
 .option {
-  color: var(--primary-color);
-  padding: 5px;
-  font: var(--font-m);
+  color: var(--text-redesigned);
+  padding: 10px 20px;
+  font: var(--font-m-redesigned);
 }
 
 .trigger {
@@ -19,9 +19,12 @@
 }
 
 .focused {
-  color: red;
   cursor: pointer;
-  background: var(--inverted-primary-color);
+
+}
+
+.selected, .focused {
+  background: var(--light-bg-redesigned);
 }
 
 .disabled {

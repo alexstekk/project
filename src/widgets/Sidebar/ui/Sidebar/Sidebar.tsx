@@ -43,73 +43,37 @@ export const Sidebar = memo((props: SidebarProps) => {
     }, [SidebarItemsList, collapsed]);
 
     return (
-        <ToggleFeatures
-            feature={'isAppRedesigned'}
-            on={
-                <aside
-                    className={classNames(
-                        cls.sidebarRedesigned,
-                        { [cls.collapsedRedesigned]: collapsed },
-                        [className],
-                    )}
-                    data-testid="sidebar"
-                >
-                    <AppLogo
-                        className={cls.appLogo}
-                        size={collapsed ? 30 : 50}
-                    />
-                    <VStack
-                        className={cls.itemsRedesigned}
-                        gap={'8'}
-                        role={'navigation'}
-                        align={collapsed ? 'center' : 'start'}
-                    >
-                        {itemsList}
-                    </VStack>
-                    <Icon
-                        onClick={toggleSidebar}
-                        data-testid="sidebar-toggle"
-                        className={cls.collapseBtn}
-                        Svg={<ArrowIcon width={32} height={32} />}
-                        clickable
-                    />
-                    <div className={cls.switchers}>
-                        <ThemeSwitcher />
-                        <LangSwitcher short={collapsed} />
-                    </div>
-                </aside>
-            }
-            off={
-                <aside
-                    className={classNames(
-                        cls.sidebar,
-                        { [cls.collapsed]: collapsed },
-                        [className],
-                    )}
-                    data-testid="sidebar"
-                >
-                    <ButtonDeprecated
-                        onClick={toggleSidebar}
-                        data-testid="sidebar-toggle"
-                        className={cls.collapseBtn}
-                        variant={ButtonVariants.BACKGROUND_INVERTED}
-                        square
-                        size={ButtonSize.L}
-                    >
-                        {collapsed ? '>' : '<'}
-                    </ButtonDeprecated>
-
-                    {/*<div className={cls.items}>*/}
-                    {/*    {*/}
-                    {/*        itemsList*/}
-                    {/*    }*/}
-                    {/*</div>*/}
-
-                    <VStack className={cls.items} gap={'8'} role={'navigation'}>
-                        {itemsList}
-                    </VStack>
-                </aside>
-            }
-        />
+        <aside
+                            className={classNames(
+                                cls.sidebarRedesigned,
+                                { [cls.collapsedRedesigned]: collapsed },
+                                [className],
+                            )}
+                            data-testid="sidebar"
+                        >
+                            <AppLogo
+                                className={cls.appLogo}
+                                size={collapsed ? 30 : 50}
+                            />
+                            <VStack
+                                className={cls.itemsRedesigned}
+                                gap={'8'}
+                                role={'navigation'}
+                                align={collapsed ? 'center' : 'start'}
+                            >
+                                {itemsList}
+                            </VStack>
+                            <Icon
+                                onClick={toggleSidebar}
+                                data-testid="sidebar-toggle"
+                                className={cls.collapseBtn}
+                                Svg={<ArrowIcon width={32} height={32} />}
+                                clickable
+                            />
+                            <div className={cls.switchers}>
+                                <ThemeSwitcher />
+                                <LangSwitcher short={collapsed} />
+                            </div>
+                        </aside>
     );
 });
