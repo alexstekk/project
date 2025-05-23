@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, memo } from 'react';
+import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
@@ -9,19 +9,9 @@ export type ButtonVariants = 'clear' | 'outline' | 'filled';
 export type ButtonSize = 'sizeM' | 'sizeL' | 'sizeXL';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    addonLeft?: ReactNode;
+    addonRight?: ReactNode;
     className?: string;
-    /**
-     * Вариант кнопки: с рамкой, прозрачный и т.п.
-     */
-    variant?: ButtonVariants;
-    /**
-     * Флаг, делающий кнопку квадратной
-     */
-    square?: boolean;
-    /**
-     * Размер кнопки
-     */
-    size?: ButtonSize;
     /**
      * Флаг для "выключения" кнопки
      */
@@ -30,6 +20,18 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
      * Ширина кнопки 100%
      */
     fullWidth?: boolean;
+    /**
+     * Размер кнопки
+     */
+    size?: ButtonSize;
+    /**
+     * Флаг, делающий кнопку квадратной
+     */
+    square?: boolean;
+    /**
+     * Вариант кнопки: с рамкой, прозрачный и т.п.
+     */
+    variant?: ButtonVariants;
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -41,6 +43,8 @@ export const Button = memo((props: ButtonProps) => {
         size = 'sizeM',
         disabled,
         fullWidth,
+        addonLeft,
+        addonRight,
         ...otherProps
     } = props;
 
@@ -48,6 +52,7 @@ export const Button = memo((props: ButtonProps) => {
         [cls.square]: square,
         [cls.disabled]: disabled,
         [cls.fullWidth]: fullWidth,
+        [cls.withAddon]: Boolean(addonLeft) || Boolean(addonRight),
     };
 
     return (
@@ -61,7 +66,9 @@ export const Button = memo((props: ButtonProps) => {
             ])}
             {...otherProps}
         >
+            <div className={cls.addonLeft}>{addonLeft}</div>
             {children}
+            <div className={cls.addonRight}>{addonRight}</div>
         </button>
     );
 });

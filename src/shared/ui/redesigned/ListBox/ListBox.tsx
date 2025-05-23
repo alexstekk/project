@@ -9,6 +9,7 @@ import React, { ReactNode, useMemo } from 'react';
 
 import { Button } from '../Button';
 
+import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
@@ -73,7 +74,11 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
                 as={'span'}
                 disabled={readonly}
             >
-                <Button disabled={readonly} variant={'filled'}>
+                <Button
+                    disabled={readonly}
+                    variant={'filled'}
+                    addonRight={<ArrowIcon width={32} height={32} />}
+                >
                     {selectedItem?.content ?? defaultValue}
                 </Button>
             </ListboxButton>

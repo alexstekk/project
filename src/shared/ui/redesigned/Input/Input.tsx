@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, memo } from 'react';
+import React, { InputHTMLAttributes, memo, ReactNode, useState } from 'react';
 import { Trans } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -15,6 +15,8 @@ interface InputProps extends HTMLInputProps {
     value?: string | number;
     onChange?: (value: string) => void;
     readonly?: boolean;
+    addonLeft?: ReactNode;
+    addonRight?: ReactNode;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -26,25 +28,35 @@ export const Input = memo((props: InputProps) => {
         placeholder,
         autoFocus,
         readonly,
+        addonLeft,
+        addonRight,
         ...otherProps
     } = props;
+
+    const [isFocused, setIsFocused] = useState(false);
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
     };
 
+    const onFocus = () => {
+        setIsFocused(true);
+    };
     return (
         <div
             className={classNames(
                 cls.inputWrapper,
-                { [cls.readonly]: readonly },
+                {
+                    [cls.readonly]: readonly,
+                    [cls.isFocused]: isFocused,
+                    [cls.withAddonLeft]: Boolean(addonLeft),
+                    [cls.withAddonRight]: Boolean(addonRight),
+                },
                 [className],
             )}
         >
             <Trans i18nKey={'placeholder'}>
-                {placeholder && (
-                    <div className={cls.placeholder}>{placeholder}</div>
-                )}
+                <div className={cls.addonLeft}>{addonLeft}</div>
                 <input
                     autoFocus={autoFocus}
                     type={type}
@@ -52,8 +64,11 @@ export const Input = memo((props: InputProps) => {
                     onChange={onChangeHandler}
                     className={cls.input}
                     readOnly={readonly}
+                    placeholder={placeholder}
+                    onFocus={onFocus}
                     {...otherProps}
                 />
+                <div className={cls.addonRight}>{addonRight}</div>
             </Trans>
         </div>
     );

@@ -7,6 +7,7 @@ import {
     ArticleType,
     ArticleTypeTabs,
 } from '@/entities/Article';
+import SearchIcon from '@/shared/assets/icons/search.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SortOrder } from '@/shared/types/sort';
 import { Card } from '@/shared/ui/redesigned/Card';
@@ -53,17 +54,18 @@ export const ArticlesFilters = memo((props: articlesFiltersProps) => {
                     value={search}
                     onChange={onChangeSearch}
                     type={'search'}
+                    addonLeft={<SearchIcon width={32} height={32} />}
+                />
+                <ArticleTypeTabs
+                    value={type}
+                    onChangeType={onChangeType}
+                    className={cls.tabs}
                 />
                 <ArticleSortSelector
                     sort={sort}
                     order={order}
                     onChangeOrder={onChangeOrder}
                     onChangeSortField={onChangeSortField}
-                />
-                <ArticleTypeTabs
-                    value={type}
-                    onChangeType={onChangeType}
-                    className={cls.tabs}
                 />
             </VStack>
         </Card>
