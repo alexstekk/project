@@ -1,14 +1,19 @@
 import React, { InputHTMLAttributes, memo, ReactNode, useState } from 'react';
 import { Trans } from 'react-i18next';
 
+import { HStack } from '../Stack';
+import { Text } from '../Text';
+
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'value' | 'onChange' | 'readOnly'
+    'value' | 'onChange' | 'readOnly' | 'size'
 >;
+
+type InputSize = 's' | 'm' | 'l';
 
 interface InputProps extends HTMLInputProps {
     className?: string;
@@ -17,6 +22,8 @@ interface InputProps extends HTMLInputProps {
     readonly?: boolean;
     addonLeft?: ReactNode;
     addonRight?: ReactNode;
+    label?: string;
+    size?: InputSize;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -30,6 +37,8 @@ export const Input = memo((props: InputProps) => {
         readonly,
         addonLeft,
         addonRight,
+        label,
+        size = 'm',
         ...otherProps
     } = props;
 
@@ -42,7 +51,8 @@ export const Input = memo((props: InputProps) => {
     const onFocus = () => {
         setIsFocused(true);
     };
-    return (
+
+    const input = (
         <div
             className={classNames(
                 cls.inputWrapper,
@@ -52,7 +62,7 @@ export const Input = memo((props: InputProps) => {
                     [cls.withAddonLeft]: Boolean(addonLeft),
                     [cls.withAddonRight]: Boolean(addonRight),
                 },
-                [className],
+                [className, cls[size]],
             )}
         >
             <Trans i18nKey={'placeholder'}>
@@ -72,4 +82,15 @@ export const Input = memo((props: InputProps) => {
             </Trans>
         </div>
     );
+
+    if (label) {
+        return (
+            <HStack max gap={'8'} align={'center'}>
+                <Text text={label} className={cls.label} />
+                {input}
+            </HStack>
+        );
+    }
+
+    return input;
 });

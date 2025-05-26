@@ -21,6 +21,10 @@
   align-items: center;
 }
 
+.label {
+  flex-shrink: 0;
+}
+
 
 .input {
   flex-grow: 1;
@@ -52,3 +56,14 @@
   }
 }
 
+.s {
+  height: 32px
+}
+
+.m {
+  height: 38px;
+}
+
+.l {
+  height: 44px;
+}

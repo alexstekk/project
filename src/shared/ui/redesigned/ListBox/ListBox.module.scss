@@ -1,3 +1,8 @@
+.listBox {
+  display: flex;
+  align-items: center;
+}
+
 .optionsList {
   background: var(--dark-bg-redesigned);
   border-radius: 12px;
@@ -9,7 +14,8 @@
 
 .option {
   color: var(--text-redesigned);
-  padding: 10px 20px;
+
+  //padding: 10px 20px;
   font: var(--font-m-redesigned);
 }
 
@@ -29,4 +35,8 @@
 
 .disabled {
   opacity: 0.5;
+}
+
+.label {
+  flex-shrink: 0;
 }

@@ -8,6 +8,7 @@ import type { AnchorPropsWithSelection } from '@headlessui/react/dist/internal/f
 import React, { ReactNode, useMemo } from 'react';
 
 import { Button } from '../Button';
+import { HStack } from '../Stack';
 
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -50,25 +51,8 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
         return items.find((item) => item.value === value);
     }, [items, value]);
 
-    return (
-        <HListBox
-            value={value}
-            onChange={onChange}
-            as={'div'}
-            disabled={readonly}
-            className={classNames(cls.listBox, {}, [theme, className])}
-        >
-            {label && (
-                <span
-                    className={classNames(
-                        cls.option,
-                        { [cls.disabled]: readonly },
-                        [],
-                    )}
-                >
-                    {label}
-                </span>
-            )}
+    const buttonAndList = (
+        <>
             <ListboxButton
                 className={cls.trigger}
                 as={'span'}
@@ -112,6 +96,33 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
                     </ListboxOption>
                 ))}
             </ListboxOptions>
+        </>
+    );
+
+    return (
+        <HListBox
+            value={value}
+            onChange={onChange}
+            as={'div'}
+            disabled={readonly}
+            className={classNames(cls.listBox, {}, [theme, className])}
+        >
+            {label ? (
+                <HStack gap={'8'}>
+                    <span
+                        className={classNames(
+                            cls.label,
+                            { [cls.disabled]: readonly },
+                            [],
+                        )}
+                    >
+                        {label}
+                    </span>
+                    {buttonAndList}
+                </HStack>
+            ) : (
+                buttonAndList
+            )}
         </HListBox>
     );
 }
