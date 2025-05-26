@@ -6,6 +6,7 @@
   color: var(--text-redesigned);
 }
 
+
 .left {
   text-align: left;
 }
@@ -66,5 +67,12 @@
 
   .text {
     font: var(--font-s-redesigned)
+  }
+}
+
+
+.bold {
+  .title, .text {
+    font-weight: 700;
   }
 }

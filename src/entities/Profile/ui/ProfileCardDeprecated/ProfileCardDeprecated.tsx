@@ -4,7 +4,6 @@ import {
     ProfileCardProps,
     validKeyboardKeys,
 } from '../ProfileCardProps/ProfileCardProps';
-import cls from '../ProfileCardRedesigned/ProfileCardRedesigned.module.scss';
 
 import { CountrySelect } from '@/entities/Country';
 import { CurrencySelect } from '@/entities/Currency';
@@ -51,10 +50,10 @@ export const ProfileCardDeprecated = (props: ProfileCardProps) => {
     if (error) {
         return (
             <div
-                className={classNames(cls.profileCard, {}, [
-                    className,
-                    cls.error,
-                ])}
+            // className={classNames(cls.profileCard, {}, [
+            //     className,
+            //     cls.error,
+            // ])}
             >
                 <TextDeprecated
                     variant={TextVariants.ERROR}
@@ -71,14 +70,14 @@ export const ProfileCardDeprecated = (props: ProfileCardProps) => {
             gap={'8'}
             max={true}
             justify={'center'}
-            className={classNames(
-                cls.profileCard,
-                { [cls.editing]: !readonly },
-                [className],
-            )}
+            className={classNames()
+            // cls.profileCard,
+            // { [cls.editing]: !readonly },
+            // [className],
+            }
         >
             {data?.avatar && (
-                <HStack className={cls.avatarWrapper} justify={'center'} max>
+                <HStack justify={'center'} max>
                     <AvatarDeprecated src={data?.avatar} alt="" />
                 </HStack>
             )}
@@ -86,7 +85,7 @@ export const ProfileCardDeprecated = (props: ProfileCardProps) => {
             <InputDeprecated
                 value={data?.first}
                 placeholder={t('Ваше имя')}
-                className={cls.input}
+                // className={cls.input}
                 onChange={onChangeFirstname}
                 readonly={readonly}
                 data-testid={'ProfileCard.Firstname'}
@@ -94,7 +93,7 @@ export const ProfileCardDeprecated = (props: ProfileCardProps) => {
             <InputDeprecated
                 value={data?.lastname}
                 placeholder={t('Ваша фамилия')}
-                className={cls.input}
+                // className={cls.input}
                 onChange={onChangeLastname}
                 readonly={readonly}
                 data-testid={'ProfileCard.Lastname'}
@@ -102,7 +101,7 @@ export const ProfileCardDeprecated = (props: ProfileCardProps) => {
             <InputDeprecated
                 value={data?.age}
                 placeholder={t('Ваш возраст')}
-                className={cls.input}
+                // className={cls.input}
                 onChange={onChangeAge}
                 readonly={readonly}
                 onKeyDown={onKeyDown}
@@ -110,32 +109,32 @@ export const ProfileCardDeprecated = (props: ProfileCardProps) => {
             <InputDeprecated
                 value={data?.city}
                 placeholder={t('Ваш город')}
-                className={cls.input}
+                // className={cls.input}
                 onChange={onChangeCity}
                 readonly={readonly}
             />
             <InputDeprecated
                 value={data?.username}
                 placeholder={t('Имя пользователя')}
-                className={cls.input}
+                // className={cls.input}
                 onChange={onChangeUsername}
                 readonly={readonly}
             />
             <InputDeprecated
                 value={data?.avatar}
                 placeholder={t('Введите ссылку на аватар')}
-                className={cls.input}
+                // className={cls.input}
                 onChange={onChangeAvatar}
                 readonly={readonly}
             />
             <CurrencySelect
-                className={cls.input}
+                // className={cls.input}
                 value={data?.currency}
                 onChange={onChangeCurrency}
                 readonly={readonly}
             />
             <CountrySelect
-                className={cls.input}
+                // className={cls.input}
                 value={data?.country}
                 onChange={onChangeCountry}
                 readonly={readonly}
@@ -147,14 +146,14 @@ export const ProfileCardDeprecatedError = () => {
     const { t } = useTranslation('profile');
 
     return (
-        <div className={classNames(cls.profileCard, {}, [cls.error])}>
-            <Text
-                variant="error"
-                title={t('Произошла ошибка при загрузке профиля')}
-                text={t('Попробуйте обновить страницу')}
-                align={'center'}
-            />
-        </div>
+        // <div className={classNames(cls.profileCard, {}, [cls.error])}>
+        <Text
+            variant="error"
+            title={t('Произошла ошибка при загрузке профиля')}
+            text={t('Попробуйте обновить страницу')}
+            align={'center'}
+        />
+        // </div>
     );
 };
 export const ProfileCardDeprecatedLoader = () => (

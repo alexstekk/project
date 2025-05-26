@@ -1,14 +1,15 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 import { ArticleView } from '../../model/consts/articleConsts';
 import { Article } from '../../model/types/Article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { HStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 import cls from './ArticleList.module.scss';
 
@@ -38,8 +39,6 @@ export const ArticleList = memo((props: articleListProps) => {
 
     const { t } = useTranslation();
 
-    // todo virtual list
-
     const renderArticle = (article: Article) => (
         <ArticleListItem
             article={article}
@@ -58,12 +57,34 @@ export const ArticleList = memo((props: articleListProps) => {
     }
 
     return (
-        <div
-            data-testid={'ArticleList'}
-            className={classNames(cls.articleList, {}, [className, cls[view]])}
-        >
-            {articles.length > 0 ? articles.map(renderArticle) : null}
-            {isLoading && getSkeletons(view)}
-        </div>
+        <ToggleFeatures
+            feature={'isAppRedesigned'}
+            on={
+                <HStack
+                    gap={'16'}
+                    wrap={'wrap'}
+                    data-testid={'ArticleList'}
+                    className={classNames(cls.articleListRedesigned, {}, [
+                        className,
+                        cls[view],
+                    ])}
+                >
+                    {isLoading && getSkeletons(view)}
+                    {articles.length > 0 ? articles.map(renderArticle) : null}
+                </HStack>
+            }
+            off={
+                <div
+                    data-testid={'ArticleList'}
+                    className={classNames(cls.articleList, {}, [
+                        className,
+                        cls[view],
+                    ])}
+                >
+                    {isLoading && getSkeletons(view)}
+                    {articles.length > 0 ? articles.map(renderArticle) : null}
+                </div>
+            }
+        />
     );
 });

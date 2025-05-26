@@ -1,0 +1,80 @@
+.big {
+  width: 100%;
+
+  .card {
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  .header {
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+  .types {
+    margin-bottom: 15px;
+  }
+
+  .avatar {
+    margin-right: 10px;
+  }
+
+  .date {
+    margin-left: auto;
+  }
+
+  .img {
+    max-width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+
+  .views {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .textBlock {
+    max-height: 72px;
+    overflow-y: hidden;
+  }
+}
+
+.small {
+  .card {
+    width: 240px;
+    height: 350px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .img {
+    width: 100%;
+    object-fit: cover;
+    min-height: 140px;
+    max-height: 140px;
+  }
+
+  .info {
+    padding: 8px 8px 16px;
+    height: 100%;
+  }
+
+  .footer {
+    height: 100%;
+    justify-content: flex-end;
+  }
+}

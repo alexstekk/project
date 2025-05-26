@@ -8,7 +8,6 @@ import {
 
 import { CountrySelect } from '@/entities/Country';
 import { CurrencySelect } from '@/entities/Currency';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     Text as TextDeprecated,
     TextAlign,
@@ -48,12 +47,13 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
 
     return (
         <Card
-            className={classNames(
-                cls.profileCardRedesigned,
-                // { [cls.editing]: !readonly },
-                {},
-                [className],
-            )}
+            // className={
+            // classNames(
+            // cls.profileCardRedesigned,
+            // { [cls.editing]: !readonly },
+            // {},
+            // [className],
+            // )}
             max
             padding={'24'}
         >
@@ -61,7 +61,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                 {' '}
                 {data?.avatar && (
                     <HStack
-                        className={cls.avatarWrapper}
+                        // className={cls.avatarWrapper}
                         justify={'center'}
                         max
                     >
@@ -69,7 +69,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                     </HStack>
                 )}
                 <HStack
-                    className={cls.avatarWrapper}
+                    // className={cls.avatarWrapper}
                     justify={'center'}
                     max
                     gap={'24'}
@@ -78,7 +78,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                         <Input
                             value={data?.first}
                             label={t('Имя')}
-                            className={cls.input}
+                            // className={cls.input}
                             onChange={onChangeFirstname}
                             readonly={readonly}
                             data-testid={'ProfileCard.Firstname'}
@@ -86,7 +86,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                         <Input
                             value={data?.lastname}
                             label={t('Фамилия')}
-                            className={cls.input}
+                            // className={cls.input}
                             onChange={onChangeLastname}
                             readonly={readonly}
                             data-testid={'ProfileCard.Lastname'}
@@ -94,7 +94,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                         <Input
                             value={data?.age}
                             label={t('Возраст')}
-                            className={cls.input}
+                            // className={cls.input}
                             onChange={onChangeAge}
                             readonly={readonly}
                             onKeyDown={onKeyDown}
@@ -102,7 +102,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                         <Input
                             value={data?.city}
                             label={t('Город')}
-                            className={cls.input}
+                            // className={cls.input}
                             onChange={onChangeCity}
                             readonly={readonly}
                         />
@@ -111,25 +111,25 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                         <Input
                             value={data?.username}
                             label={t('Имя пользователя')}
-                            className={cls.input}
+                            // className={cls.input}
                             onChange={onChangeUsername}
                             readonly={readonly}
                         />
                         <Input
                             value={data?.avatar}
                             label={t('Ссылка на аватар')}
-                            className={cls.input}
+                            // className={cls.input}
                             onChange={onChangeAvatar}
                             readonly={readonly}
                         />
                         <CurrencySelect
-                            className={cls.input}
+                            // className={cls.input}
                             value={data?.currency}
                             onChange={onChangeCurrency}
                             readonly={readonly}
                         />
                         <CountrySelect
-                            className={cls.input}
+                            // className={cls.input}
                             value={data?.country}
                             onChange={onChangeCountry}
                             readonly={readonly}
@@ -140,6 +140,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
         </Card>
     );
 });
+
 export const ProfileCardRedesignedLoader = () => (
     <Card max padding={'24'}>
         <VStack gap={'32'}>
@@ -167,13 +168,13 @@ export const ProfileCardRedesignedError = () => {
     const { t } = useTranslation('profile');
 
     return (
-        <div className={classNames(cls.profileCard, {}, [cls.error])}>
-            <TextDeprecated
-                variant={TextVariants.ERROR}
-                title={t('Произошла ошибка при загрузке профиля')}
-                text={t('Попробуйте обновить страницу')}
-                align={TextAlign.CENTER}
-            />
-        </div>
+        // <div className={classNames(cls.profileCard, {}, [cls.error])}>
+        <TextDeprecated
+            variant={TextVariants.ERROR}
+            title={t('Произошла ошибка при загрузке профиля')}
+            text={t('Попробуйте обновить страницу')}
+            align={TextAlign.CENTER}
+        />
+        // </div>
     );
 };

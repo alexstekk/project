@@ -48,7 +48,7 @@ export const fetchArticleList = createAsyncThunk<
                 _sort: sort,
                 q: search,
                 // @ts-ignore
-                type: type === 'ALL' ? undefined : type,
+                type: type === 'ALL' || 'Все статьи' ? undefined : type,
             },
         });
 

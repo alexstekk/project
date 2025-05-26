@@ -1,9 +1,11 @@
 .big {
+  width: 100%;
+
   .card {
     padding: 15px;
     border-radius: 12px;
-    background: var(--card-bg);
     margin-bottom: 15px;
+    width: 100%;
   }
 
   .header {
@@ -50,7 +52,7 @@
 }
 
 .small {
-  max-width: 230px;
+  max-width: 240px;
 
 
   .imageWrapper {
