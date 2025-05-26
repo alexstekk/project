@@ -7,14 +7,15 @@ import {
     isUserManager,
     userActions,
 } from '@/entities/User';
-import { getRouteAdmin, getRouteProfile } from '@/shared/const/router';
-import { ToggleFeatures } from '@/shared/lib/features';
+import {
+    getRouteAdmin,
+    getRouteProfile,
+    getRouteSettings,
+} from '@/shared/const/router';
 import {
     useAppDispatch,
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
-import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
-import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Dropdown';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
 import { Dropdown } from '@/shared/ui/redesigned/Dropdown';
 
@@ -51,6 +52,10 @@ export const AvatarDropdown = memo((props: avatarDropdownProps) => {
               ]
             : []),
         {
+            content: t('Настройки'),
+            href: getRouteSettings(),
+        },
+        {
             content: t('Профиль'),
             href: getRouteProfile(authData?.id),
         },
@@ -61,8 +66,8 @@ export const AvatarDropdown = memo((props: avatarDropdownProps) => {
     ];
     return (
         <Dropdown
-                            trigger={<Avatar size={40} src={authData?.avatar} />}
-                            items={items}
-                        />
+            trigger={<Avatar size={40} src={authData?.avatar} />}
+            items={items}
+        />
     );
 });

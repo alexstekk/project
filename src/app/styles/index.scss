@@ -21,12 +21,11 @@
 .pageWrapper {
   display: flex;
   flex-grow: 1;
-
-  //justify-content: center;
   width: 100%;
 }
 
 
 .contentPage {
-  //display: flex;
+  display: flex;
+  min-height: 100vh;
 }

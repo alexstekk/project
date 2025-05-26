@@ -32,13 +32,26 @@ export const App = () => {
     }
 
     return (
-        <div className={classNames('appRedesigned', {}, [theme])}>
-                            <MainLayout
-                                header={<Navbar />}
-                                content={<AppRouter />}
-                                sidebar={<Sidebar />}
-                                toolbar={<div></div>}
-                            />
-                        </div>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <div className={classNames('app', {}, [theme])}>
+                    <Navbar />
+                    <div className="contentPage">
+                        <Sidebar />
+                        {inited && <AppRouter />}
+                    </div>
+                </div>
+            }
+            on={
+                <div className={classNames('appRedesigned', {}, [theme])}>
+                    <MainLayout
+                        header={<Navbar />}
+                        content={<AppRouter />}
+                        sidebar={<Sidebar />}
+                    />
+                </div>
+            }
+        />
     );
 };

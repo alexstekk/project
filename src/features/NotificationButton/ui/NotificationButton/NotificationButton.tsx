@@ -3,16 +3,13 @@ import { BrowserView, MobileView } from 'react-device-detect';
 
 import { NotificationList } from '@/entities/Notification';
 import NotificationIcon from '@/shared/assets/icons/notification.svg';
-import BellIconDeprecated from '@/shared/assets/icons/solar--bell-outline.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
-import { ToggleFeatures } from '@/shared/lib/features';
 import {
     ButtonDeprecated,
     ButtonVariants,
 } from '@/shared/ui/deprecated/Button';
 import { Drawer as DrawerDeprecated } from '@/shared/ui/deprecated/Drawer';
-import { PopoverComp as PopoverCompDeprecated } from '@/shared/ui/deprecated/Popover';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 import { PopoverComp } from '@/shared/ui/redesigned/Popover';
 
@@ -37,46 +34,42 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
 
     const trigger = (
         <Icon
-                            Svg={
-                                <NotificationIcon
-                                    width={32}
-                                    height={32}
-                                    className={cls.icon}
-                                />
-                            }
-                            clickable
-                            onClick={onOpenDrawer}
-                        />
+            Svg={
+                <NotificationIcon width={32} height={32} className={cls.icon} />
+            }
+            clickable
+            onClick={onOpenDrawer}
+        />
     );
 
     return (
         <div>
             <BrowserView renderWithFragment>
                 <PopoverComp
-                                            trigger={trigger}
-                                            anchorDirection={'bottom end'}
-                                            className={classNames('', {}, [className])}
-                                        >
-                                            <NotificationList />
-                                        </PopoverComp>
+                    trigger={trigger}
+                    anchorDirection={'bottom end'}
+                    className={classNames('', {}, [className])}
+                >
+                    <NotificationList />
+                </PopoverComp>
             </BrowserView>
             <MobileView renderWithFragment>
                 <>
-                                            <ButtonDeprecated
-                                                variant={ButtonVariants.CLEAR_INVERTED}
-                                                onClick={onOpenDrawer}
-                                            >
-                                                {trigger}
-                                            </ButtonDeprecated>
-                                            <AnimationProvider>
-                                                <DrawerDeprecated
-                                                    isOpen={isOpen}
-                                                    onClose={onCloseDrawer}
-                                                >
-                                                    <NotificationList />
-                                                </DrawerDeprecated>
-                                            </AnimationProvider>
-                                        </>
+                    <ButtonDeprecated
+                        variant={ButtonVariants.CLEAR_INVERTED}
+                        onClick={onOpenDrawer}
+                    >
+                        {trigger}
+                    </ButtonDeprecated>
+                    <AnimationProvider>
+                        <DrawerDeprecated
+                            isOpen={isOpen}
+                            onClose={onCloseDrawer}
+                        >
+                            <NotificationList />
+                        </DrawerDeprecated>
+                    </AnimationProvider>
+                </>
             </MobileView>
         </div>
     );
