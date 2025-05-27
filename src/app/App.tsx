@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 
 import { Navbar } from '../widgets/Navbar/ui/Navbar';
 
@@ -35,21 +35,28 @@ export const App = () => {
         <ToggleFeatures
             feature="isAppRedesigned"
             off={
-                <div className={classNames('app', {}, [theme])}>
-                    <Navbar />
-                    <div className="contentPage">
-                        <Sidebar />
-                        {inited && <AppRouter />}
-                    </div>
+                <div className={classNames('app', {}, [theme])} id={'app'}>
+                    <Suspense fallback="">
+                        <Navbar />
+                        <div className="contentPage">
+                            <Sidebar />
+                            <AppRouter />
+                        </div>
+                    </Suspense>
                 </div>
             }
             on={
-                <div className={classNames('appRedesigned', {}, [theme])}>
-                    <MainLayout
-                        header={<Navbar />}
-                        content={<AppRouter />}
-                        sidebar={<Sidebar />}
-                    />
+                <div
+                    className={classNames('appRedesigned', {}, [theme])}
+                    id={'app'}
+                >
+                    <Suspense fallback="">
+                        <MainLayout
+                            header={<Navbar />}
+                            content={<AppRouter />}
+                            sidebar={<Sidebar />}
+                        />
+                    </Suspense>
                 </div>
             }
         />

@@ -23,13 +23,31 @@ export const NotificationItem = memo((props: notificationItemProps) => {
     const { className, item } = props;
 
     const content = (
-        <Card
-                            className={classNames(cls.notificationItem, {}, [
-                                className,
-                            ])}
-                        >
-                            <Text title={item.title} text={item.description} />
-                        </Card>
+        <ToggleFeatures
+            feature={'isAppRedesigned'}
+            on={
+                <Card
+                    className={classNames(cls.notificationItem, {}, [
+                        className,
+                    ])}
+                >
+                    <Text title={item.title} text={item.description} />
+                </Card>
+            }
+            off={
+                <CardDeprecated
+                    className={classNames(cls.notificationItem, {}, [
+                        className,
+                    ])}
+                    variant={CardVariants.OUTLINE}
+                >
+                    <TextDeprecated
+                        title={item.title}
+                        text={item.description}
+                    />
+                </CardDeprecated>
+            }
+        />
     );
 
     if (item.href) {

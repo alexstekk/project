@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { LoginFormLazy } from '../LoginForm/LoginForm.lazy';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Modal } from '@/shared/ui/deprecated/Modal';
+import { Modal } from '@/shared/ui/redesigned/Modal';
 
 interface LoginModalProps {
     className?: string;

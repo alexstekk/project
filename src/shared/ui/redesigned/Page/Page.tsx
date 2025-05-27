@@ -65,7 +65,15 @@ export const Page = memo((props: pageProps) => {
         <section
             data-testid={props['data-testid'] ?? 'Page'}
             ref={wrapperRef}
-            className={classNames(cls.pageRedesigned, {}, [className])}
+            className={classNames(
+                toggleFeatures({
+                    name: 'isAppRedesigned',
+                    on: () => cls.pageRedesigned,
+                    off: () => cls.page,
+                }),
+                {},
+                [className],
+            )}
             onScroll={onScroll}
         >
             {children}

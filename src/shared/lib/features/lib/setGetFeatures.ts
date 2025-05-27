@@ -1,6 +1,6 @@
 import { FeatureFlags } from '@/shared/types/featureFlags';
 
-let featuresFlags: FeatureFlags;
+let featuresFlags: FeatureFlags = {};
 
 export function setFeatureFlag(newFeaturesFlags?: FeatureFlags) {
     if (newFeaturesFlags) {
@@ -9,7 +9,7 @@ export function setFeatureFlag(newFeaturesFlags?: FeatureFlags) {
 }
 
 export function getFeatureFlag(flag: keyof FeatureFlags) {
-    return featuresFlags[flag];
+    return featuresFlags[flag] ?? true;
 }
 
 export function getAllFeatureFlag() {

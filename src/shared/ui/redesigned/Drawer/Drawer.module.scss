@@ -39,3 +39,17 @@
   touch-action: none;
   padding: 15px;
 }
+
+.drawerNew {
+  .sheet {
+    background-color: var(--light-bg-redesigned);
+  }
+
+}
+
+.drawerOld {
+  .sheet {
+    background-color: var(--bg-color);
+  }
+
+}

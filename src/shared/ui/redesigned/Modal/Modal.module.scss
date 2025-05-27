@@ -16,10 +16,23 @@
 .content {
   padding: 20px;
   border-radius: 12px;
-  background-color: var(--bg-color);
   max-width: 60%;
   position: fixed;
   transition: transform 0.3s ease-in-out;
+}
+
+.modalNew {
+  .content {
+    background-color: var(--light-bg-redesigned);
+  }
+
+}
+
+.modalOld {
+  .content {
+    background-color: var(--bg-color);
+  }
+
 }
 
 .opened {

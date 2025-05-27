@@ -1,13 +1,14 @@
 import { ReactNode, memo, useCallback, useEffect } from 'react';
 
-import { Overlay } from '../../redesigned/Overlay/Overlay';
-import { Portal } from '../../redesigned/Portal/Portal';
+import { Overlay } from '../Overlay/Overlay';
+import { Portal } from '../Portal/Portal';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     AnimationProvider,
     useAnimationLibs,
 } from '@/shared/lib/components/AnimationProvider';
+import { toggleFeatures } from '@/shared/lib/features';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 import cls from './Drawer.module.scss';
@@ -21,10 +22,7 @@ interface drawerProps {
 }
 
 const height = window.innerHeight - 150;
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+
 export const DrawerContent = memo((props: drawerProps) => {
     const { Spring, Gesture } = useAnimationLibs();
 
@@ -103,8 +101,18 @@ export const DrawerContent = memo((props: drawerProps) => {
     };
 
     return (
-        <Portal>
-            <div className={classNames(cls.drawer, {}, [className, theme])}>
+        <Portal element={document.getElementById('app') ?? document.body}>
+            <div
+                className={classNames(cls.drawer, {}, [
+                    className,
+                    theme,
+                    toggleFeatures({
+                        name: 'isAppRedesigned',
+                        on: () => cls.drawerNew,
+                        off: () => cls.drawerOld,
+                    }),
+                ])}
+            >
                 {/*@ts-ignore*/}
                 <Overlay
                     as={Spring.a.div}
@@ -128,10 +136,7 @@ export const DrawerContent = memo((props: drawerProps) => {
         </Portal>
     );
 });
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+
 const DrawerAsync = memo((props: drawerProps) => {
     const { isLoaded } = useAnimationLibs();
 
@@ -141,10 +146,7 @@ const DrawerAsync = memo((props: drawerProps) => {
 
     return <DrawerContent {...props} />;
 });
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+
 export const Drawer = (props: drawerProps) => {
     return (
         <AnimationProvider>

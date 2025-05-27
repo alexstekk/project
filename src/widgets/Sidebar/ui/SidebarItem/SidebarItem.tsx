@@ -25,19 +25,36 @@ export const SidebarItem = (props: SidebarItemProps) => {
     if (item.authOnly && !isAuth) return null;
 
     return (
-        <AppLink
-                            to={item.path}
-                            className={classNames(cls.itemRedesigned, {
-                                [cls.collapsedRedesigned]: collapsed,
-                            })}
-                            activeClassName={cls.active}
-                        >
-                            <item.Icon
-                                className={cls.iconRedesigned}
-                                width={32}
-                                height={32}
-                            />
-                            <span className={cls.link}>{t(item.text)}</span>
-                        </AppLink>
+        <ToggleFeatures
+            feature={'isAppRedesigned'}
+            on={
+                <AppLink
+                    to={item.path}
+                    className={classNames(cls.itemRedesigned, {
+                        [cls.collapsedRedesigned]: collapsed,
+                    })}
+                    activeClassName={cls.active}
+                >
+                    <item.Icon
+                        className={cls.iconRedesigned}
+                        width={32}
+                        height={32}
+                    />
+                    <span className={cls.link}>{t(item.text)}</span>
+                </AppLink>
+            }
+            off={
+                <AppLinkDeprecated
+                    variant={'inverted'}
+                    to={item.path}
+                    className={classNames(cls.item, {
+                        [cls.collapsed]: collapsed,
+                    })}
+                >
+                    <item.Icon className={cls.icon} width={32} height={32} />
+                    <span className={cls.link}>{t(item.text)}</span>
+                </AppLinkDeprecated>
+            }
+        />
     );
 };
