@@ -36,7 +36,11 @@ export const ArticleListItemRedesigned = memo((props: articleListItemProps) => {
 
     const userInfo = (
         <>
-            <Avatar size={32} src={article.user.avatar} />
+            <Avatar
+                size={32}
+                src={article.user.avatar}
+                className={cls.avatar}
+            />
             <Text bold text={article.user.username} />
         </>
     );
@@ -100,9 +104,9 @@ export const ArticleListItemRedesigned = memo((props: articleListItemProps) => {
                 cls[view],
             ])}
         >
-            <Card className={cls.card} corners="roundCorners">
+            <Card className={cls.card} corners="roundCorners" padding={'0'}>
                 <AppImage
-                    fallback={<Skeleton width={200} height={200} />}
+                    fallback={<Skeleton width={'100%'} height={200} />}
                     alt={article.title}
                     src={article.img}
                     className={cls.img}

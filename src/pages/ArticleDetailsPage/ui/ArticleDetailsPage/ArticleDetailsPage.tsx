@@ -3,12 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { articleDetailsPageReducer } from '../../model/slice';
+import { AdditionalInfoContainer } from '../AdditionalInfoContainer/AdditionalInfoContainer';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { DetailsContainer } from '../DetailsContainer/DetailsContainer';
 
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -32,7 +35,6 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
     const { className } = props;
 
     const { t } = useTranslation('article-details');
-
     const { id } = useParams<{ id: string }>();
 
     // const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
@@ -54,19 +56,45 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
-            <Page
-                className={classNames(cls.articleDetailsPage, {}, [className])}
-            >
-                <ArticleDetailsPageHeader />
-                <ArticleDetails id={id || '1'} />
-                <ToggleFeatures
-                    feature={'isArticleRatingEnabled'}
-                    on={<ArticleRating />}
-                    off={<Card>{t('Оценка скоро появится')}</Card>}
-                />
-                <ArticleRecommendationsList />
-                <ArticleDetailsComments id={id || '1'} />
-            </Page>
+            <ToggleFeatures
+                feature={'isAppRedesigned'}
+                on={
+                    <StickyContentLayout
+                        content={
+                            <Page
+                                className={classNames(
+                                    cls.articleDetailsPage,
+                                    {},
+                                    [className],
+                                )}
+                            >
+                                <DetailsContainer />
+                                <ArticleRating />
+                                <ArticleRecommendationsList />
+                                <ArticleDetailsComments id={id || '1'} />
+                            </Page>
+                        }
+                        right={<AdditionalInfoContainer />}
+                    />
+                }
+                off={
+                    <Page
+                        className={classNames(cls.articleDetailsPage, {}, [
+                            className,
+                        ])}
+                    >
+                        <ArticleDetailsPageHeader />
+                        <ArticleDetails id={id || '1'} />
+                        <ToggleFeatures
+                            feature={'isArticleRatingEnabled'}
+                            on={<ArticleRating />}
+                            off={<Card>{t('Оценка скоро появится')}</Card>}
+                        />
+                        <ArticleRecommendationsList />
+                        <ArticleDetailsComments id={id || '1'} />
+                    </Page>
+                }
+            />
         </DynamicModuleLoader>
     );
 };
