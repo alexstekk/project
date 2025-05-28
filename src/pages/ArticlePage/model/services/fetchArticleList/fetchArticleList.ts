@@ -48,6 +48,7 @@ export const fetchArticleList = createAsyncThunk<
                 _sort: sort,
                 q: search,
                 // @ts-ignore
+                // eslint-disable-next-line no-constant-condition
                 type: type === 'ALL' || 'Все статьи' ? undefined : type,
             },
         });

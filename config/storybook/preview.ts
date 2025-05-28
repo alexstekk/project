@@ -9,6 +9,7 @@ import { StyleDecorator } from '../../src/shared/config/storybook/decorators/Sty
 import { SuspenceDecorator } from '../../src/shared/config/storybook/decorators/SuspenceDecorator/SuspenceDecorator';
 import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from '../../src/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
+import { FeaturesFlagsDecorator } from '../../src/shared/config/storybook/decorators/FeaturesFlagsDecorator/FeaturesFlagsDecorator';
 
 const preview: Preview = {
     decorators: [
@@ -26,6 +27,7 @@ const preview: Preview = {
             defaultTheme: 'light',
         }),
         StoreDecorator({}),
+        FeaturesFlagsDecorator({}),
     ],
     parameters: {
         layout: 'fullscreen',

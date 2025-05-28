@@ -1,7 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { InvertedDeprecated } from '../AppLink/AppLink.stories';
+
 import { Tabs } from './Tabs';
+
 
 const meta = {
     title: 'shared/Tabs',
@@ -30,6 +33,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Normal: Story = {
+export const NormalDeprecated: Story = {
     args: {},
 };

@@ -2,8 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { EditableProfileCard } from './EditableProfileCard';
 
+import { Country } from '@/entities/Country';
+import { FeaturesFlagsDecorator } from '@/shared/config/storybook/decorators/FeaturesFlagsDecorator/FeaturesFlagsDecorator';
+import { NewDesignDecorator } from '@/shared/config/storybook/decorators/NewDesignDecorator/NewDesignDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator/StoreDecorator';
-
 
 const meta = {
     title: 'features/EditableProfileCard',
@@ -18,6 +20,7 @@ const meta = {
                     city: 'Krasnodar',
                     username: 'admin',
                     avatar: '',
+                    country: Country.RUSSIA,
                 },
             },
         }),
@@ -46,4 +49,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
     args: {},
+};
+
+export const NormalRedesigned: Story = {
+    args: {},
+    decorators: [NewDesignDecorator],
 };

@@ -19,28 +19,28 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const PrimaryDeprecated: Story = {
     args: {
         variant: 'primary',
     },
 };
 
-export const Inverted: Story = {
+export const InvertedDeprecated: Story = {
     args: {
         variant: 'inverted',
     },
 };
 
-export const PrimaryDark: Story = {
+export const PrimaryDarkDeprecated: Story = {
     args: {
         variant: 'primary',
     },
 };
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
+PrimaryDarkDeprecated.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const InvertedDark: Story = {
+export const InvertedDarkDeprecated: Story = {
     args: {
         variant: 'inverted',
     },
 };
-InvertedDark.decorators = [ThemeDecorator(Theme.DARK)];
+InvertedDarkDeprecated.decorators = [ThemeDecorator(Theme.DARK)];

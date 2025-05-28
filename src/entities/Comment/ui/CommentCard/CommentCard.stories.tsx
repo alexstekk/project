@@ -4,6 +4,8 @@ import { Comment } from '../../model/types/Comment';
 
 import { CommentCard } from './CommentCard';
 
+import { FeaturesFlagsDecorator } from '@/shared/config/storybook/decorators/FeaturesFlagsDecorator/FeaturesFlagsDecorator';
+
 const comment: Comment = {
     id: '1',
     text: 'texzt asda',
@@ -44,4 +46,17 @@ export const WithAvatar: Story = {
             },
         },
     },
+};
+
+export const NormalRedesigned: Story = {
+    args: {
+        comment: {
+            ...comment,
+            user: {
+                ...comment.user,
+                avatar: 'https://s.digitalocean.ru/627/upload/1704804178_ZDWsxDYgwxo.jpg',
+            },
+        },
+    },
+    decorators: [FeaturesFlagsDecorator({ isAppRedesigned: true })],
 };

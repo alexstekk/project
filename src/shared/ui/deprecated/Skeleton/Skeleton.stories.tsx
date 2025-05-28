@@ -15,14 +15,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Normal: Story = {
+export const NormalDeprecated: Story = {
     args: {
         width: '100%',
         height: 200,
     },
 };
 
-export const Circle: Story = {
+export const CircleDeprecated: Story = {
     args: {
         border: '50%',
         height: 100,
@@ -30,7 +30,7 @@ export const Circle: Story = {
     },
 };
 
-export const Dark: Story = {
+export const DarkDeprecated: Story = {
     args: {
         border: '50%',
         height: 100,
