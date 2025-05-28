@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 import { getArticleCommentsIsLoading } from '../../model/selectors/getCommentsData';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
@@ -10,12 +9,15 @@ import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlic
 import { CommentList } from '@/entities/Comment';
 import { AddCommentForm } from '@/features/addCommentForm';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
 import {
     useAppDispatch,
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Text, TextAlign } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated, TextAlign } from '@/shared/ui/deprecated/Text';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 interface articleDetailsCommentsProps {
     className?: string;
@@ -44,11 +46,21 @@ export const ArticleDetailsComments = memo(
         });
 
         return (
-            <div className={classNames('', {}, [className])}>
-                <Text title={t('Комментарии')} align={TextAlign.CENTER} />
+            <VStack className={classNames('', {}, [className])} max gap={'16'}>
+                <ToggleFeatures
+                    feature={'isAppRedesigned'}
+                    on={<Text title={t('Комментарии')} bold size={'sizeL'} />}
+                    off={
+                        <TextDeprecated
+                            title={t('Комментарии')}
+                            align={TextAlign.CENTER}
+                        />
+                    }
+                />
+
                 <AddCommentForm onSendComment={onSendComment} />
                 <CommentList comments={comments} isLoading={commentIsLoading} />
-            </div>
+            </VStack>
         );
     },
 );

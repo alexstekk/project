@@ -58,7 +58,6 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
             padding={'24'}
         >
             <VStack gap={'32'}>
-                {' '}
                 {data?.avatar && (
                     <HStack
                         // className={cls.avatarWrapper}

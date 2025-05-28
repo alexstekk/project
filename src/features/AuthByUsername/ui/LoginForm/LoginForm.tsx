@@ -29,6 +29,7 @@ import {
 } from '@/shared/ui/deprecated/Text';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { Input } from '@/shared/ui/redesigned/Input';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
 
 import cls from './LoginForm.module.scss';
@@ -80,35 +81,38 @@ const LoginForm = memo((props: LoginFormProps) => {
             <ToggleFeatures
                 feature={'isAppRedesigned'}
                 on={
-                    <div className={classNames(cls.loginForm, {}, [className])}>
+                    <VStack
+                        className={classNames(cls.loginForm, {}, [className])}
+                        gap={'32'}
+                    >
                         <Text title={t('Форма авторизации')} />
                         {error && (
                             <Text
                                 text={t('Неправильное имя пользователя/пароль')}
                             />
                         )}
-                        <Input
-                            autoFocus
-                            className={cls.input}
-                            placeholder={t('Введите имя')}
-                            onChange={onChangeUsername}
-                            value={username}
-                        />
-                        <Input
-                            className={cls.input}
-                            placeholder={t('Введите пароль')}
-                            onChange={onChangePassword}
-                            value={password}
-                        />
+                        <VStack gap={'8'} max>
+                            <Input
+                                autoFocus
+                                placeholder={t('Введите имя')}
+                                onChange={onChangeUsername}
+                                value={username}
+                            />
+                            <Input
+                                placeholder={t('Введите пароль')}
+                                onChange={onChangePassword}
+                                value={password}
+                            />
+                        </VStack>
                         <Button
+                            fullWidth
                             variant={ButtonVariants.OUTLINE}
-                            className={cls.loginBtn}
                             onClick={onLoginClick}
                             disabled={isLoading}
                         >
                             {t('Войти')}
                         </Button>
-                    </div>
+                    </VStack>
                 }
                 off={
                     <div className={classNames(cls.loginForm, {}, [className])}>

@@ -18,8 +18,8 @@ import {
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { Card } from '@/shared/ui/deprecated/Card';
 import { Page } from '@/shared/ui/deprecated/Page';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 import cls from './ArticleDetailsPage.module.scss';
 
@@ -68,10 +68,16 @@ const ArticleDetailsPage = (props: articleDetailsPageProps) => {
                                     [className],
                                 )}
                             >
-                                <DetailsContainer />
-                                <ArticleRating />
-                                <ArticleRecommendationsList />
-                                <ArticleDetailsComments id={id || '1'} />
+                                <Card
+                                    max
+                                    corners={'roundCorners'}
+                                    padding={'24'}
+                                >
+                                    <DetailsContainer />
+                                    <ArticleRating />
+                                    <ArticleRecommendationsList />
+                                    <ArticleDetailsComments id={id || '1'} />
+                                </Card>
                             </Page>
                         }
                         right={<AdditionalInfoContainer />}

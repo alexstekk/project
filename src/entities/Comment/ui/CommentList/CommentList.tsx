@@ -1,12 +1,14 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 import { Comment } from '../../model/types/Comment';
 import { CommentCard } from '../CommentCard/CommentCard';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 import cls from './CommentList.module.scss';
 
@@ -32,7 +34,19 @@ export const CommentList = memo((props: commentListProps) => {
     }
 
     return (
-        <div className={classNames(cls.commentList, {}, [className])}>
+        <VStack
+            className={classNames(
+                toggleFeatures({
+                    name: 'isAppRedesigned',
+                    on: () => cls.commentListRedesigned,
+                    off: () => cls.commentList,
+                }),
+                {},
+                [className],
+            )}
+            gap={'32'}
+            max
+        >
             {comments?.length > 0 ? (
                 comments.map((comment) => (
                     <CommentCard
@@ -43,8 +57,14 @@ export const CommentList = memo((props: commentListProps) => {
                     />
                 ))
             ) : (
-                <Text title={t('Комментарии отсутствуют')} />
+                <ToggleFeatures
+                    feature={'isAppRedesigned'}
+                    on={<Text title={t('Комментарии отсутствуют')} />}
+                    off={
+                        <TextDeprecated title={t('Комментарии отсутствуют')} />
+                    }
+                />
             )}
-        </div>
+        </VStack>
     );
 });

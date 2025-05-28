@@ -16,9 +16,5 @@ export const DetailsContainer = memo((props: detailsContainerProps) => {
 
     const { t } = useTranslation();
 
-    return (
-        <Card className={className} corners={'roundCorners'}>
-            <ArticleDetails id={id || '1'} />
-        </Card>
-    );
+    return <ArticleDetails id={id || '1'} className={className} />;
 });

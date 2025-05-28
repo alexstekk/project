@@ -933,6 +933,30 @@
       "userId": "4",
       "text": "test",
       "id": "V6NTOud"
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "a",
+      "id": "vv7dxVC"
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "asd",
+      "id": "1UQ3Pb9"
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "a",
+      "id": "looApey"
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis officia provident ratione repellendus similique?     Amet assumenda corporis eius eligendi eveniet, fuga inventore iste itaque sapiente voluptate. Ab blanditiis laborum     repudiandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis officia provident ratione repellendus similique?     Amet assumenda corporis eius eligendi eveniet, fuga inventore iste itaque sapiente voluptate. Ab blanditiis laborum     repudiandae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis officia provident ratione repellendus similique?     Amet assumenda corporis eius eligendi eveniet, fuga inventore iste itaque sapiente voluptate. Ab blanditiis laborum     repudiandae.",
+      "id": "9tAiLHU"
     }
   ],
   "users": [
@@ -950,7 +974,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "appLightTheme",
+        "theme": "appDarkTheme",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false,
         "isArticlesPageWasOpened": true

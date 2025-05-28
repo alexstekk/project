@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 import { ValidateProfileError } from '../../model/consts/editableProfileCardConsts';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
@@ -26,6 +25,7 @@ import {
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Text, TextVariants } from '@/shared/ui/deprecated/Text';
+import { Card } from '@/shared/ui/redesigned/Card';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 
 interface EditableProfileCardProps {
@@ -124,31 +124,37 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <VStack gap={'8'} max className={classNames('', {}, [className])}>
-                {validateErrors?.map((err) => (
-                    <Text
-                        key={err}
-                        text={validateErrorTranslations[err]}
-                        variant={TextVariants.ERROR}
-                        data-testid={'EditableProfileCard.Error'}
+            <Card max corners={'roundCorners'} padding={'24'}>
+                <VStack
+                    gap={'8'}
+                    max
+                    className={classNames('', {}, [className])}
+                >
+                    <EditableProfileCardHeader />
+                    {validateErrors?.map((err) => (
+                        <Text
+                            key={err}
+                            text={validateErrorTranslations[err]}
+                            variant={TextVariants.ERROR}
+                            data-testid={'EditableProfileCard.Error'}
+                        />
+                    ))}
+                    <ProfileCard
+                        data={formData}
+                        isLoading={isLoading}
+                        error={error}
+                        readonly={readonly}
+                        onChangeFirstname={onChangeFirstname}
+                        onChangeLastname={onChangeLastname}
+                        onChangeCity={onChangeCity}
+                        onChangeAge={onChangeAge}
+                        onChangeUsername={onChangeUsername}
+                        onChangeAvatar={onChangeAvatar}
+                        onChangeCurrency={onChangeCurrency}
+                        onChangeCountry={onChangeCountry}
                     />
-                ))}
-                <EditableProfileCardHeader />
-                <ProfileCard
-                    data={formData}
-                    isLoading={isLoading}
-                    error={error}
-                    readonly={readonly}
-                    onChangeFirstname={onChangeFirstname}
-                    onChangeLastname={onChangeLastname}
-                    onChangeCity={onChangeCity}
-                    onChangeAge={onChangeAge}
-                    onChangeUsername={onChangeUsername}
-                    onChangeAvatar={onChangeAvatar}
-                    onChangeCurrency={onChangeCurrency}
-                    onChangeCountry={onChangeCountry}
-                />
-            </VStack>
+                </VStack>
+            </Card>
         </DynamicModuleLoader>
     );
 });

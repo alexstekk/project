@@ -2,14 +2,20 @@ import { memo } from 'react';
 
 import { ArticleView } from '../../model/consts/articleConsts';
 
+import cls from './ArticleListItemRedesigned/ArticleListItemRedesigned.module.scss';
+
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { toggleFeatures } from '@/shared/lib/features';
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
-import { Card as CardRedesigned } from '@/shared/ui/redesigned/Card';
-import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
-
-import cls from './ArticleListItem.module.scss';
+import { AppImage } from '@/shared/ui/redesigned/AppImage';
+import { Card, Card as CardRedesigned } from '@/shared/ui/redesigned/Card';
+import {
+    Skeleton,
+    Skeleton as SkeletonRedesigned,
+} from '@/shared/ui/redesigned/Skeleton';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 interface ArticleListItemSkeletonProps {
     className?: string;
@@ -81,18 +87,27 @@ export const ArticleListItemSkeleton = memo(
                     cls[view],
                 ])}
             >
-                <Card className={cls.card} max>
-                    <div className={cls.imageWrapper}>
-                        <Skeleton
-                            width={340}
-                            height={250}
-                            className={cls.img}
-                        />
-                    </div>
-                    <div className={cls.infoWrapper}>
-                        <Skeleton width={130} height={16} />
-                    </div>
-                    <Skeleton width={150} height={16} />
+                <Card className={cls.card} corners="roundCorners" padding={'0'}>
+                    <Skeleton width={'100%'} height={250} />
+                    <VStack className={cls.info} gap="4">
+                        <Skeleton width={200} height={32} />
+                        <Skeleton width={180} height={32} />
+                        <Skeleton width={220} height={32} />
+                        <VStack gap="8" className={cls.footer} max>
+                            <HStack justify="between" max>
+                                <Skeleton width={80} height={24} />
+                                <Skeleton width={80} height={24} />
+                            </HStack>
+                            <HStack gap="8">
+                                <Skeleton
+                                    width={32}
+                                    height={32}
+                                    border={'50%'}
+                                />
+                                <Skeleton width={60} height={24} />
+                            </HStack>
+                        </VStack>
+                    </VStack>
                 </Card>
             </div>
         );

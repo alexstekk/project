@@ -76,6 +76,7 @@ export const Input = memo((props: InputProps) => {
                     readOnly={readonly}
                     placeholder={placeholder}
                     onFocus={onFocus}
+                    onBlur={() => setIsFocused(false)}
                     {...otherProps}
                 />
                 <div className={cls.addonRight}>{addonRight}</div>

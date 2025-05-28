@@ -7,7 +7,7 @@ import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
 import { useAppSelector } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import {
     ButtonDeprecated,
@@ -15,6 +15,7 @@ import {
 } from '@/shared/ui/deprecated/Button';
 import { Text, TextVariants } from '@/shared/ui/deprecated/Text';
 import { AppLink } from '@/shared/ui/redesigned/AppLink';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 
 import cls from './Navbar.module.scss';
@@ -79,14 +80,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                                 <NotificationButton />
                                 <AvatarDropdown />
                             </HStack>
-
-                            {/*<Button*/}
-                            {/*    variant={ButtonVariants.CLEAR_INVERTED}*/}
-                            {/*    onClick={onLogout}*/}
-                            {/*>*/}
-                            {/*    {t('Выйти')}*/}
-
-                            {/*</Button>*/}
                         </div>
                     </header>
                 }
@@ -95,15 +88,38 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     }
 
     return (
-        <header className={classNames(cls.navbar, {}, [className])}>
-            <div className={cls.links}>
-                <ButtonDeprecated
-                    variant={ButtonVariants.CLEAR_INVERTED}
-                    onClick={onShowModal}
-                >
-                    {t('Войти')}
-                </ButtonDeprecated>
-            </div>
+        <header
+            className={classNames(
+                toggleFeatures({
+                    name: 'isAppRedesigned',
+                    on: () => cls.navbarRedesigned,
+                    off: () => cls.navbar,
+                }),
+                {},
+                [className],
+            )}
+        >
+            <ToggleFeatures
+                feature={'isAppRedesigned'}
+                on={
+                    <div className={cls.linksRede}>
+                        <Button variant={'clear'} onClick={onShowModal}>
+                            {t('Войти')}
+                        </Button>
+                    </div>
+                }
+                off={
+                    <div className={cls.links}>
+                        <ButtonDeprecated
+                            variant={ButtonVariants.CLEAR_INVERTED}
+                            onClick={onShowModal}
+                        >
+                            {t('Войти')}
+                        </ButtonDeprecated>
+                    </div>
+                }
+            />
+
             {isAuthModal && (
                 <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
             )}

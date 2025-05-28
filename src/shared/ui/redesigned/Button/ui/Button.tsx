@@ -8,6 +8,8 @@ export type ButtonVariants = 'clear' | 'outline' | 'filled';
 
 export type ButtonSize = 'sizeM' | 'sizeL' | 'sizeXL';
 
+export type ButtonColor = 'normal' | 'success' | 'error';
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     addonLeft?: ReactNode;
     addonRight?: ReactNode;
@@ -32,6 +34,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
      * Вариант кнопки: с рамкой, прозрачный и т.п.
      */
     variant?: ButtonVariants;
+
+    color?: ButtonColor;
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -45,6 +49,7 @@ export const Button = memo((props: ButtonProps) => {
         fullWidth,
         addonLeft,
         addonRight,
+        color = 'normal',
         ...otherProps
     } = props;
 
@@ -63,6 +68,7 @@ export const Button = memo((props: ButtonProps) => {
                 className,
                 cls[variant],
                 cls[size],
+                cls[color],
             ])}
             {...otherProps}
         >

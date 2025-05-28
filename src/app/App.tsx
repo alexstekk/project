@@ -5,9 +5,10 @@ import { Navbar } from '../widgets/Navbar/ui/Navbar';
 import { AppRouter } from './providers/router';
 
 import { getUserInited, initAuthData } from '@/entities/User';
+import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
 import {
     useAppDispatch,
     useAppSelector,
@@ -28,7 +29,26 @@ export const App = () => {
     }, [dispatch]);
 
     if (!inited) {
-        return <PageLoader />;
+        return (
+            <div
+                className={classNames(
+                    toggleFeatures({
+                        name: 'isAppRedesigned',
+                        on: () => 'appRedesigned',
+                        off: () => 'app',
+                    }),
+                    {},
+                    [theme],
+                )}
+                id={'app'}
+            >
+                <ToggleFeatures
+                    feature={'isAppRedesigned'}
+                    on={<AppLoaderLayout />}
+                    off={<PageLoader />}
+                />
+            </div>
+        );
     }
 
     return (

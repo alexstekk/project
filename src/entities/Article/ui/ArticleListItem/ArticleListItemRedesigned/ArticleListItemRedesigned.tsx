@@ -45,11 +45,11 @@ export const ArticleListItemRedesigned = memo((props: articleListItemProps) => {
         </>
     );
 
-    if (view === ArticleView.BIG) {
-        const textBlock = article?.blocks?.find(
-            (block) => block.type === ArticleBlockType.TEXT,
-        ) as ArticleTextBlock;
+    const textBlock = article?.blocks?.find(
+        (block) => block.type === ArticleBlockType.TEXT,
+    ) as ArticleTextBlock;
 
+    if (view === ArticleView.BIG) {
         return (
             <Card
                 padding={'24'}
@@ -107,6 +107,7 @@ export const ArticleListItemRedesigned = memo((props: articleListItemProps) => {
             <Card className={cls.card} corners="roundCorners" padding={'0'}>
                 <AppImage
                     fallback={<Skeleton width={'100%'} height={200} />}
+                    errorFallback={<Skeleton width={'100%'} height={240} />}
                     alt={article.title}
                     src={article.img}
                     className={cls.img}
@@ -114,6 +115,17 @@ export const ArticleListItemRedesigned = memo((props: articleListItemProps) => {
                 <VStack className={cls.info} gap="4">
                     <Text title={article.title} className={cls.title} />
                     <VStack gap="4" className={cls.footer} max>
+                        {textBlock?.paragraphs && (
+                            <Text
+                                text={
+                                    textBlock.paragraphs
+                                        .slice(0, 1)
+                                        .join(' ')
+                                        .slice(0, 45) + '...'
+                                }
+                                className={cls.textBlock}
+                            />
+                        )}
                         <HStack justify="between" max>
                             <Text
                                 text={article.createdAt}
