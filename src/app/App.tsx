@@ -4,7 +4,9 @@ import { Navbar } from '../widgets/Navbar/ui/Navbar';
 
 import { AppRouter } from './providers/router';
 
+import { useAppToolbar } from '@/app/lib/useAppToolbar';
 import { getUserInited, initAuthData } from '@/entities/User';
+import { ScrollToTopButton } from '@/features/scrollToTopButton';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -15,6 +17,7 @@ import {
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ScrollToolbar } from '@/widgets/ScrollToolbar';
 import { Sidebar } from '@/widgets/Sidebar';
 
 export const App = () => {
@@ -23,6 +26,8 @@ export const App = () => {
     const dispatch = useAppDispatch();
 
     const inited = useAppSelector(getUserInited);
+
+    const toollbar = useAppToolbar();
 
     useEffect(() => {
         dispatch(initAuthData());
@@ -75,6 +80,7 @@ export const App = () => {
                             header={<Navbar />}
                             content={<AppRouter />}
                             sidebar={<Sidebar />}
+                            toolbar={toollbar}
                         />
                     </Suspense>
                 </div>
