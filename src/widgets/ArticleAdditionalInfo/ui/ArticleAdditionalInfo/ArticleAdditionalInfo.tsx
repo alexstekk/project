@@ -8,8 +8,6 @@ import { Button } from '@/shared/ui/redesigned/Button';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
 
-import cls from './ArticleAdditionalInfo.module.scss';
-
 interface articleAdditionalInfoProps {
     className?: string;
     author: User;
@@ -25,12 +23,7 @@ export const ArticleAdditionalInfo = memo(
         const { t } = useTranslation();
 
         return (
-            <VStack
-                gap={'32'}
-                className={classNames(cls.articleAdditionalInfo, {}, [
-                    className,
-                ])}
-            >
+            <VStack gap={'32'} className={classNames('', {}, [className])}>
                 <HStack gap={'8'}>
                     <Avatar src={author.avatar} size={32} />
                     <Text bold text={author.username} />

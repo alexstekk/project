@@ -1,13 +1,10 @@
-import { ComponentType, ReactNode, Suspense, useEffect } from 'react';
-
-import { Navbar } from '../widgets/Navbar/ui/Navbar';
+import { Suspense, useEffect } from 'react';
 
 import { useAppToolbar } from './lib/useAppToolbar';
 import { withTheme } from './providers/ThemeProvider/ui/withTheme';
 import { AppRouter } from './providers/router';
 
-import { ThemeProvider } from '@/app/providers/ThemeProvider';
-import { getUserInited, initAuthData, useJsonSettings } from '@/entities/User';
+import { getUserInited, initAuthData } from '@/entities/User';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -17,6 +14,7 @@ import {
     useAppSelector,
 } from '@/shared/lib/hooks/redux/reduxTypedHooks';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+import { Navbar } from '@/widgets/Navbar';
 import { PageLoader } from '@/widgets/PageLoader';
 import { Sidebar } from '@/widgets/Sidebar';
 
