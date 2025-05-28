@@ -24,7 +24,7 @@ export const Comments: Story = {
                 user: {
                     id: '1',
                     username: 'Vasya',
-                    avatar: 'https://s.digitalocean.ru/627/upload/1704804178_ZDWsxDYgwxo.jpg',
+                    avatar: '',
                 },
             },
             {
@@ -33,7 +33,7 @@ export const Comments: Story = {
                 user: {
                     id: '2',
                     username: 'Erjan',
-                    avatar: 'https://t4.ftcdn.net/jpg/03/21/43/07/360_F_321430761_qQi0CU9tzI5w1k1vJgdA02LMtXtsXvJE.jpg',
+                    avatar: '',
                 },
             },
         ],
